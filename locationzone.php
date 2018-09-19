@@ -1,22 +1,24 @@
 <!DOCTYPE html>
 <html>
-<body>
+	<head>
 
-<h1>My First Google Map</h1>
+		<title>Zone de location</title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="css/styleslocimmo.css"/>
+	</head>
+	<body>
+		<header>
+		<h1> Neige et Soleil</h1>
+		</header>
 
-<div id="googleMap" style="width:100%;height:400px;"></div>
+    <?php include("header.php"); ?>
+		<div id= "contenuprincipale">
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2826.2851648306023!2d6.632144615538548!3d44.89719437909839!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDTCsDUzJzQ5LjkiTiA2wrAzOCcwMy42IkU!5e0!3m2!1sfr!2sfr!4v1537350096403"
+ width="500" height="500" frameborder="0" style="border:0" allowfllscreen></iframe>
+		</div>
 
-<script>
-function myMap() {
-var mapProp= {
-    center:new google.maps.LatLng(51.508742,-0.120850),
-    zoom:5,
-};
-var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
-}
-</script>
-
-<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY&callback=myMap"></script>
-
+<footer>
+	<<?php include("footer.php"); ?>
+</footer>
 </body>
 </html>
