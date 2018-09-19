@@ -6,17 +6,17 @@
 		<meta charset="utf-8">
 		<link rel="stylesheet" href="css/stylesquest.css"/>
 
-	
-				
-				
+
+
+
 	</head>
-	<body>	
+	<body>
 		<header>
 		<h1> Neige et Soleil</h1>
 		</header> <!-- haut de page--> <!-- div sert à créer des boites plutot que des ensembles et de les nommer-->
-			
-		
-	
+
+
+
 			<nav>
 				<ul>
 					<li class="menu-accueil"> <a href="Acceuil.php">Accueil</a></li>
@@ -42,7 +42,7 @@
 
 	<body bgcolor="#9683EC">
 
-	<form method="post" action="Cible1.php"> 
+	<form method="post" action="Cible1.php">
 
 <div id="question">
 Sexe : <br>
@@ -68,16 +68,16 @@ Sexe : <br>
  	<label for="CP">Ville</label>
 	<input type="text" name="cvil" maxlength="30" placeholder="Ville" required >
  <br><br>
- 	<label for="Numéro de téléphone">Numéro de téléphone</label> 
+ 	<label for="Numéro de téléphone">Numéro de téléphone</label>
  	<input type="text" name="ctel"  maxlength="10" placeholder="Téléphone" required>
  <br><br>
- 	<label for="Date de naissance">Date de naissance</label> 
+ 	<label for="Date de naissance">Date de naissance</label>
  	<input type="Date" name="cdate"  maxlength="20" placeholder="Date de naissance" required >
  <br><br>
- 	<label for="Login">Login</label> 
+ 	<label for="Login">Login</label>
  	<input type="text" name="clog" maxlength="20" placeholder="Login" required pattern="[A-Za-z]{1,30}" title="Caractère spéciaux non admit">
  <br><br>
-	<label for="Mot de passe">Mot de passe</label> 
+	<label for="Mot de passe">Mot de passe</label>
 	<input type="password" name="cmdp"  maxlength="20" placeholder="Mot de passe" required >
  <br><br>
 	<center>
@@ -87,36 +87,8 @@ Sexe : <br>
 </form>
 </div>
 
-<footer>			
-		<div id="content">
-
-		<div id="leftbox"> <!--pied de page-->
-			<h3> Neige et soleil </h3>
-				<ul>
-				<li><a href="Qui sommes nous.html">
-					Qui sommes nous ? </a></li>
-				<li><a href="Zone de location">
-					Zone de location </a></li>
-				<li><a href="Nouscontacter.html">
-					Nous contacter 	</a></li>
-				<li><a href="Condition générale de vente">
-				Condition générale de vente </a></li>
-				<li><a href="Information légales">
-				Information légales </a></li>
-			</ul>
-		</div>
-		
-		<div class="rightbox">
-		<h3> Horaires </h3>
-			<ul>
-
-				<li> 
-					Du Lundi au Samedi 
-					8h30-12h30 14h-18h30
-				</li>
-			</ul> 
-		</div>
-		</div>
+<footer>
+		<?php include("footer.php"); ?>
 </footer>
 
 </body>
