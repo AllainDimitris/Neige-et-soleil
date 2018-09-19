@@ -1,4 +1,3 @@
-
 div#content div{
   display: inline-block;
   width: 48%;
@@ -9,27 +8,23 @@ div#content div.rightbox{
   vertical-align: top;
 }
 
-div#content div.rightbox{
-  vertical-align: top; 
-  align-content: right; 
-}
-
-
-
 body{
    background: url("https://fr.cdn.v5.futura-sciences.com/buildsv6/images/wide1920/b/b/2/bb28123691_120052_neige-blanche-montagne.jpg") no-repeat; /* insérer une backgroun */
-   background-size: 1600px
-}
-body{
-  overflow: hidden;
-}
-header {
-  text-align: center;
+   background-size: 1600px;
+   overflow: hidden;
+   font-family: 'Source code pro', Calibri, serif;
+   display : table;
+   width: 100%;
+   height: 100%;
+   margin: 0; 
+   padding: 0;
 
 }
-{
-    margin : 0; 
-     }
+
+header {
+  text-align: center;
+}
+
 #menu {  
     min-width: 1500px; 
     width: 100% ;
@@ -71,56 +66,46 @@ header {
     text-decoration: none;
     background-color: black;
 }
-#menu ul li:hover a{ 
-  color: black;
-  background-color: yellow; 
-  transition: 0.3s all;
 
-
-}
-body{
-  font-family: 'Source code pro', Calibri, serif;
-  margin: 0px;
-  padding: 0px;
-}
 nav{
   width: 100%;
   background-color: #424558;  
   float: right;
-  
 }
+
 nav > ul{
   margin: 0px;
   padding: 0px;
 }
-nav > ul:after{
-  content:"";
-  display: block;
-  clear: both;
-}
+
 
 nav >ul >li{
   float: left;
   position: relative;
 }
+
 nav > ul > li > a{
   padding: 20px 30px;
   color: #FFF;
-
 }
+
 nav > ul > li:hover a{
   padding: 15px 30px 20px 30px;
 }
+
 nav li{
   list-style-type: none;
 }
+
 .submenu{
   display: none;
 }
+
 nav a{
   display: inline-block;
   text-decoration: none;
 }
+
 nav li:hover .submenu{
 display: ineline-block;
 position: absolute;
@@ -161,23 +146,15 @@ z-index: 1000;
   background-color: RGBa(240,220,250,0.15);
 }
 
-html{overflow-y: scroll; }
-
-
-
-p{
-  text-align: center;
-}
-
-html, body {
+html{overflow-y: scroll;
   height: 100%;
-  margin: 0; padding: 0;
+  margin: 0; 
+  padding: 0;
 }
-body {
-  display : table;
-  width: 100%;
-}
+
+
 footer {
   display : table-row;
   height: 50px;
 }
+

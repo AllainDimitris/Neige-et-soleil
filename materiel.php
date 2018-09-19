@@ -2,12 +2,16 @@
 <html>
 	<head>
 
-		<title>ACCEUIL</title>
+		<title>Location Materiel</title>
 		<meta charset="utf-8">
-		<link rel="stylesheet" href="css/stylesacc.css"/>
-
-
-
+		<link rel="stylesheet" href="css/main.css"/>
+		<?php
+			if (file_exists("css/".basename(__FILE__, '.php').".css"))
+			{
+				echo '<link href="css/'.basename(__FILE__, '.php').'.css" rel="stylesheet">';
+			}
+		?>
+		
 
 	</head>
 	<body>
@@ -19,11 +23,11 @@
 		<div id= "contenuprincipale">
 			<p>
 
+
+			Matos
 			</p>
+
 		</div>
-
-
-
 <footer>
 <?php include("footer.php"); ?>
 </footer>

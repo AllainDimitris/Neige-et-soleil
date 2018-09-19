@@ -7,11 +7,11 @@
       Qui sommes nous ? </a></li>
     <li><a href="locationzone.php">
       Zone de location </a></li>
-    <li><a href="Nouscontacter.html">
+    <li><a href="contactus.php">
       Nous contacter 	</a></li>
-    <li><a href="Condition générale de vente">
+    <li><a href="Condition.php">
     Condition générale de vente </a></li>
-    <li><a href="Information légales">
+    <li><a href="Information.php">
     Information légales </a></li>
   </ul>
 </div>
