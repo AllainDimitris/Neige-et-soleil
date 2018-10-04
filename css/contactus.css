@@ -1,0 +1,22 @@
+#question {
+  margin-left: auto;
+  margin-right: auto;
+  width:400px;
+}
+
+#submit {
+  position: absolute;
+  right:600px;
+  width : 200px;
+}
+
+label{
+    display:block;
+    width:150px;
+    float:left;
+}
+input{
+    display:block;
+    width:150px;
+    text-align:center;
+}
