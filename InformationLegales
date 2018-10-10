@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+
+		<title>InformationsLegales</title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="css/main.css"/>
+		<?php
+			if (file_exists("css/".basename(__FILE__, '.php').".css"))
+			{
+				echo '<link href="css/'.basename(__FILE__, '.php').'.css" rel="stylesheet">';
+			}
+		?>
+	</head>
+	<body>
+		<header>
+		<h1> Neige et Soleil</h1>
+		</header>
+
+    <?php include("header.php"); ?>
+		<div id= "contenuprincipale">
+
+		Conformément à l'art.34 de la loi "Informatique et libertés", vous disposez d'un droit d'accès, de modification, de rectification et de suppression des données qui vous concernent.
+
+		Vous pouvez rectifier certaines de vos données personnelles et de vos informations de contact dans votre espace client après vous être identifié.
+		Toutefois, si vous rencontrez des difficultés, vous pouvez accéder à vos données personnelles en nous contactant par le biais des coordonnées ci-dessous :
+		Neige et Soleil 
+
+		50 Avenue du 159 Ria 
+		05100 Briançon 
+		Mail : neigeetsoleil@gmail.com
+		Tel : (+33) 0430253630
+		Fax : (+33) 0452369852
+
+		Responsable de la publication et webmaster 
+		AYOUB ALLAIN 
+
+		</div>
+
+<footer>
+	<<?php include("footer.php"); ?>
+</footer>
+</body>
+</html>
