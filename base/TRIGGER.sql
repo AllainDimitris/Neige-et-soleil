@@ -41,6 +41,9 @@ create trigger historiqueres
 After delete on reservation
 for each row
 begin
+if old.datefinr is null
+then signal sqlstate '45000' set message_text = "Impossible";
+else  
 insert into histores values (old.idr, old.idcl, old.ids,old.datedebutr, old.datefinr, old.etatr, old.saisonr, old.montantr);
 end //
 delimiter ;
