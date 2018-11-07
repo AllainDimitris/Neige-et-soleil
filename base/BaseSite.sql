@@ -253,3 +253,23 @@ ALTER TABLE EQUIPEMENT
 Insert into client values (null, "HOMME", "JOJO", "Mojo", "MojoJOJO@gmail.com", "2 Rue du palais", "75017", "Paris", "0675856880", "1992/10/05", "MOJO", "aaazzeee", 0); 
 insert into saison values (1, "2018-05-01", "2018-12-31", "20"); 
 
+
+insert into equipement values(0001,0001,"ski","neuf","bleu",42,"M");
+insert into equipement values(0002,0001,"ski","neuf","rouge",40,"M");
+insert into equipement values(0003,0001,"ski","neuf","blanc",38,"M");
+insert into equipement values(0004,0001,"ski","neuf","noir",36,"M");
+insert into equipement values(0005,0002,"chaussure","neuf","jaune",42,"H");
+insert into equipement values(0006,0002,"chaussure","neuf","bleu",40,"F");
+insert into equipement values(0007,0002,"chaussure","neuf","rouge",38,"H");
+insert into equipement values(0008,0002,"chaussure","neuf","vert",36,"F");
+insert into equipement values(0009,0003,"gant","neuf","noir","S","H");
+insert into equipement values(0010,0003,"gant","neuf","rouge","M","F");
+insert into equipement values(0011,0003,"gant","neuf","vert","L","H");  
+insert into equipement values(0012,0004,"casque","neuf","bleu","L","H");
+insert into equipement values(0013,0004,"casque","neuf","vert","L","H");
+insert into equipement values(0014,0004,"casque","neuf","vert","L","F");
+insert into equipement values(0015,0005,"manteau","neuf","vert","L","F");
+insert into equipement values(0016,0005,"manteau","neuf","vert","S","F");
+insert into equipement values(0017,0005,"manteau","neuf","vert","M","H");
+insert into equipement values(0018,0005,"manteau","neuf","vert","M","F");
+insert into equipement values(0019,0005,"manteau","neuf","vert","XL","H");
