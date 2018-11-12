@@ -102,5 +102,23 @@ insert into archivep select * from contratp where referencecp=old.referencecp;
 end //
 delimiter ;
 
+drop trigger if exists validresa;
+delimiter // 
+create trigger validresa
+before insert on contrat 
+for each row 
+begin 
+declare x int;
+select count(*) into x from reservation
+where idr = new.idr and etatr = 'valide';
+if x=0 
+then 
+signal sqlstate '45000'
+		set message_text = 'non reserve';
+end if; 
+end//
+delimiter ;		
+insert into contrat values(0002,0002,0002,'location',500,null,null,null) 
+insert into reservation values (0002,0002,0002,null,null,'valide','ete',500)
 
 		
