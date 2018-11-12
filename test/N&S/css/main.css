@@ -1,0 +1,20 @@
+div#content div{
+  display: inline-block;
+  width: 48%;
+  font-size:15px;
+}
+
+div#content div.rightbox{
+  vertical-align: top;
+}
+
+html{overflow-y: scroll;
+  height: 100%;
+  margin: 0; 
+  padding: 0;
+}
+
+footer {
+  display : table-row;
+  height: 50px;
+}
