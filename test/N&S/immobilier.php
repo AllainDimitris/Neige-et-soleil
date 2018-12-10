@@ -9,20 +9,40 @@
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 	</head>
 	<body>
+		<body class="is-preload">
+
+			<div id="wrapper">
+
+					
+				<?php include("header.php"); ?>
+				<div id="searchbar">
+
+                <form action="" class="formulaire"> <br>  
+                <input class="champ" type="text" value="Recherche"/> <br>
+                <input class="bouton" type="button" value="Chercher" />
+
+                
+                </div>
+
+				<?php include("footer.php"); ?>
+			</div>
+
+			<div id="bg"></div>
+
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+			
+
 			<?php include("header.php"); ?>
 
 			<p>
                         Recherche
             </p>
 
-				<div id="searchbar">
-
-                <form action="" class="formulaire">
-                <input class="champ" type="text" value="Recherche"/>
-                <input class="bouton" type="button" value="Chercher" />
-
-                </form>
-                </div>
 		<div id= "contenuprincipale">
 
 

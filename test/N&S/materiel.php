@@ -1,35 +1,51 @@
 <!DOCTYPE html>
 <html>
 	<head>
-
-		<title>Location Materiel</title>
-		<meta charset="utf-8">
+		<title>Location Immobiliere</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
 		<link rel="stylesheet" href="css/main.css"/>
-		<?php
-			if (file_exists("css/".basename(__FILE__, '.php').".css"))
-			{
-				echo '<link href="css/'.basename(__FILE__, '.php').'.css" rel="stylesheet">';
-			}
-		?>
-		
-
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 	</head>
-	<body>
-		<header>
-		<h1> Neige et Soleil</h1>
-		</header> <!-- haut de page--> <!-- div sert à créer des boites plutot que des ensembles et de les nommer-->
-<?php include("header.php"); ?>
+		<body class="is-preload">
 
-		<div id= "contenuprincipale">
+			<div id="wrapper">
+				<?php include("header.php"); ?>
+				<div id="searchbar">
+
+                <form action="" class="formulaire"> <br>
+                <input class="champ" type="text" value="Recherche"/> <br>
+                <input class="bouton" type="button" value="Chercher" />
+
+                
+                </div>
+
+				<?php include("footer.php"); ?>
+			</div>
+
+			<div id="bg"></div>
+
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+			<form action="" class="formulaire">
+				
+                </form>
+
+
+			<?php include("header.php"); ?>
 			<p>
+                        Recherche
+            </p>
 
+			
 
-			Matos
-			</p>
+                
+                
+                </div>
 
-		</div>
-<footer>
-<?php include("footer.php"); ?>
-</footer>
 	</body>
 </html>
