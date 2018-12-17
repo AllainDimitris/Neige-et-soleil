@@ -8,12 +8,17 @@
     <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
     </head>
 
+	<body>
 
   <body class="is-preload">
 
     <div id="wrapper">
         <?php include("header.php"); ?>
-         <h1>Contacter le webmaster</h1>
+         <h1>Créer un compte</h1>
+
+
+
+
 
 <?php
 // S'il y des données de postées
@@ -96,30 +101,63 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
 }
 ?>
 
-  <form method="post" action="<?php echo strip_tags($_SERVER['REQUEST_URI']); ?>">
-    <p>Votre nom et prénom<span style="color:#ff0000;">*</span>: <input type="text" name="nom" size="30" /></p>
-    <p>Votre email: <span style="color:#ff0000;">*</span>: <input type="text" name="email" size="30" /></p>
-    <p>Message <span style="color:#ff0000;">*</span>:</p>
-    <textarea name="message" cols="60" rows="10"></textarea>
-    <p>Combien font 1+3: <span style="color:#ff0000;">*</span>: <input type="text" name="captcha" size="2" /></p>
-    <p><input type="submit" name="submit" value="Envoyer" /></p>
-  </form>
+
+	<form method="post" action="<?php echo strip_tags($_SERVER['REQUEST_URI']); ?>">
+<div id="question">
+Sexe : <br>
+  <input type="radio" name="cciv" id="homme" value="homme">  <label for="homme">Homme</label>
+  <br>
+  <input type="radio" name="cciv" id="femme" value="femme">  <label for="femme">Femme</label>
+  <br><br>
+	<label for="nom">Nom</label>
+	<input type="text" name="cnom" maxlength="30" placeholder="Nom" autofocus required pattern="[A-Za-z]{1,30}" title="Caractère spéciaux non admit">
+ <br><br>
+	<label for="prénom">Prénom</label>
+	<input type="text" name="cprnom" maxlength="30" placeholder="Prénom" required pattern="[A-Za-z]{1,30}" title="Caractère spéciaux non admit">
+ <br><br>
+	<label for="email">E-Mail</label>
+	<input type="email" name="cmail" maxlength="50" placeholder="E-Mail" required >
+ <br><br>
+	<label for="adresse">Adresse</label>
+	<input type="text" name="cadr" maxlength="100" placeholder="Adresse" required >
+ <br><br>
+	<label for="CP">Code Postal</label>
+	<input type="text" name="ccp" maxlength="5" placeholder="Code Postal" required >
+ <br><br>
+ 	<label for="CP">Ville</label>
+	<input type="text" name="cvil" maxlength="30" placeholder="Ville" required >
+ <br><br>
+ 	<label for="Numéro de téléphone">Numéro de téléphone</label>
+ 	<input type="text" name="ctel"  maxlength="10" placeholder="Téléphone" required>
+ <br><br>
+ 	<label for="Date de naissance">Date de naissance</label>
+ 	<input type="Date" name="cdate"  maxlength="20" placeholder="Date de naissance" required >
+ <br><br>
+ 	<label for="Login">Login</label>
+ 	<input type="text" name="clog" maxlength="20" placeholder="Login" required pattern="[A-Za-z]{1,30}" title="Caractère spéciaux non admit">
+ <br><br>
+	<label for="Mot de passe">Mot de passe</label>
+	<input type="password" name="cmdp"  maxlength="20" placeholder="Mot de passe" required >
+ <br><br>
+	<center>
+		<input id="submit" type="submit" value="Envoyer le formulaire"/>
+	</center>
+ <br><br>
+</form>
+
 <footer>
   <?php include("footer.php"); ?>
-  </footer>
-    </div>
-    
+</footer>
+</div>
+</div>
+        <div id="bg"></div>
 
-   <div id="bg"></div> 
-   
-    <script src="assets/js/jquery.min.js"></script>
-      <script src="assets/js/browser.min.js"></script>
-      <script src="assets/js/breakpoints.min.js"></script>
-      <script src="assets/js/util.js"></script>
-      <script src="assets/js/main.js"></script>
-    
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
 
-   
-  
+
   </body>
 </html>
