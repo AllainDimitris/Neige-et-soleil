@@ -1,7 +1,4 @@
 					<header id="header">
-						<div class="logo">
-							<span class="icon fa-diamond"></span>
-						</div>
 						<div class="content">
 							<div class="inner">
 								<h1>Accueil</h1>
