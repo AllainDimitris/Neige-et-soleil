@@ -20,7 +20,7 @@ $g=$_POST['cvil'];
 $h=$_POST['ctel'];
 $i=$_POST['cdate'];
 $j=$_POST['clog'];
-$k=$_POST['cmdp'];
+$k=password_hash($_POST['cmdp'], PASSWORD_DEFAULT);
 
 
 // On protège la connexion avec un try...catch pour gérer les exceptions

@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS TYPEAPPARTEMENT
    SURFACEHABT INTEGER(3) NULL  ,
    SURFACEBALT INTEGER(3) NULL  ,
    CAPACCT INTEGER(2) NULL  ,
-   DISTANCEPISTET INTEGER(4) NULL  
+   DISTANCEPISTET varchar(4) NULL  
    , PRIMARY KEY (IDT) 
  ) 
  comment = "";
@@ -120,7 +120,7 @@ CREATE TABLE IF NOT EXISTS CLIENT
    TelCL char(10) not null ,
    DATENAICL date not NULL   ,
    LoginCL varchar(20) not null,
-   MdpCL varchar(20) not null,
+   MdpCL varchar(100) not null,
    nbreservation int(3) default 0,
 
     PRIMARY KEY (IDCL) 
@@ -194,7 +194,7 @@ CREATE TABLE IF NOT EXISTS EQUIPEMENT
    NOME VARCHAR(25) NULL  ,
    ETATE VARCHAR(10) NULL,
    COULEUR CHAR(10) NULL, 
-   TAILLE INTEGER(2) NULL,
+   TAILLE varchar(2) NULL,
    LETTRETAILLE CHAR(3) NULL 
    , PRIMARY KEY (CODEE) 
  ) 
@@ -284,7 +284,7 @@ insert into habitation values(0002,0015,"maisonC","rue de la galipette",5,"Monta
 insert into habitation values(0003,0003,"maisonA","avenue de la barre fixe",17,"Matabiau");
 insert into habitation values(0004,0002,"maisonZ","rue de la roue",28,"Saint prix");
 insert into habitation values(0005,0004,"maisonU","rue de l'appuie tendu renversé",82,"Toulouse");
-insert into habitation values(0006,00011,"appartementP","Impasse du grand écart",9,"Matabiau")
+insert into habitation values(0006,00011,"appartementP","Impasse du grand écart",9,"Matabiau");
 insert into habitation values(0007,0007,"ChaletU","rue de la roulade",47,"Montdemarsan");
 insert into habitation values(0008,0010,"ChaletC","boulevard du saut de chat",25,"Lyon");
 
