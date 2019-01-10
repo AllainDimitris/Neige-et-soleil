@@ -34,7 +34,7 @@
 								{
 									$bdd = new PDO('mysql:host=localhost;dbname=Basesite','root','');
 
-									$req = $bdd->prepare('SELECT ADRMAILCL, MdpCL from client where ADRMAILCL = :Email');
+									$req = $bdd->prepare('SELECT IDCL, ADRMAILCL, MdpCL from client where ADRMAILCL = :Email');
 									$req->execute(array('Email' => $_POST['Email']));
 									$resultat = $req->fetch();
 
@@ -48,8 +48,8 @@
 									{
 										if ($PasswordCorrect)
 										{
-											session_start();
-											$_SESSION['Email'] = $_POST['Email'];
+											$_SESSION['Email'] = $resultat['ADRMAILCL'];
+											$_SESSION['ID'] = $resultat['IDCL'];
 											header('Location: http://localhost/Neige-et-soleil/test/N&S/index.php');
 										}
 										else

@@ -4,6 +4,8 @@ session_start();
 if (isset($_SESSION['Email'])){
 
 	echo $_SESSION['Email'];
+	echo $_SESSION['ID'];
+
 
 echo '<header id="header">
 			<div class="content">
