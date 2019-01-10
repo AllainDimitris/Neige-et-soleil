@@ -16,7 +16,7 @@
 				<div id="searchbar">
 
                 <form action="" class="formulaire"> <br>
-                <input class="champ" type="text" value="Recherche"/> <br>
+                <input class="champ" type="text" placeholder="Recherche"/> <br>
                 <input class="bouton" type="button" value="Chercher" />
                 </div>
 								<?php
@@ -37,12 +37,15 @@
 									?>
 								<div class="col-md-4 col-sm-6 col-xs-12">
 									<div class="product-item">
-										<h3><a href=""><?php echo($elements['NOMH']);?></a></h3>
+										<a href=""><?php echo($elements['NOMH']);?>
+										<?php echo($elements['NUMEROH']);?>
+										<?php echo($elements['ADRH']);?>
+										<?php echo($elements['VILLEH']);?>
+										<?php echo($elements['CPH']);?></a>
 									</div>
 								</div>
 							<?php }  ?>
 							</div>
-							}
 				<?php include("footer.php"); ?>
 			</div>
 
@@ -54,21 +57,5 @@
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
 
-
-
-			<?php include("header.php"); ?>
-
-			<p>
-                        Recherche
-            </p>
-
-		<div id= "contenuprincipale">
-
-
-		</div>
-
-<footer>
-	<<?php include("footer.php"); ?>
-</footer>
 </body>
 </html>
