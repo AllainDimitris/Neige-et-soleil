@@ -12,7 +12,6 @@
 
 			<div id="wrapper">
 				<?php include("header.php"); ?>
-
 				<?php include("footer.php"); ?>
 			</div>
 
@@ -26,5 +25,5 @@
 
 	</body>
 
-	
+
 </html>

@@ -12,7 +12,7 @@
 
   <body class="is-preload">
 
-    <div id="wrapper"> 
+    <div id="wrapper">
  	<?php include("header.php"); ?>
 
 		<div class="tableau flexChild">
@@ -33,18 +33,18 @@
 								if (isset($_POST["connexion"]))
 								{
 									$bdd = new PDO('mysql:host=localhost;dbname=Basesite','root','');
-									
+
 									$req = $bdd->prepare('SELECT ADRMAILCL, MdpCL from client where ADRMAILCL = :Email');
 									$req->execute(array('Email' => $_POST['Email']));
 									$resultat = $req->fetch();
 
 									$PasswordCorrect = password_verify($_POST["Password"], $resultat["MdpCL"]);
-									
+
 									if (!$resultat)
 									{
 										echo 'Mauvais identifiant ou mot de passe !';
 									}
-									else 
+									else
 									{
 										if ($PasswordCorrect)
 										{
@@ -71,8 +71,8 @@
 		<?php include("footer.php"); ?>
 </footer>
 </div>
- <div id="bg"></div> 
-   
+ <div id="bg"></div>
+
     <script src="assets/js/jquery.min.js"></script>
       <script src="assets/js/browser.min.js"></script>
       <script src="assets/js/breakpoints.min.js"></script>

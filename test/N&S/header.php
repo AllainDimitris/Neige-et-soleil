@@ -1,14 +1,12 @@
-
-
 <?php
 session_start();
 
-if (isset($_SESSION['Email']))
-{
+if (isset($_SESSION['Email'])){
+
 	echo $_SESSION['Email'];
-?>
-	<header id="header">
-		<div class="content">
+
+echo '<header id="header">
+			<div class="content">
 							<div class="inner">
 								<h1>Accueil</h1>
 								<p><a href="https://html5up.net">Bienvenue</a>
@@ -22,11 +20,12 @@ if (isset($_SESSION['Email']))
 								<li><a href="deconnexion.php">Deconnexion</a></li>
 							</ul>
 						</nav>
-					</header>
-<?php }
-	else{ ?>
-		<header id="header">
-			<div class="content">
+					</header>' ;
+}
+	else {
+
+echo '	<header id="header">
+		<div class="content">
 							<div class="inner">
 								<h1>Accueil</h1>
 								<p><a href="https://html5up.net">Bienvenue</a>
@@ -41,5 +40,5 @@ if (isset($_SESSION['Email']))
 								<li><a href="connexion.php">Connexion</a></li>
 							</ul>
 						</nav>
-					</header>
-<?php } ?>
+					</header>' ;
+}
