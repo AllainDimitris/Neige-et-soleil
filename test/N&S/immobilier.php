@@ -11,18 +11,38 @@
 	<body>
 		<body class="is-preload">
 
-			<div id="wrapper">	
+			<div id="wrapper">
 				<?php include("header.php"); ?>
 				<div id="searchbar">
 
-                <form action="" class="formulaire"> <br>  
+                <form action="" class="formulaire"> <br>
                 <input class="champ" type="text" value="Recherche"/> <br>
                 <input class="bouton" type="button" value="Chercher" />
-                
-
-                
                 </div>
+								<?php
+								try
+								{
+										$bdd = new PDO('mysql:host=localhost;dbname=Basesite','root','');
 
+										$bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+								}
+								catch (Exception $e)
+								{
+										die('Erreur :'.$e->getMessage());
+								}
+								$reponse=$bdd->query('SELECT NOMH,ADRH,CPH,VILLEH,NUMEROH FROM habitation');
+								$donnees = $reponse->fetchAll();
+								foreach ($donnees as $elements) {
+									?>
+								<div class="col-md-4 col-sm-6 col-xs-12">
+									<div class="product-item">
+										<h3><a href=""><?php echo($elements['NOMH'] | $elements['ADRH'] | $elements['CPH'] | $elements['VILLEH'] | $elements['NUMEROH']);?></a></h3>
+									</div>
+								</div>
+							<?php }  ?>
+							</div>
+							}
 				<?php include("footer.php"); ?>
 			</div>
 
@@ -34,7 +54,7 @@
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
 
-			
+
 
 			<?php include("header.php"); ?>
 
