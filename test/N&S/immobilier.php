@@ -37,7 +37,7 @@
 									?>
 								<div class="col-md-4 col-sm-6 col-xs-12">
 									<div class="product-item">
-										<h3><a href=""><?php echo($elements['NOMH'] | $elements['ADRH'] | $elements['CPH'] | $elements['VILLEH'] | $elements['NUMEROH']);?></a></h3>
+										<h3><a href=""><?php echo($elements['NOMH']);?></a></h3>
 									</div>
 								</div>
 							<?php }  ?>
