@@ -31,19 +31,24 @@
 								{
 										die('Erreur :'.$e->getMessage());
 								}
-								$reponse=$bdd->query('SELECT NOMH,ADRH,CPH,VILLEH,NUMEROH FROM habitation');
+								$reponse=$bdd->query('SELECT IDH,NOMH,ADRH,CPH,VILLEH,NUMEROH FROM habitation');
 								$donnees = $reponse->fetchAll();
 								foreach ($donnees as $elements) {
 									?>
+									<table>
 								<div class="col-md-4 col-sm-6 col-xs-12">
 									<div class="product-item">
-										<a href=""><?php echo($elements['NOMH']);?>
+									<tr>
+										<td><?php echo "<img src=images/".$elements['IDH'].".jpg width=300>";?></td>
+										<td><a href=""><?php echo($elements['NOMH']);?>
 										<?php echo($elements['NUMEROH']);?>
 										<?php echo($elements['ADRH']);?>
 										<?php echo($elements['VILLEH']);?>
-										<?php echo($elements['CPH']);?></a>
+										<?php echo($elements['CPH']);?></td></a>
+									</tr>
 									</div>
 								</div>
+							</table>
 							<?php }  ?>
 							</div>
 				<?php include("footer.php"); ?>
