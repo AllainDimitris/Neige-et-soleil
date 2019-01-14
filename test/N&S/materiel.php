@@ -21,7 +21,7 @@
 				<?php
 				try
 				{
-						$bdd = new PDO('mysql:host=localhost;dbname=Basesite','root','');
+						$bdd = new PDO('mysql:host=localhost;dbname=Basesite','root','admin');
 
 						$bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
@@ -44,6 +44,9 @@
 						<?php echo($elements['COULEUR']);?>
 						<?php echo($elements['TAILLE']);?>
 						<?php echo($elements['LETTRETAILLE']);?></td></a>
+						 <button type="submit">
+ 						 "<img src=images/equipement/".$elements['CODEE'].".jpg alt="Reserver le Materiel" title="Reserver le matériel" />
+					</button> 
 					</tr>
 					</div>
 				</div>
