@@ -27,7 +27,7 @@ $k=$_POST['cmdp'];
 try
 {
     // Connexion à MySQL via PDO
-    $bdd = new PDO('mysql:host=localhost;dbname=Basesite','root','');
+    $bdd = new PDO('mysql:host=localhost;dbname=Basesite','root','admin');
     // J'ai rajouté la ligne juste en dessous
     // Pourquoi ? ça permet de dire à PDO de générer des exceptions quand il y a des problèmes, sinon il le fait pas et les try...catch ne servent à rien
     $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -72,7 +72,7 @@ try {
 // header('Location: Questionnaire1.php');
 // Si tu veux afficher un message de confirmation tu peux le passer avec des paramètres GET 
 //header('Location: Questionnaire1.php?ajout=ok');
-include("Form.php");
+include("form.php");
 
 ?>
 

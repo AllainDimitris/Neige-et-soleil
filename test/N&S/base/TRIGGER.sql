@@ -125,15 +125,15 @@ insert into reservation values (0002,0002,0002,null,null,'valide','ete',500)
 
 Create view STAT (nbresa,saisr) 
 as select count(nbreservation),saisonr from reservation
-where nbreservation = saisonr group by saisonr;
+where nbreservation = saisonr group by saisonr
 
-create view stat2 (nomp,prenomp,referencecp,annee)
-as select nomp,prenomp,count(referencecp), year(datesignc) from contratp
-where contraP.IDP = proprietaire.IDP 
-group by contratp.IDP,year(datesignc);  
+create view stat2(count(referencecp),year(datesignc))
+as select count(referencecp), datesignc from contratp
+where contraP.IDP = proprietaire.IDP and  count(referencecp) = year(datesignc)
+group by proprietaire  
 
 create table archivep3 as select * from contratp where 2=0; 
-drop trigger if exists archivep3; 
+drop trigger if exists archivep1; 
 delimiter // 
 create trigger archivep3
 	before delete on contratp
