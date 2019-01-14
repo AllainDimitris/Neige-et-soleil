@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS TYPEAPPARTEMENT
    SURFACEHABT INTEGER(3) NULL  ,
    SURFACEBALT INTEGER(3) NULL  ,
    CAPACCT INTEGER(2) NULL  ,
-   DISTANCEPISTET INTEGER(4) NULL  
+   DISTANCEPISTET varchar(4) NULL  
    , PRIMARY KEY (IDT) 
  ) 
  comment = "";
@@ -121,7 +121,7 @@ CREATE TABLE IF NOT EXISTS CLIENT
    TelCL char(10) not null ,
    DATENAICL date not NULL   ,
    LoginCL varchar(20) not null,
-   MdpCL varchar(20) not null,
+   MdpCL varchar(100) not null,
    nbreservation int(3) default 0,
 
     PRIMARY KEY (IDCL) 
@@ -195,7 +195,7 @@ CREATE TABLE IF NOT EXISTS EQUIPEMENT
    NOME VARCHAR(25) NULL  ,
    ETATE VARCHAR(10) NULL,
    COULEUR CHAR(10) NULL, 
-   TAILLE INTEGER(2) NULL,
+   TAILLE varchar(2) NULL,
    LETTRETAILLE CHAR(3) NULL 
    , PRIMARY KEY (CODEE) 
  ) 
@@ -280,14 +280,14 @@ insert into equipement values(0019,0005,"manteau","neuf","vert","XL","H");
 
 
 
-insert into habitation values(0001,0001,"maisonP","rue du salto",4,"Toulouse");
-insert into habitation values(0002,0015,"maisonC","rue de la galipette",5,"Montaubans");
-insert into habitation values(0003,0003,"maisonA","avenue de la barre fixe",17,"Matabiau");
-insert into habitation values(0004,0002,"maisonZ","rue de la roue",28,"Saint prix");
-insert into habitation values(0005,0004,"maisonU","rue de l'appuie tendu renversé",82,"Toulouse");
-insert into habitation values(0006,00011,"appartementP","Impasse du grand écart",9,"Matabiau")
-insert into habitation values(0007,0007,"ChaletU","rue de la roulade",47,"Montdemarsan");
-insert into habitation values(0008,0010,"ChaletC","boulevard du saut de chat",25,"Lyon");
+insert into habitation values(0001,0001,"maisonP","rue du salto",4,95120 ,"Toulouse");
+insert into habitation values(0002,0015,"maisonC","rue de Kavin",4,96525,"Montaubans");
+insert into habitation values(0003,0003,"maisonA","avenue de la barre fixe",6,12017,"Matabiau");
+insert into habitation values(0004,0002,"maisonZ","rue de la roue",28,98528,"Saint prix");
+insert into habitation values(0005,0004,"maisonU","rue de la croix",95,62382,"Toulouse");
+insert into habitation values(0006,00011,"appartementP","Rue de la chasse",58,85639,"Matabiau");
+insert into habitation values(0007,0007,"ChaletU","rue de la Potre",69,47557,"Montdemarsan");
+insert into habitation values(0008,0010,"ChaletC","boulevard du Potro",26,84525,"Lyon");
 
 insert into typeappartement values(0001,"T1","Ouest",120,200,8,"1km");
 insert into typeappartement values(0002,"T1","Ouest",120,200,8,"2km");
@@ -307,10 +307,10 @@ insert into typeappartement values(0015,"T1","Est",120,200,8,"4km");
 insert into typeappartement values(0016,"T1","Est",120,200,8,"6km");
 insert into typeappartement values(0017,"T1","Est",120,200,8,"8km");
 insert into typeappartement values(0018,"T1","Est",120,200,8,"10km");
-insert into typeappartement values(0019,"T2","Est",120,200,8,"6km");
-insert into typeappartement values(0019,"T2","Sud",120,200,8,"4km");
-insert into typeappartement values(0019,"T2","Nord",120,200,8,"6km");
-insert into typeappartement values(0019,"T2","Ouest",120,200,8,"2km");
+insert into typeappartement values(0020,"T2","Est",120,200,8,"6km");
+insert into typeappartement values(0021,"T2","Sud",120,200,8,"4km");
+insert into typeappartement values(0022,"T2","Nord",120,200,8,"6km");
+insert into typeappartement values(0023,"T2","Ouest",120,200,8,"2km");
 
 
 
