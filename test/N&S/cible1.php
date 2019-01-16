@@ -27,7 +27,7 @@ $k=password_hash($_POST['cmdp'], PASSWORD_DEFAULT);
 try
 {
     // Connexion à MySQL via PDO
-    $bdd = new PDO('mysql:host=localhost;dbname=Basesite','root','admin');
+    $bdd = new PDO('mysql:host=localhost;dbname=Basesite','root','');
     // J'ai rajouté la ligne juste en dessous
     // Pourquoi ? ça permet de dire à PDO de générer des exceptions quand il y a des problèmes, sinon il le fait pas et les try...catch ne servent à rien
     $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
