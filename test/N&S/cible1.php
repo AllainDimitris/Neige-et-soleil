@@ -67,6 +67,5 @@ try {
 // header('Location: Questionnaire1.php');
 // Si tu veux afficher un message de confirmation tu peux le passer avec des paramètres GET
 //header('Location: Questionnaire1.php?ajout=ok');
-include("connexion.php");
-
+header('Location: connexion.php');
 ?>
