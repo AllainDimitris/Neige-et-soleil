@@ -50,9 +50,8 @@ try {
 
     $query = $bdd->prepare("INSERT INTO `client`(`SexeCL`, `NOMCL`, `PRENOMCL`, `ADRMAILCL`,`TelCL`, `DATENAICL`,`MdpCL`) VALUES (?,?,?,?,?,?,?)");
 
-
     // "$query->execute" retourne "true" si ça s'est bien passé
-    $isItOk = $query->execute([$a, $b, $c, $d,$h, $i,$k]);
+    $isItOk = $query->execute([$a, $b, $c, $d, $h, $i,$k]);
     if($isItOk) {
         echo "Ajout du client effectué" ;
     }

@@ -37,10 +37,10 @@
 
 <div id="question">
 	Sexe <br>
-  <select name="sexe">
+  <select name="cciv">
   <option name="cciv" id="homme" value="homme">Homme</option>
   <option name="cciv" id="femme" value="femme">Femme</option>
-</select>
+  </select>
   <br><br>
 	<label for="nom">Nom</label>
 	<input type="text" name="cnom" maxlength="30" placeholder="Nom" autofocus required pattern="[A-Za-z]{1,30}" title="Caractère spéciaux non admit"><br>
