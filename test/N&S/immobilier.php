@@ -5,6 +5,7 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="css/immobilier.css"/>
 		<link rel="stylesheet" href="css/main.css"/>
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 	</head>
@@ -40,7 +41,7 @@
 									<div class="product-item">
 									<tr>
 										<td><?php echo "<img src=images/habitation/".$elements['IDH'].".jpg width=300>";?></td>
-										<td><a href=""><?php echo($elements['NOMH']);?>
+										<td><a id="mais" href=""><?php echo($elements['NOMH']);?>
 										<?php echo($elements['NUMEROH']);?>
 										<?php echo($elements['ADRH']);?>
 										<?php echo($elements['VILLEH']);?>

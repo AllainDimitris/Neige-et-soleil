@@ -1,15 +1,3 @@
-p{
-  text-align: center;
-}
-
-#searchbar {
-  position: absolute;
-  left: 50%;
-  width: 400px;
-  margin-left: -200px;
-}
-
-.formulaire               {display:inline-block;}
-.formulaire .champ       {width:200px; height:18px;}
-.formulaire .bouton       {width: 150px;height: 20px;padding: 0; 
+#mais {
+	margin: 0px 600px 500px 0px;
 }
