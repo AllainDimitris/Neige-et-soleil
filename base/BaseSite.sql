@@ -115,12 +115,8 @@ CREATE TABLE IF NOT EXISTS CLIENT
    NOMCL VARCHAR(30) not NULL  ,
    PRENOMCL VARCHAR(30) not NULL  ,
    ADRMAILCL varchar(50) not null ,
-   ADRCL VARCHAR(50) not NULL  ,
-   CPCL char(5) not NULL  ,
-   VILLECL VARCHAR(30) not NULL  ,
    TelCL char(10) not null ,
    DATENAICL date not NULL   ,
-   LoginCL varchar(20) not null,
    MdpCL varchar(100) not null,
    nbreservation int(3) default 0,
 

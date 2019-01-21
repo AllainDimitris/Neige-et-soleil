@@ -21,7 +21,7 @@
 				<?php
 				try
 				{
-						$bdd = new PDO('mysql:host=localhost;dbname=Basesite','root','admin');
+						$bdd = new PDO('mysql:host=localhost;dbname=Basesite','root','');
 
 						$bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
