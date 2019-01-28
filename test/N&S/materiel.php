@@ -45,7 +45,7 @@
 						<?php echo($elements['TAILLE']);?>
 						<?php echo($elements['LETTRETAILLE']);?></td></a>
 						 <button type="submit">
- 						 "<img src=images/equipement/".$elements['CODEE'].".jpg alt="Reserver le Materiel" title="Reserver le matériel" />
+ 						 "<img src=images/equipement/".$elements['CODEE'].".jpg alt="Reserver le Materiel" title="Reserver le matériel" value="form.php" />
 					</button> 
 					</tr>
 					</div>
