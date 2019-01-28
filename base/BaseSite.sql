@@ -10,12 +10,16 @@ CREATE TABLE IF NOT EXISTS HABITATION
  (
    IDH INTEGER(4) NOT NULL  ,
    IDT INTEGER(4) NOT NULL  ,
-   NOMH VARCHAR(20) NULL  ,
    ADRH VARCHAR(35) NULL  ,
    NUMEROH INTEGER(2) NULL  ,
    CPH INTEGER(5) NULL  ,
-   VILLEH VARCHAR(25) NULL  
-   , PRIMARY KEY (IDH) 
+   VILLEH VARCHAR(25) NULL ,
+   EXPOH VARCHAR(15) NULL  ,
+   SURFACEHABH INTEGER(3) NULL  ,
+   SURFACEBALH INTEGER(3) NULL  ,
+   CAPACCH INTEGER(2) NULL  ,
+   DISTANCEPISTEH varchar(6) NULL  
+   ,  PRIMARY KEY (IDH) 
  ) 
  comment = "";
 
@@ -24,23 +28,19 @@ CREATE TABLE IF NOT EXISTS HABITATION
 # -----------------------------------------------------------------------------
 
 
-CREATE  INDEX I_FK_HABITATION_TYPEAPPARTEMENT
+CREATE  INDEX I_FK_HABITATION_TYPEHABITATION
      ON HABITATION (IDT ASC);
 
 # -----------------------------------------------------------------------------
-#       TABLE : TYPEAPPARTEMENT
+#       TABLE : TYPEHABITATION
 # -----------------------------------------------------------------------------
 
-CREATE TABLE IF NOT EXISTS TYPEAPPARTEMENT
+CREATE TABLE IF NOT EXISTS TYPEHABITATION
  (
    IDT INTEGER(4) NOT NULL  ,
-   TYPET VARCHAR(2) NULL  ,
-   EXPOT VARCHAR(15) NULL  ,
-   SURFACEHABT INTEGER(3) NULL  ,
-   SURFACEBALT INTEGER(3) NULL  ,
-   CAPACCT INTEGER(2) NULL  ,
-   DISTANCEPISTET varchar(4) NULL  
-   , PRIMARY KEY (IDT) 
+   LIBELLE VARCHAR(2) NULL  ,
+   TYPE varchar(20),
+PRIMARY KEY (IDT) 
  ) 
  comment = "";
 
@@ -53,7 +53,7 @@ CREATE TABLE IF NOT EXISTS SAISON
    IDS INTEGER(4) NOT NULL  ,
    DATEDEBUTS date NULL  ,
    DATEFINS date NULL  ,
-   REDUCTIONS INTEGER(3) NULL  
+   REDUCTIONS varchar(3) NULL  
    , PRIMARY KEY (IDS) 
  ) 
  comment = "";
@@ -202,7 +202,7 @@ CREATE TABLE IF NOT EXISTS EQUIPEMENT
 # -----------------------------------------------------------------------------
 
 
-CREATE  INDEX I_FK_EQUIPEMENT_TYPEAPPARTEMENT
+CREATE  INDEX I_FK_EQUIPEMENT_TYPEHABITATION
      ON EQUIPEMENT (IDT ASC);
 
 
@@ -212,8 +212,8 @@ CREATE  INDEX I_FK_EQUIPEMENT_TYPEAPPARTEMENT
 
 
 ALTER TABLE HABITATION 
-  ADD FOREIGN KEY FK_HABITATION_TYPEAPPARTEMENT (IDT)
-      REFERENCES TYPEAPPARTEMENT (IDT) ;
+  ADD FOREIGN KEY FK_HABITATION_TYPEHABITATION (IDT)
+      REFERENCES TYPEHABITATION (IDT) ;
 
 
 ALTER TABLE CONTRATP 
@@ -247,11 +247,10 @@ ALTER TABLE RESERVATION
 
 
 ALTER TABLE EQUIPEMENT 
-  ADD FOREIGN KEY FK_EQUIPEMENT_TYPEAPPARTEMENT (IDT)
-      REFERENCES TYPEAPPARTEMENT (IDT) ;
+  ADD FOREIGN KEY FK_EQUIPEMENT_TYPEHABITATION (IDT)
+      REFERENCES TYPEHABITATION (IDT) ;
 
 Insert into client values (null, "HOMME", "JOJO", "Mojo", "MojoJOJO@gmail.com", "2 Rue du palais", "75017", "Paris", "0675856880", "1992/10/05", "MOJO", "aaazzeee", 0); 
-insert into saison values (1, "2018-05-01", "2018-12-31", "20"); 
 
 
 insert into equipement values(0001,0001,"ski","neuf","bleu",42,"M");
@@ -276,43 +275,24 @@ insert into equipement values(0019,0005,"manteau","neuf","vert","XL","H");
 
 
 
-insert into habitation values(0001,0001,"maisonP","rue du salto",4,95120 ,"Toulouse");
-insert into habitation values(0002,0015,"maisonC","rue de Kavin",4,96525,"Montaubans");
-insert into habitation values(0003,0003,"maisonA","avenue de la barre fixe",6,12017,"Matabiau");
-insert into habitation values(0004,0002,"maisonZ","rue de la roue",28,98528,"Saint prix");
-insert into habitation values(0005,0004,"maisonU","rue de la croix",95,62382,"Toulouse");
-insert into habitation values(0006,00011,"appartementP","Rue de la chasse",58,85639,"Matabiau");
-insert into habitation values(0007,0007,"ChaletU","rue de la Potre",69,47557,"Montdemarsan");
-insert into habitation values(0008,0010,"ChaletC","boulevard du Potro",26,84525,"Lyon");
+insert into habitation values(1,2,"rue du salto",4,95120 ,"Toulouse", "SUD", "200", "10", "10", "2 Km");
+insert into habitation values(2,2,"rue de Kavin",4,96525,"Montaubans", "NORD", "150", "5", "8", "1 Km");
+insert into habitation values(3,2,"avenue de la barre fixe",6,12017,"Matabiau", "SUD", "250", "20", "10", "2 Km");
+insert into habitation values(4,2,"rue de la roue",28,98528,"Saint prix", "SUD", "100", "0", "5", "5 Km");
+insert into habitation values(5,3,"rue de la croix",95,62382,"Toulouse", "SUD", "50", "20", "8", "2 Km");
+insert into habitation values(6,3,"Rue de la chasse",58,85639,"Matabiau", "NORD", "100", "10", "5", "1 Km");
+insert into habitation values(7,3,"rue de la Potre",69,47557,"Montdemarsan", "SUD", "250", "20", "8", "2 Km");
+insert into habitation values(8,1,"boulevard du Potro",26,84525,"Lyon", "SUD", "50", "20", "4", "1 Km");
 
-insert into typeappartement values(0001,"T1","Ouest",120,200,8,"1km");
-insert into typeappartement values(0002,"T1","Ouest",120,200,8,"2km");
-insert into typeappartement values(0003,"T1","Ouest",120,200,8,"4km");
-insert into typeappartement values(0004,"T1","Ouest",120,200,8,"6km");
-insert into typeappartement values(0005,"T1","Ouest",120,200,8,"8km");
-insert into typeappartement values(0006,"T1","Ouest",120,200,8,"10km");
-insert into typeappartement values(0007,"T1","Sud",120,200,8,"1km");
-insert into typeappartement values(0008,"T1","Sud",120,200,8,"2km");
-insert into typeappartement values(0009,"T1","Sud",120,200,8,"4km");
-insert into typeappartement values(0010,"T1","Sud",120,200,8,"6km");
-insert into typeappartement values(0011,"T1","Sud",120,200,8,"8km");
-insert into typeappartement values(0012,"T1","Sud",120,200,8,"10km");
-insert into typeappartement values(0013,"T1","Est",120,200,8,"1km");
-insert into typeappartement values(0014,"T1","Est",120,200,8,"2km");
-insert into typeappartement values(0015,"T1","Est",120,200,8,"4km");
-insert into typeappartement values(0016,"T1","Est",120,200,8,"6km");
-insert into typeappartement values(0017,"T1","Est",120,200,8,"8km");
-insert into typeappartement values(0018,"T1","Est",120,200,8,"10km");
-insert into typeappartement values(0020,"T2","Est",120,200,8,"6km");
-insert into typeappartement values(0021,"T2","Sud",120,200,8,"4km");
-insert into typeappartement values(0022,"T2","Nord",120,200,8,"6km");
-insert into typeappartement values(0023,"T2","Ouest",120,200,8,"2km");
+insert into TYPEHABITATION values(1, "AP", "Appartement");
+insert into TYPEHABITATION values(2, "CH", "Chalet");
+insert into TYPEHABITATION values(3, "MA", "Maison");
 
 
 
-insert into saison values(0001, 2018-11-18, 2018-12-20,"10%");
-insert into saison values(0002, 2018-12-21, 2019-03-30,"0%");
-insert into saison values (0003, 2019-04-01, 2019-06-30,"25%");
+insert into saison values(0001, "2018-11-18", "2018-12-20","10%");
+insert into saison values(0002, "2018-12-21", "2019-03-30","0%");
+insert into saison values (0003, "2019-04-01", "2019-06-30","25%");
 
 
 

@@ -32,7 +32,7 @@
 								{
 										die('Erreur :'.$e->getMessage());
 								}
-								$reponse=$bdd->query('SELECT IDH,NOMH,ADRH,CPH,VILLEH,NUMEROH FROM habitation');
+								$reponse=$bdd->query('SELECT IDH,NUMEROH,ADRH,CPH,VILLEH,EXPOH, SURFACEHABH, SURFACEBALH, CAPACCH, DISTANCEPISTEH FROM habitation');
 								$donnees = $reponse->fetchAll();
 								foreach ($donnees as $elements) {
 									?>
@@ -41,11 +41,17 @@
 									<div class="product-item">
 									<tr>
 										<td><?php echo "<img src=images/habitation/".$elements['IDH'].".jpg width=300>";?></td>
-										<td><a id="mais" href=""><?php echo($elements['NOMH']);?>
+										<td id="az"><a id="mais" href="">
 										<?php echo($elements['NUMEROH']);?>
 										<?php echo($elements['ADRH']);?>
 										<?php echo($elements['VILLEH']);?>
-										<?php echo($elements['CPH']);?></td></a>
+										<?php echo($elements['CPH']);?>
+										<?php echo "Exposition : ", ($elements['EXPOH']);?>
+										<?php echo "Surface habitable : ", ($elements['SURFACEHABH']);?>
+										<?php echo "Surface balcon : ", ($elements['SURFACEBALH']);?>
+										<?php echo "Capacité : ", ($elements['CAPACCH']);?>
+										<?php echo "Distance des pistes : ", ($elements['DISTANCEPISTEH']);?>
+									</td></a>
 									</tr>
 									</div>
 								</div>
