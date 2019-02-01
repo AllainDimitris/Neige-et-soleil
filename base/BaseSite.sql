@@ -195,6 +195,25 @@ CREATE TABLE IF NOT EXISTS EQUIPEMENT
  comment = "";
 
 # -----------------------------------------------------------------------------
+#       TABLE : USER
+# -----------------------------------------------------------------------------
+
+create table user(
+  iduser int(5) not null auto_increment,
+  email varchar(50) not null,
+  mdp varchar(255) not null,
+  nom varchar(50),
+  prenom varchar(50),
+  droits enum("admin","user","autre"),
+  primary key(iduser)
+  );
+
+insert into user values
+(null,"a@gmail.com","123","ben","oka","admin");
+
+insert into user values(null,"b@gmail.com","123","ayoub","dimitris","user");
+
+# -----------------------------------------------------------------------------
 #       INDEX DE LA TABLE EQUIPEMENT
 # -----------------------------------------------------------------------------
 
@@ -247,8 +266,6 @@ ALTER TABLE EQUIPEMENT
   ADD FOREIGN KEY FK_EQUIPEMENT_TYPEHABITATION (IDT)
       REFERENCES TYPEHABITATION (IDT) ;
 
-Insert into client values (null, "HOMME", "JOJO", "Mojo", "MojoJOJO@gmail.com", "2 Rue du palais", "75017", "Paris", "0675856880", "1992/10/05", "MOJO", "aaazzeee", 0); 
-
 
 insert into equipement values(0001,0001,"ski","neuf","bleu",42,"M");
 insert into equipement values(0002,0001,"ski","neuf","rouge",40,"M");
@@ -292,4 +309,4 @@ insert into saison values(0002, "2018-12-21", "2019-03-30","0%");
 insert into saison values (0003, "2019-04-01", "2019-06-30","25%");
 
 
-
+insert into client values (null, "Homme", "Jack", "Potro", "Jack@gmail.com", "0156589652", "1996-02-10", "aze", null);
