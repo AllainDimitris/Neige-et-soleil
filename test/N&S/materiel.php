@@ -35,13 +35,16 @@
 				$donnees = $reponse->fetchAll();
 				foreach ($donnees as $elements) {
 					?>
-					<table>
+					<table id="table" border>
 				<div class="col-md-4 col-sm-6 col-xs-12">
 					<div class="product-item">
 					<tr>
 						<td><?php echo "<img src=images/equipement/".$elements['CODEE'].".jpg width=250>";?></td>
-						<td><a id="mais" href=""><?php echo($elements['NOME']);?>
-						<?php echo "Taille : ", ($elements['TAILLE']);?></td></a>
+						<th>Nom</th>
+						<td><a id="mais" href=""><?php echo($elements['NOME']);?></a></td>
+						<th>Taille</th>
+						<td><a id="mais" href="">
+						<?php echo ($elements['TAILLE']);?></a></td>
 					</tr>
 					</div>
 				</div>
