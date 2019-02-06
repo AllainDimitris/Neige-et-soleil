@@ -31,7 +31,7 @@
 				{
 						die('Erreur :'.$e->getMessage());
 				}
-				$reponse=$bdd->query('SELECT CODEE,NOME,ETATE,COULEUR,TAILLE,LETTRETAILLE FROM equipement');
+				$reponse=$bdd->query('SELECT CODEE,NOME,TAILLE FROM equipement');
 				$donnees = $reponse->fetchAll();
 				foreach ($donnees as $elements) {
 					?>
@@ -41,10 +41,7 @@
 					<tr>
 						<td><?php echo "<img src=images/equipement/".$elements['CODEE'].".jpg width=250>";?></td>
 						<td><a id="mais" href=""><?php echo($elements['NOME']);?>
-						<?php echo($elements['ETATE']);?>
-						<?php echo($elements['COULEUR']);?>
-						<?php echo($elements['TAILLE']);?>
-						<?php echo($elements['LETTRETAILLE']);?></td></a>
+						<?php echo "Taille : ", ($elements['TAILLE']);?></td></a>
 					</tr>
 					</div>
 				</div>

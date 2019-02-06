@@ -36,7 +36,7 @@
 								$donnees = $reponse->fetchAll();
 								foreach ($donnees as $elements) {
 									?>
-									<table>
+							<table id="table" border>
 								<div class="col-md-4 col-sm-6 col-xs-12">
 									<div class="product-item">
 									<tr>
@@ -50,8 +50,8 @@
 										<?php echo "Surface habitable : ", ($elements['SURFACEHABH']);?>
 										<?php echo "Surface balcon : ", ($elements['SURFACEBALH']);?>
 										<?php echo "Capacité : ", ($elements['CAPACCH']);?>
-										<?php echo "Distance des pistes : ", ($elements['DISTANCEPISTEH']);?>
-									</td></a>
+										<?php echo "Distance des pistes : ", ($elements['DISTANCEPISTEH']);?></a>
+										</td>
 									</tr>
 									</div>
 								</div>
