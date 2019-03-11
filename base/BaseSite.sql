@@ -7,7 +7,10 @@ USE BaseSite;
 # -----------------------------------------------------------------------------
 
 CREATE TABLE IF NOT EXISTS HABITATION
- (
+
+(
+IDH int auto_increment NOT NULL  ,
+ 
    IDH INTEGER(4) NOT NULL  ,
    IDT INTEGER(4) NOT NULL  ,
    NOMH VARCHAR(20) NULL  ,
@@ -119,6 +122,7 @@ CREATE TABLE IF NOT EXISTS CLIENT
    DATENAICL date not NULL   ,
    MdpCL varchar(100) not null,
    nbreservation int(3) default 0,
+   rôle char(10) not null,
 
     PRIMARY KEY (IDCL) 
  ) 
