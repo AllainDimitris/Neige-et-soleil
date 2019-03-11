@@ -5,6 +5,7 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="css/immobilier.css"/>
 		<link rel="stylesheet" href="css/main.css"/>
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 	</head>
@@ -31,23 +32,26 @@
 								{
 										die('Erreur :'.$e->getMessage());
 								}
-								$reponse=$bdd->query('SELECT IDH,NOMH,ADRH,CPH,VILLEH,NUMEROH FROM habitation');
+								$reponse=$bdd->query('SELECT IDH,NUMEROH,ADRH,CPH,VILLEH,EXPOH, SURFACEHABH, SURFACEBALH, CAPACCH, DISTANCEPISTEH FROM habitation');
 								$donnees = $reponse->fetchAll();
 								foreach ($donnees as $elements) {
 									?>
-									<table>
+							<table id="table" border>
 								<div class="col-md-4 col-sm-6 col-xs-12">
 									<div class="product-item">
 									<tr>
 										<td><?php echo "<img src=images/habitation/".$elements['IDH'].".jpg width=300>";?></td>
-										<td><a href=""><?php echo($elements['NOMH']);?>
+										<td id="az"><a id='mais' href="reservationimmo.php?IDH=<?php echo $elements['IDH']; ?>">
 										<?php echo($elements['NUMEROH']);?>
 										<?php echo($elements['ADRH']);?>
 										<?php echo($elements['VILLEH']);?>
-										<?php echo($elements['CPH']);?></td></a>
-										 <button type="submit">
- 						 				"<img src=images/equipement/".$elements['CODEE'].".jpg alt="Reserver le Materiel" title="Reserver le matériel" />
-										</button> 
+										<?php echo($elements['CPH']);?>
+										<?php echo "Exposition : ", ($elements['EXPOH']);?>
+										<?php echo "Surface habitable : ", ($elements['SURFACEHABH']);?>
+										<?php echo "Surface balcon : ", ($elements['SURFACEBALH']);?>
+										<?php echo "Capacité : ", ($elements['CAPACCH']);?>
+										<?php echo "Distance des pistes : ", ($elements['DISTANCEPISTEH']);?></a>
+										</td>
 									</tr>
 									</div>
 								</div>

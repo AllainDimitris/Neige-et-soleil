@@ -32,7 +32,7 @@
 							<?php
 								if (isset($_POST["connexion"]))
 								{
-									$bdd = new PDO('mysql:host=localhost;dbname=Basesite','root','admin');
+									$bdd = new PDO('mysql:host=localhost;dbname=Basesite','root','');
 
 									$req = $bdd->prepare('SELECT IDCL, ADRMAILCL, MdpCL from client where ADRMAILCL = :Email');
 									$req->execute(array('Email' => $_POST['Email']));
