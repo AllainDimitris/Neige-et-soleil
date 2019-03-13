@@ -1,15 +1,9 @@
-p{
-  text-align: center;
+#mais {
 }
 
-#searchbar {
-  position: absolute;
-  left: 50%;
-  width: 400px;
-  margin-left: -200px;
+#az {
+	
 }
 
-.formulaire               {display:inline-block;}
-.formulaire .champ       {width:200px; height:18px;}
-.formulaire .bouton       {width: 150px;height: 20px;padding: 0; 
+#table {
 }

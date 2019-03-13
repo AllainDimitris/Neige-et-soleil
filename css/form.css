@@ -1,23 +1,12 @@
-label{
-    display:block;
-    width:150px;
-    float:left;
-}
-input{
-    display:block;
-    width:150px;
-    float:left;
-    text-align:center;
-}
+
 
 #question {
-  margin-left: auto;
-  margin-right: auto;
-  width:400px;
-}
-
-#submit {
-  position: absolute;
-  right:600px;
-  width : 200px;
+    color: #ffffff;
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 300;
+    letter-spacing: 0.2rem;
+    line-height: 1.5;
+    margin: 0 0 0 0;
+    text-transform: uppercase;
 }

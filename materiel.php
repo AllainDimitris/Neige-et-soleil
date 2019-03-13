@@ -1,35 +1,81 @@
 <!DOCTYPE html>
 <html>
 	<head>
-
-		<title>Location Materiel</title>
-		<meta charset="utf-8">
+		<title>Location Immobiliere</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
 		<link rel="stylesheet" href="css/main.css"/>
-		<?php
-			if (file_exists("css/".basename(__FILE__, '.php').".css"))
-			{
-				echo '<link href="css/'.basename(__FILE__, '.php').'.css" rel="stylesheet">';
-			}
-		?>
-		
-
+		<link rel="stylesheet" href="css/materiel.css"/>
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 	</head>
-	<body>
-		<header>
-		<h1> Neige et Soleil</h1>
-		</header> <!-- haut de page--> <!-- div sert à créer des boites plutot que des ensembles et de les nommer-->
-<?php include("header.php"); ?>
+		<body class="is-preload">
 
-		<div id= "contenuprincipale">
+			<div id="wrapper">
+				<?php include("header.php"); ?>
+				<div id="searchbar">
+
+                <form action="" class="formulaire"> <br>
+                <input class="champ" type="text" placeholder="Recherche"/> <br>
+                <input class="bouton" type="button" value="Chercher" />
+				</div>
+				<?php
+				try
+				{
+						$bdd = new PDO('mysql:host=localhost;dbname=Basesite','root','');
+
+						$bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+				}
+				catch (Exception $e)
+				{
+						die('Erreur :'.$e->getMessage());
+				}
+				$reponse=$bdd->query('SELECT CODEE,NOME,TAILLE FROM equipement');
+				$donnees = $reponse->fetchAll();
+				foreach ($donnees as $elements) {
+					?>
+					<table id="table" border>
+				<div class="col-md-4 col-sm-6 col-xs-12">
+					<div class="product-item">
+					<tr>
+						<td><?php echo "<img src=images/equipement/".$elements['CODEE'].".jpg width=250>";?></td>
+						<th>Nom</th>
+						<td><a id="mais" href=""><?php echo($elements['NOME']);?></a></td>
+						<th>Taille</th>
+						<td><a id="mais" href="">
+						<?php echo ($elements['TAILLE']);?></a></td>
+					</tr>
+					</div>
+				</div>
+			</table>
+			<?php }  ?>
+			</div>
+				<?php include("footer.php"); ?>
+			</div>
+
+			<div id="bg"></div>
+
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+			<form action="" class="formulaire">
+
+                </form>
+
+
+			<?php include("header.php"); ?>
 			<p>
+                        Recherche
+            </p>
 
 
-			Matos
-			</p>
 
-		</div>
-<footer>
-<?php include("footer.php"); ?>
-</footer>
+
+
+                </div>
+
 	</body>
 </html>
