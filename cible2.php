@@ -18,7 +18,7 @@ try {
     $bdd->beginTransaction();
 
     $CreationRes;
-    $CreationRes = $bdd->prepare("INSERT INTO Reservation(idr, idcl, ids, datedebutr, datefinr, etatr, saisonr, montantr) VALUES (null, :id, 1, :dated, :datef, null, null, null);");
+    $CreationRes = $bdd->prepare("INSERT INTO Reservation(idr, idcl, ids, datedebutr, datefinr, etatr, montantr) VALUES (null, :id, null, :dated, :datef, null, null);");
                             
                             $CreationRes->bindvalue(':id', htmlspecialchars($_SESSION['ID']), PDO::PARAM_INT);
                             $CreationRes->bindvalue(':dated', htmlspecialchars($_POST['rdated']), PDO::PARAM_STR);
