@@ -44,8 +44,8 @@
 										<td id="az"><a id='mais' href="reservationimmo.php?IDH=<?php echo $elements['IDH']; ?>">
 										<?php echo($elements['NUMEROH']);?>
 										<?php echo($elements['ADRH']);?>
-										<?php echo($elements['VILLEH']);?>
 										<?php echo($elements['CPH']);?>
+										<?php echo($elements['VILLEH']);?>
 										<?php echo "Exposition : ", ($elements['EXPOH']);?>
 										<?php echo "Surface habitable : ", ($elements['SURFACEHABH']);?>
 										<?php echo "Surface balcon : ", ($elements['SURFACEBALH']);?>
