@@ -50,7 +50,7 @@
 										{
 											$_SESSION['Email'] = $resultat['ADRMAILCL'];
 											$_SESSION['ID'] = $resultat['IDCL'];
-											header('Location: http://localhost/Neige-et-soleil/test/N&S/index.php');
+											header('Location: http://localhost/Neige-et-soleil/index.php');
 										}
 										else
 										{

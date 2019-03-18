@@ -27,10 +27,6 @@ end //
 delimiter ;
 
 
-insert into reservation values (1, 1,1, '2018-09-25', '2018-10-15', 'oui', 'été', 15);
-insert into reservation values (3, 1,1, '2018-09-25', '2018-10-15', 'oui', 'été', 36);
-insert into reservation values (2, 2,1, '2018-09-25', '2018-10-15', 'oui', 'été', 20);
-
 
 create table histoRes as select * from reservation where 2=0;
 
@@ -118,8 +114,7 @@ signal sqlstate '45000'
 end if; 
 end//
 delimiter ;		
-insert into contrat values(0002,0002,0002,'location',500,null,null,null) 
-insert into reservation values (0002,0002,0002,null,null,'valide','ete',500)
+
 
 
 
@@ -127,10 +122,14 @@ Create view STAT (nbresa,saisr)
 as select count(nbreservation),saisonr from reservation
 where nbreservation = saisonr group by saisonr;
 
+
+
 create view stat2 (nomp,prenomp,referencecp,annee)
 as select nomp,prenomp,count(referencecp), year(datesignc) from contratp
 where contraP.IDP = proprietaire.IDP 
 group by contratp.IDP,year(datesignc);  
+
+
 
 create table archivep3 as select * from contratp where 2=0; 
 drop trigger if exists archivep3; 
@@ -144,5 +143,19 @@ create trigger archivep3
 	else 
 	insert into archive3 select * from contratp where referencep = old.referencep;
 		end // 
-
 		delimiter ;
+
+
+
+drop trigger if exists verifsaison;
+delimiter //
+create trigger verifsaison
+before insert on reservation 
+for each row
+begin 
+declare nums int(2);
+select ids into nums from saison
+ where month(new.datedebutr) between datedebuts and datefins;
+ set new.ids = nums;
+end //
+delimiter ;

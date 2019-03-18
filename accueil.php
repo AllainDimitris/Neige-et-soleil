@@ -2,9 +2,9 @@
 <html>
 	<head>
 
-		<title>ACCEUIL</title>
+		<title>Accueil</title>
 		<meta charset="utf-8">
-		<link rel="stylesheet" href="css/main.css"/>
+		<link rel="stylesheet" href="assets/css/noscript.css"/>
 		<?php
 			if (file_exists("css/".basename(__FILE__, '.php').".css"))
 			{
@@ -18,7 +18,6 @@
 		<header>
 		<h1> Neige et Soleil</h1>
 		</header> <!-- haut de page--> <!-- div sert à créer des boites plutot que des ensembles et de les nommer-->
-<?php include("header.php"); ?>
 
 		<div id= "contenuprincipale">
 			<p>
@@ -29,7 +28,6 @@
 
 
 <footer>
-<?php include("footer.php"); ?>
 </footer>
 	</body>
 </html>

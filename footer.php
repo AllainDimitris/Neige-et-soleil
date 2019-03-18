@@ -3,7 +3,7 @@
 <div class="leftbox"> <!--pied de page-->
   <h3> Neige et soleil </h3>
     <ul>
-    <li><a href="Qui sommes nous.html">
+    <li><a href="Qui sommes nous.php">
       Qui sommes nous ? </a></li>
     <li><a href="locationzone.php">
       Zone de location </a></li>
@@ -11,7 +11,7 @@
       Nous contacter 	</a></li>
     <li><a href="Condition.php">
     Condition générale de vente </a></li>
-    <li><a href="Information.php">
+    <li><a href="InformationLegales.php">
     Information légales </a></li>
   </ul>
 </div>

@@ -1,27 +1,19 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
-  <head>
-    <title>Titre de la page</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<html>
+   <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
     <link rel="stylesheet" href="css/main.css"/>
-    <?php
-      if (file_exists("css/".basename(__FILE__, '.php').".css"))
-      {
-        echo '<link href="css/'.basename(__FILE__, '.php').'.css" rel="stylesheet">';
-      }
-    ?>
-    <header>
-    <h1> Neige et Soleil</h1>
-    </header> <!-- haut de page--> <!-- div sert à créer des boites plutot que des ensembles et de les nommer-->
-
-    <?php 
-    include("header.php");
-    ?>
+    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+    </head>
 
 
-  </head>
-  <body>
-    <h1>Contacter le webmaster</h1>
+  <body class="is-preload">
+
+    <div id="wrapper">
+        <?php include("header.php"); ?>
+         <h1>Contacter le webmaster</h1>
 
 <?php
 // S'il y des données de postées
@@ -112,6 +104,22 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
     <p>Combien font 1+3: <span style="color:#ff0000;">*</span>: <input type="text" name="captcha" size="2" /></p>
     <p><input type="submit" name="submit" value="Envoyer" /></p>
   </form>
+<footer>
+  <?php include("footer.php"); ?>
+  </footer>
+    </div>
+    
 
+   <div id="bg"></div> 
+   
+    <script src="assets/js/jquery.min.js"></script>
+      <script src="assets/js/browser.min.js"></script>
+      <script src="assets/js/breakpoints.min.js"></script>
+      <script src="assets/js/util.js"></script>
+      <script src="assets/js/main.js"></script>
+    
+
+   
+  
   </body>
 </html>

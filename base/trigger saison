@@ -1,0 +1,14 @@
+drop trigger if exists verifsaison;
+delimiter //
+create trigger verifsaison
+before insert on reservation 
+for each row
+begin 
+declare nums int(2);
+select ids into nums from saison
+ where month(new.datedebutr) between datedebuts and datefins;
+ set new.ids = nums;
+end //
+delimiter ;
+
+insert into reservation (idr, idcl, ids, datedebutr, datefinr)values (null, 1, null, "2018-11-16", "2018-12-10");

@@ -52,8 +52,8 @@ PRIMARY KEY (IDT)
 CREATE TABLE IF NOT EXISTS SAISON
  (
    IDS INTEGER(4) NOT NULL  ,
-   DATEDEBUTS date NULL  ,
-   DATEFINS date NULL  ,
+   DATEDEBUTS int(2) NULL  ,
+   DATEFINS int(2) NULL  ,
    REDUCTIONS varchar(3) NULL  
    , PRIMARY KEY (IDS) 
  ) 
@@ -120,8 +120,6 @@ CREATE TABLE IF NOT EXISTS CLIENT
    DATENAICL date not NULL   ,
    MdpCL varchar(100) not null,
    nbreservation int(3) default 0,
-   rôle char(10) not null,
-
     PRIMARY KEY (IDCL) 
  ) 
  comment = "";
@@ -165,7 +163,6 @@ CREATE TABLE IF NOT EXISTS RESERVATION
    DATEDEBUTR date NULL  ,
    DATEFINR date NULL  ,
    ETATR VARCHAR(15) NULL  ,
-   SAISONR VARCHAR(15) NULL  ,
    MONTANTR INTEGER(5) NULL  
    , PRIMARY KEY (IDR) 
  ) 
@@ -301,9 +298,11 @@ insert into TYPEHABITATION values(3, "MA", "Maison");
 
 
 
-insert into saison values(0001, "2018-11-18", "2018-12-20","10%");
-insert into saison values(0002, "2018-12-21", "2019-03-30","0%");
-insert into saison values (0003, "2019-04-01", "2019-06-30","25%");
+insert into saison values(0001, "03", "05","15%");
+insert into saison values(0002, "06", "08","30%");
+insert into saison values (0003, "09", "11","20%");
+insert into saison values (0004, "12", "02","10%");
+
 
 
 insert into client values (null, "Homme", "Jack", "Potro", "Jack@gmail.com", "0156589652", "1996-02-10", "aze", null);
