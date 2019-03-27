@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html>
 	<head>
@@ -7,7 +5,7 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
-   		<link rel="stylesheet" href="css/reservationimmo.css"/>
+   		<link rel="stylesheet" href="css/reservationequi.css"/>
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 	</head>
 	<body>
@@ -25,7 +23,7 @@ if (!isset($_SESSION['ID']))
 
     <br><br>
 <?php
-								$_SESSION['IDH'] = $_GET['IDH'];
+								$_SESSION['CODEE'] = $_GET['CODEE'];
 								try
 								{
 										$bdd = new PDO('mysql:host=localhost;dbname=Basesite','root','');
@@ -37,26 +35,20 @@ if (!isset($_SESSION['ID']))
 								{
 										die('Erreur :'.$e->getMessage());
 								}
-	$reponse=$bdd->query('SELECT IDH,NUMEROH,ADRH,CPH,VILLEH,EXPOH, SURFACEHABH, SURFACEBALH, CAPACCH, DISTANCEPISTEH FROM habitation where IDH ='.$_GET['IDH'].';');
+	$reponse=$bdd->query('SELECT CODEE, IDT, NOME, TAILLE FROM equipement where CODEE ='.$_GET['CODEE'].';');
 	$donnees = $reponse->fetchAll();
 	foreach ($donnees as $elements) {
 									?>
 							<table id="table" border>
-										<?php echo "<img src=images/habitation/".$elements['IDH'].".jpg width=400>";?>
+										<?php echo "<img src=images/equipement/".$elements['CODEE'].".jpg width=350>";?><br>
 								<tr>
 									<td id="gauche">
-										<?php echo($elements['NUMEROH']);?>
-										<?php echo($elements['ADRH']);?><br>
-										<?php echo($elements['VILLEH']);?><br>
-										<?php echo($elements['CPH']);?><br>
-										<?php echo "Exposition : ", ($elements['EXPOH']);?><br>
-										<?php echo "Surface habitable : ", ($elements['SURFACEHABH']);?><br>
-										<?php echo "Surface balcon : ", ($elements['SURFACEBALH']);?><br>
-										<?php echo "Capacité : ", ($elements['CAPACCH']);?><br>
-										<?php echo "Distance des pistes : ", ($elements['DISTANCEPISTEH']);?></td>
+										<?php echo($elements['NOME']);?>
+										<?php echo($elements['TAILLE']);?><br>
+									</td>
 									<td>
 								<div id="question">
-									<form method="post" action="cible2.php">
+									<form method="post" action="cible3.php">
 									<label for="Date de naissance">Date de début</label>
 									<input type="date" name="rdated"  maxlength="40" placeholder="Date de début" required><br>
 									<label for="Date de naissance">Date de fin</label>
@@ -82,4 +74,3 @@ if (!isset($_SESSION['ID']))
 
 </body>
 </html>
-}

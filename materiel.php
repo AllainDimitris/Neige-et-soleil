@@ -40,11 +40,11 @@
 					<div class="product-item">
 					<tr>
 						<td><?php echo "<img src=images/equipement/".$elements['CODEE'].".jpg width=250>";?></td>
-						<th>Nom</th>
-						<td><a id="mais" href=""><?php echo($elements['NOME']);?></a></td>
-						<th>Taille</th>
-						<td><a id="mais" href="">
-						<?php echo ($elements['TAILLE']);?></a></td>
+						<td><a id="mais" href="reservationequip.php?CODEE=<?php echo $elements['CODEE']; ?>">
+							<?php echo ($elements['NOME']);?>
+							<?php echo " , Taille : ", ($elements['TAILLE']);?>
+							</a>
+						</td>
 					</tr>
 					</div>
 				</div>
