@@ -11,7 +11,7 @@ echo '<header id="header">
 			<div class="content">
 							<div class="inner">
 								<h1>Accueil</h1>
-								<p><a href="https://html5up.net">Bienvenue</a>
+								<p><a href="accueil.php">Bienvenue</a>
 							</div>
 						</div>
 						<nav>
@@ -30,7 +30,7 @@ echo '	<header id="header">
 		<div class="content">
 							<div class="inner">
 								<h1>Accueil</h1>
-								<p><a href="https://html5up.net">Bienvenue</a>
+								<p><a href="accueil.php">Bienvenue</a>
 							</div>
 						</div>
 						<nav>
