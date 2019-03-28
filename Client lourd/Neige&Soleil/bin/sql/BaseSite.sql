@@ -7,7 +7,6 @@ USE BaseSite;
 # -----------------------------------------------------------------------------
 
 CREATE TABLE IF NOT EXISTS HABITATION
-
  (
    IDH INTEGER(4) NOT NULL  auto_increment,
    IDT INTEGER(4) NOT NULL  ,
@@ -52,8 +51,8 @@ PRIMARY KEY (IDT)
 CREATE TABLE IF NOT EXISTS SAISON
  (
    IDS INTEGER(4) NOT NULL  ,
-   DATEDEBUTS int(2) NULL  ,
-   DATEFINS int(2) NULL  ,
+   DATEDEBUTS date NULL  ,
+   DATEFINS date NULL  ,
    REDUCTIONS varchar(3) NULL  
    , PRIMARY KEY (IDS) 
  ) 
@@ -82,7 +81,7 @@ CREATE TABLE IF NOT EXISTS PROPRIETAIRE
 
 CREATE TABLE IF NOT EXISTS CONTRATP
  (
-   REFERENCECP INTEGER(4) auto_increment NOT NULL  ,
+   REFERENCECP INTEGER(4) NOT NULL  ,
    IDH INTEGER(4) NOT NULL  ,
    IDP INTEGER(4) NOT NULL  ,
    OBJETCP VARCHAR(20) NULL  ,
@@ -120,6 +119,7 @@ CREATE TABLE IF NOT EXISTS CLIENT
    DATENAICL date not NULL   ,
    MdpCL varchar(100) not null,
    nbreservation int(3) default 0,
+
     PRIMARY KEY (IDCL) 
  ) 
  comment = "";
@@ -130,7 +130,7 @@ CREATE TABLE IF NOT EXISTS CLIENT
 
 CREATE TABLE IF NOT EXISTS CONTRAT
  (
-   REFERENCEC INTEGER(4) auto_increment NOT NULL  ,
+   REFERENCEC INTEGER(4) NOT NULL  ,
    IDH INTEGER(4) NOT NULL  ,
    IDR INTEGER(4) NOT NULL  ,
    OBJETC VARCHAR(25) NULL  ,
@@ -157,15 +157,15 @@ CREATE UNIQUE INDEX I_FK_CONTRAT_RESERVATION
 
 CREATE TABLE IF NOT EXISTS RESERVATION
  (
-   IDR INTEGER(4) auto_increment NOT NULL  ,
+   IDR INTEGER(4) NOT NULL  ,
    IDCL INTEGER(4) NOT NULL  ,
    IDS INTEGER(4) NOT NULL  ,
-   IDH INTEGER(4) NOT NULL  ,
    DATEDEBUTR date NULL  ,
    DATEFINR date NULL  ,
    ETATR VARCHAR(15) NULL  ,
+   SAISONR VARCHAR(15) NULL  ,
    MONTANTR INTEGER(5) NULL  
-   , PRIMARY KEY (IDR)
+   , PRIMARY KEY (IDR) 
  ) 
  comment = "";
 
@@ -180,44 +180,17 @@ CREATE  INDEX I_FK_RESERVATION_CLIENT
 CREATE  INDEX I_FK_RESERVATION_SAISON
      ON RESERVATION (IDS ASC);
 
-CREATE  INDEX I_FK_RESERVATION_HABITATION
-     ON RESERVATION (IDH ASC);
-
-
-CREATE TABLE IF NOT EXISTS RESERVATIONE
- (
-   IDRE INTEGER(4) auto_increment NOT NULL  ,
-   IDCL INTEGER(4) NOT NULL  ,
-   IDS INTEGER(4) NOT NULL  ,
-   IDH INTEGER(4) NOT NULL  ,
-   DATEDEBUTE date NULL  ,
-   DATEFINRE date NULL  ,
-   ETATRE VARCHAR(15) NULL  ,
-   MONTANTRE INTEGER(5) NULL  
-   , PRIMARY KEY (IDRE)
- ) 
- comment = "";
-
-CREATE  INDEX I_FK_RESERVATIONE_CLIENT
-     ON RESERVATIONE (IDCL ASC);
-
-CREATE  INDEX I_FK_RESERVATIONE_SAISON
-     ON RESERVATIONE (IDS ASC);
-
-CREATE  INDEX I_FK_RESERVATIONE_HABITATION
-     ON RESERVATIONE (IDH ASC);
-
 # -----------------------------------------------------------------------------
 #       TABLE : EQUIPEMENT
 # -----------------------------------------------------------------------------
 
 CREATE TABLE IF NOT EXISTS EQUIPEMENT
  (
-   CODEE INTEGER(4) auto_increment NOT NULL  ,
+   CODEE INTEGER(4) NOT NULL  ,
    IDT INTEGER(4) NOT NULL  ,
    NOME VARCHAR(25) NULL  ,
    TAILLE varchar(2) NULL,
-   PRIMARY KEY (CODEE) 
+   , PRIMARY KEY (CODEE) 
  ) 
  comment = "";
 
@@ -283,45 +256,36 @@ ALTER TABLE RESERVATION
   ADD FOREIGN KEY FK_RESERVATION_SAISONERVATION_CLIENT (IDCL)
       REFERENCES CLIENT (IDCL) ;
 
+
 ALTER TABLE RESERVATION 
   ADD FOREIGN KEY FK_RESERVATION_SAISON (IDS)
       REFERENCES SAISON (IDS) ;
 
-ALTER TABLE RESERVATION 
-  ADD FOREIGN KEY FK_RESERVATION_HABITATION (IDH)
-      REFERENCES HABITATION (IDH) ;
 
 ALTER TABLE EQUIPEMENT 
   ADD FOREIGN KEY FK_EQUIPEMENT_TYPEHABITATION (IDT)
       REFERENCES TYPEHABITATION (IDT) ;
 
-ALTER TABLE RESERVATIONE
-  ADD FOREIGN KEY FK_RESERVATIONE_SAISONERVATION_CLIENT (IDCL)
-      REFERENCES CLIENT (IDCL) ;
 
-ALTER TABLE RESERVATIONE
-  ADD FOREIGN KEY FK_RESERVATIONE_SAISON (IDS)
-      REFERENCES SAISON (IDS) ;
-
-ALTER TABLE RESERVATIONE
-  ADD FOREIGN KEY FK_RESERVATIONE_HABITATION (IDH)
-      REFERENCES HABITATION (IDH) ;
-
-
-insert into equipement values(0001,0001,"Ski noire et orange",42);
-insert into equipement values(0002,0001,"Ski noire et rouge",40);
-insert into equipement values(0003,0001,"Ski Orange", 38);
-insert into equipement values(0004,0001,"Ski noire et Vert", 36);
-insert into equipement values(0005,0002,"Chaussure ski bleu", 42);
-insert into equipement values(0006,0002,"Chaussure ski grise", 40);
-insert into equipement values(0007,0002,"Chaussure noire", 38);
-insert into equipement values(0008,0002,"Chaussure noire et rouge",36);
-insert into equipement values(0009,0003,"Gants noir",35);
-insert into equipement values(0010,0003,"Gants noir et vert",40);
-insert into equipement values(0011,0003,"Gants noir",41);  
-insert into equipement values(0012,0004,"Casque Bleu", 32);
-insert into equipement values(0013,0004,"Casque vert", 38);
-insert into equipement values(0014,0004,"Casque vert",39);
+insert into equipement values(0001,0001,"ski","neuf","bleu",42,"M");
+insert into equipement values(0002,0001,"ski","neuf","rouge",40,"M");
+insert into equipement values(0003,0001,"ski","neuf","blanc",38,"M");
+insert into equipement values(0004,0001,"ski","neuf","noir",36,"M");
+insert into equipement values(0005,0002,"chaussure","neuf","jaune",42,"H");
+insert into equipement values(0006,0002,"chaussure","neuf","bleu",40,"F");
+insert into equipement values(0007,0002,"chaussure","neuf","rouge",38,"H");
+insert into equipement values(0008,0002,"chaussure","neuf","vert",36,"F");
+insert into equipement values(0009,0003,"gant","neuf","noir","S","H");
+insert into equipement values(0010,0003,"gant","neuf","rouge","M","F");
+insert into equipement values(0011,0003,"gant","neuf","vert","L","H");  
+insert into equipement values(0012,0004,"casque","neuf","bleu","L","H");
+insert into equipement values(0013,0004,"casque","neuf","vert","L","H");
+insert into equipement values(0014,0004,"casque","neuf","vert","L","F");
+insert into equipement values(0015,0005,"manteau","neuf","vert","L","F");
+insert into equipement values(0016,0005,"manteau","neuf","vert","S","F");
+insert into equipement values(0017,0005,"manteau","neuf","vert","M","H");
+insert into equipement values(0018,0005,"manteau","neuf","vert","M","F");
+insert into equipement values(0019,0005,"manteau","neuf","vert","XL","H");
 
 
 
@@ -340,11 +304,9 @@ insert into TYPEHABITATION values(3, "MA", "Maison");
 
 
 
-insert into saison values(0001, "03", "05","15%");
-insert into saison values(0002, "06", "08","30%");
-insert into saison values (0003, "09", "11","20%");
-insert into saison values (0004, "12", "02","10%");
-
+insert into saison values(0001, "2018-11-18", "2018-12-20","10%");
+insert into saison values(0002, "2018-12-21", "2019-03-30","0%");
+insert into saison values (0003, "2019-04-01", "2019-06-30","25%");
 
 
 insert into client values (null, "Homme", "Jack", "Potro", "Jack@gmail.com", "0156589652", "1996-02-10", "aze", null);
