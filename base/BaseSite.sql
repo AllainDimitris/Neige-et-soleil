@@ -210,10 +210,23 @@ CREATE  INDEX I_FK_RESERVATIONE_EQUIPIMENT
 CREATE TABLE IF NOT EXISTS EQUIPEMENT
  (
    CODEE INTEGER(4) auto_increment NOT NULL  ,
-   IDT INTEGER(4) NOT NULL  ,
-   NOME VARCHAR(25) NULL  ,
+   IDTE INTEGER(4) NOT NULL  ,
+   NOME VARCHAR(30) NULL  ,
    TAILLE varchar(2) NULL,
    PRIMARY KEY (CODEE) 
+ ) 
+ comment = "";
+
+# -----------------------------------------------------------------------------
+#       TABLE : TYPEHABITATION
+# -----------------------------------------------------------------------------
+
+CREATE TABLE IF NOT EXISTS TYPEEQUIPEMENT
+ (
+   IDTE INTEGER(4) NOT NULL  ,
+   LIBELLE VARCHAR(2) NULL  ,
+   TYPE varchar(20),
+PRIMARY KEY (IDTE) 
  ) 
  comment = "";
 
@@ -241,8 +254,8 @@ insert into user values(null,"b@gmail.com","123","ayoub","dimitris","user");
 # -----------------------------------------------------------------------------
 
 
-CREATE  INDEX I_FK_EQUIPEMENT_TYPEHABITATION
-     ON EQUIPEMENT (IDT ASC);
+CREATE  INDEX I_FK_EQUIPEMENT_TYPEEQUIPEMENT
+     ON EQUIPEMENT (IDTE ASC);
 
 
 # -----------------------------------------------------------------------------
@@ -288,8 +301,8 @@ ALTER TABLE RESERVATION
       REFERENCES HABITATION (IDH) ;
 
 ALTER TABLE EQUIPEMENT 
-  ADD FOREIGN KEY FK_EQUIPEMENT_TYPEHABITATION (IDT)
-      REFERENCES TYPEHABITATION (IDT) ;
+  ADD FOREIGN KEY FK_EQUIPEMENT_TYPEEQUIPEMENT (IDTE)
+      REFERENCES TYPEEQUIPEMENT (IDTE) ;
 
 ALTER TABLE RESERVATIONE
   ADD FOREIGN KEY FK_RESERVATIONE_SAISONERVATION_CLIENT (IDCL)
@@ -297,23 +310,23 @@ ALTER TABLE RESERVATIONE
 
 ALTER TABLE RESERVATIONE
   ADD FOREIGN KEY FK_RESERVATIONE_EQUIPEMENT (IDE)
-      REFERENCES HABITATION (IDE) ;
+      REFERENCES EQUIPEMENT (IDE) ;
 
 
-insert into equipement values(0001,0001,"Ski noire et orange",42);
-insert into equipement values(0002,0001,"Ski noire et rouge",40);
-insert into equipement values(0003,0001,"Ski Orange", 38);
-insert into equipement values(0004,0001,"Ski noire et Vert", 36);
-insert into equipement values(0005,0002,"Chaussure ski bleu", 42);
-insert into equipement values(0006,0002,"Chaussure ski grise", 40);
-insert into equipement values(0007,0002,"Chaussure noire", 38);
-insert into equipement values(0008,0002,"Chaussure noire et rouge",36);
-insert into equipement values(0009,0003,"Gants noir",35);
-insert into equipement values(0010,0003,"Gants noir et vert",40);
-insert into equipement values(0011,0003,"Gants noir",41);  
-insert into equipement values(0012,0004,"Casque Bleu", 32);
-insert into equipement values(0013,0004,"Casque vert", 38);
-insert into equipement values(0014,0004,"Casque vert",39);
+insert into equipement values(0001,2,"Ski noire et orange",42);
+insert into equipement values(0002,2,"Ski noire et rouge",40);
+insert into equipement values(0003,2,"Ski Orange", 38);
+insert into equipement values(0004,2,"Ski noire et Vert", 36);
+insert into equipement values(0005,4,"Chaussure ski bleu", 42);
+insert into equipement values(0006,4,"Chaussure ski grise", 40);
+insert into equipement values(0007,4,"Chaussure ski noire", 38);
+insert into equipement values(0008,4,"Chaussure ski noire et rouge",36);
+insert into equipement values(0009,1,"Gants noir",35);
+insert into equipement values(0010,1,"Gants noir et vert",40);
+insert into equipement values(0011,1,"Gants noir",41);  
+insert into equipement values(0012,3,"Casque Bleu", 32);
+insert into equipement values(0013,3,"Casque vert", 38);
+insert into equipement values(0014,3,"Casque vert",39);
 
 
 
@@ -330,6 +343,12 @@ insert into TYPEHABITATION values(1, "AP", "Appartement");
 insert into TYPEHABITATION values(2, "CH", "Chalet");
 insert into TYPEHABITATION values(3, "MA", "Maison");
 
+insert into TYPEEQUIPEMENT values(1, "GA", "Gants");
+insert into TYPEEQUIPEMENT values(2, "SK", "Ski");
+insert into TYPEEQUIPEMENT values(3, "CA", "Casque");
+insert into TYPEEQUIPEMENT values(4, "CH", "Chaussure");
+insert into TYPEEQUIPEMENT values(5, "LU", "Luge");
+insert into TYPEEQUIPEMENT values(6, "SB", "SnowBoard");
 
 
 insert into saison values(0001, "03", "05","15%");
