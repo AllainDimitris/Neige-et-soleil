@@ -5,7 +5,6 @@ update client set nbreservation=(select count(idr) from reservation where client
 drop trigger if exists nbreservation;
 delimiter //
 create trigger nbreservation
-
 after 
 	insert on reservation for each row
 begin
@@ -18,7 +17,6 @@ delimiter ;
 drop trigger if exists dropreservation;
 delimiter //
 create trigger dropreservation
-
 after 
 	delete on reservation for each row
 begin
@@ -64,7 +62,7 @@ create trigger archive
 		delimiter ;
 
 drop trigger if exists archive2;
-delimiter // 
+delimiter //
 create trigger archive2
 after update on contrat 
 for each row 
@@ -119,8 +117,9 @@ delimiter ;
 
 
 Create view STAT (nbresa,saisr) 
-as select count(nbreservation),saisonr from reservation
-where nbreservation = saisonr group by saisonr;
+as select sum(nbreservation),r.ids from client c, saison s, reservation r 
+where c.idcl = r.idcl
+and r.ids = s.ids;
 
 
 

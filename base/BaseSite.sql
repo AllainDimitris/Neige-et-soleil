@@ -111,7 +111,6 @@ CREATE  INDEX I_FK_CONTRATP_PROPRIETAIRE
 CREATE TABLE IF NOT EXISTS CLIENT
  (
    IDCL int auto_increment NOT NULL  ,
-
    SexeCL varchar(10) not null , 
    NOMCL VARCHAR(30) not NULL  ,
    PRENOMCL VARCHAR(30) not NULL  ,
@@ -330,14 +329,18 @@ insert into equipement values(0014,3,"Casque vert",39);
 
 
 
-insert into habitation values(1,2,"rue du salto",4,95120 ,"Toulouse", "SUD", "200", "10", "10", "2 Km");
+insert into habitation values(1,2,"rue du salto",4,95120 ,"Font Romeu", "SUD", "200", "10", "10", "2 Km");
 insert into habitation values(2,2,"rue de Kavin",4,96525,"Montaubans", "NORD", "150", "5", "8", "1 Km");
 insert into habitation values(3,2,"avenue de la barre fixe",6,12017,"Matabiau", "SUD", "250", "20", "10", "2 Km");
-insert into habitation values(4,2,"rue de la roue",28,98528,"Saint prix", "SUD", "100", "0", "5", "5 Km");
+insert into habitation values(4,2,"rue de la roue",28,98528,"Olette", "SUD", "100", "0", "5", "5 Km");
 insert into habitation values(5,3,"rue de la croix",95,62382,"Toulouse", "SUD", "50", "20", "8", "2 Km");
-insert into habitation values(6,3,"Rue de la chasse",58,85639,"Matabiau", "NORD", "100", "10", "5", "1 Km");
+insert into habitation values(6,3,"Rue de la chasse",58,85639,"Font Romeu", "NORD", "100", "10", "5", "1 Km");
 insert into habitation values(7,3,"rue de la Potre",69,47557,"Montdemarsan", "SUD", "250", "20", "8", "2 Km");
 insert into habitation values(8,1,"boulevard du Potro",26,84525,"Lyon", "SUD", "50", "20", "4", "1 Km");
+insert into habitation values(9,3,"boulevard Victory",69,47557,"Montdemarsan", "SUD", "250", "20", "8", "2 Km");
+insert into habitation values(10,1,"rue des roses",26,84525,"Thues entre valls", "SUD", "100", "20", "4", "1 Km");
+
+
 
 insert into TYPEHABITATION values(1, "AP", "Appartement");
 insert into TYPEHABITATION values(2, "CH", "Chalet");
@@ -359,3 +362,12 @@ insert into saison values (0004, "12", "02","10%");
 
 
 insert into client values (null, "Homme", "Jack", "Potro", "Jack@gmail.com", "0156589652", "1996-02-10", "aze", null);
+insert into client values (null, "Femme", "Beatrice", "Dendre", "Dendre.Beatrice@gmail.com", "0658947512", "1975-03-18", "debea1975", null);
+insert into client values (null, "Homme", "Thomas", "Menier", "Totomenier@gmail.com", "0628457300", "1981-10-04", "TOTOzob", null);
+insert into client values (null, "Femme", "Sophia", "Petrovic", "SophiaPetro@gmail.com", "0628994103", "1989-11-05", "Socopoto18", null);
+insert into client values (null, "Femme", "Zoubida", "Belkacem", "Belkazoub@gmail.com", "0658740012", "1963-12-25", "Molopoar523", null);
+insert into client values (null, "Homme", "Patrick", "Motir", "Motir@gmail.com", "0658989652", "1994-06-20", "Patokil5", null);
+insert into client values (null, "Femme", "Monique", "Maniko", "Monique@gmail.com", "0196589652", "1990-02-15", "OddfMS", null);
+insert into client values (null, "Homme", "Nicolas", "Tori", "Torinic@gmail.com", "0699875125", "1996-06-19", "1254xskd", null);
+insert into client values (null, "Homme", "Pierre", "Traore", "Traore.Pierre@gmail.com", "0185699652", "1990-12-10", "tra523dsd", null);
+insert into client values (null, "Homme", "Hamidou", "Masnouhou", "Hamidou.masnou@gmail.com", "0698523468", "1985-02-06", "mas555ddf", null);
