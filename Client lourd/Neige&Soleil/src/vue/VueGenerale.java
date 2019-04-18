@@ -24,6 +24,9 @@ public class VueGenerale  extends JFrame implements ActionListener {
 	private JButton btClient = new JButton("Client");
 	private PanelClient unPanelClient = new PanelClient();
 	
+	private static PanelEquipement unPanelEquipement = new PanelEquipement();
+	private JButton btEquipement = new JButton("Equipement");
+	
 	public VueGenerale(User unUser) {
 		this.setTitle("Adminstration de Neige et Soleil");
 		this.setBounds(100, 100, 1000, 600);
@@ -43,6 +46,12 @@ public class VueGenerale  extends JFrame implements ActionListener {
 		this.btHabitation.setBounds(250, 10, 100, 40);
 		this.add(this.btHabitation);
 		this.btHabitation.addActionListener(this);
+		
+		this.add(this.unPanelEquipement);
+		this.btEquipement.setBounds(375, 10, 120, 40);
+		this.add(this.btEquipement);
+		this.btEquipement.addActionListener(this);
+	
 
 		//Construction du panel profil
 		this.panelProfil.setBounds(20, 20, 200, 300);
@@ -71,9 +80,15 @@ public class VueGenerale  extends JFrame implements ActionListener {
 		}else if(e.getSource() == this.btClient) {
 			unPanelClient.setVisible(true);
 			unPanelHabitation.setVisible(false);
+			unPanelEquipement.setVisible(false);
 		}else if(e.getSource() == this.btHabitation) {
 			unPanelHabitation.setVisible(true);
 			unPanelClient.setVisible(false);
+			unPanelEquipement.setVisible(false);
+		}else if(e.getSource() == this.btEquipement) {
+			unPanelEquipement.setVisible(true);
+			unPanelClient.setVisible(false);
+			unPanelHabitation.setVisible(false);
 		}
 		
 	}

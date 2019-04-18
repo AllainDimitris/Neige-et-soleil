@@ -10,8 +10,8 @@ import controleur.Equipement;
 public class ModeleEquipement {
 	private static BDD uneBdd = new BDD("localhost","basesite","root","");
 	
-	public static ArrayList<Equipement> selectAllHabitations(){
-		ArrayList<Equipement> lesHabitations = new ArrayList<Equipement>();
+	public static ArrayList<Equipement> selectAllEquipements(){
+		ArrayList<Equipement> lesEquipements = new ArrayList<Equipement>();
 		String requete = "Select * from equipement;";
 		//On se connecte à la base de données
 		
@@ -28,7 +28,7 @@ public class ModeleEquipement {
 						desResultats.getString("nome"),
 						desResultats.getString("taille")
 						);
-				lesHabitations.add(unEquipement);
+				lesEquipements.add(unEquipement);
 			}
 			unStat.close();
 			desResultats.close();
@@ -36,7 +36,7 @@ public class ModeleEquipement {
 			System.out.println("Erreur execution : " + requete);
 		}
 		ModeleEquipement.uneBdd.seDeconnecter();		
-		return lesHabitations;
+		return lesEquipements;
 	}
 	
 	public static void insertEquipement (Equipement unEquipement) {
