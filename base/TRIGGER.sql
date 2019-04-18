@@ -36,9 +36,12 @@ After delete on reservation
 for each row
 begin
 if old.datefinr is null
-then signal sqlstate '45000' set message_text = "Impossible";
+then 
+signal sqlstate '45000' 
+set message_text = "Impossible";
 else
-insert into histores values (old.idr, old.idcl, old.ids, old.idH, old.datedebutr, old.datefinr, old.etatr, old.montantr);
+insert into histores select * from reservation where idr = old.idr;
+end if;
 end //
 delimiter ;
 
@@ -131,7 +134,7 @@ from contratp
 where contraP.IDP = proprietaire.IDP 
 group by contratp.IDP,year(datesignc);  
 
-
+/*
 
 create table archivep3 as select * from contratp where 2=0; 
 drop trigger if exists archivep3; 
@@ -140,14 +143,16 @@ create trigger archivep3
 	before delete on contratp
 	for each row 
 	begin 
-	if RENOUVELLEMENTC = 'true'
-	contratp = 'renouvellement'
+	if RENOUVELLEMENTC = 1
+	then
+	set contratp = 'renouvellement';
 	else 
 	insert into archive3 select * from contratp 
-		where referencep = old.referencep;
-		end // 
-		delimiter ;
-
+	where referencep = old.referencep;
+	end if;
+end // 
+delimiter ;
+*/
 
 
 drop trigger if exists verifsaison;
