@@ -116,7 +116,7 @@ public class PanelEquipement extends Panel implements ActionListener {
 			txtIdEquipement.setText((int)uneTable.getValueAt(ligne, 0) + "");
 			txtIdt.setText((int)uneTable.getValueAt(ligne, 1) + "");
 			txtNome.setText((String)uneTable.getValueAt(ligne, 2));
-			txtTaille.setText((int)uneTable.getValueAt(ligne, 3) + "");
+			txtTaille.setText((String)uneTable.getValueAt(ligne, 3));
 			}
 		});
 			
