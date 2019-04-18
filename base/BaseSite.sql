@@ -11,6 +11,7 @@ CREATE TABLE IF NOT EXISTS HABITATION
  (
    IDH INTEGER(4) NOT NULL  auto_increment,
    IDT INTEGER(4) NOT NULL  ,
+   IDP INTEGER(4) NOT NULL, 
    ADRH VARCHAR(35) NULL  ,
    NUMEROH INTEGER(2) NULL  ,
    CPH INTEGER(5) NULL  ,
@@ -28,6 +29,8 @@ CREATE TABLE IF NOT EXISTS HABITATION
 #       INDEX DE LA TABLE HABITATION
 # -----------------------------------------------------------------------------
 
+CREATE  INDEX I_FK_HABITATION_PROPRIETAIRE
+     ON HABITATION (IDP ASC);
 
 CREATE  INDEX I_FK_HABITATION_TYPEHABITATION
      ON HABITATION (IDT ASC);
@@ -67,11 +70,7 @@ CREATE TABLE IF NOT EXISTS PROPRIETAIRE
  (
    IDP INTEGER(4) NOT NULL  ,
    NOMP VARCHAR(20) NULL  ,
-   PRENOMP VARCHAR(20) NULL  ,
-   ADRP VARCHAR(50) NULL  ,
-   CPP INTEGER(5) NULL  ,
-   VILLEP VARCHAR(20) NULL  ,
-   DATENAIP date NULL  
+   PRENOMP VARCHAR(20) NULL 
    , PRIMARY KEY (IDP) 
  ) 
  comment = "";
@@ -266,6 +265,9 @@ ALTER TABLE HABITATION
   ADD FOREIGN KEY FK_HABITATION_TYPEHABITATION (IDT)
       REFERENCES TYPEHABITATION (IDT) ;
 
+ALTER TABLE HABITATION 
+  ADD FOREIGN KEY FK_HABITATION_PROPRIETAIRE (IDP)
+      REFERENCES PROPRIETAIRE (IDP) ;
 
 ALTER TABLE CONTRATP 
   ADD FOREIGN KEY FK_CONTRATP_HABITATION (IDH)
@@ -329,16 +331,16 @@ insert into equipement values(0014,3,"Casque vert",39);
 
 
 
-insert into habitation values(1,2,"rue du salto",4,95120 ,"Font Romeu", "SUD", "200", "10", "10", "2 Km");
-insert into habitation values(2,2,"rue de Kavin",4,96525,"Montaubans", "NORD", "150", "5", "8", "1 Km");
-insert into habitation values(3,2,"avenue de la barre fixe",6,12017,"Matabiau", "SUD", "250", "20", "10", "2 Km");
-insert into habitation values(4,2,"rue de la roue",28,98528,"Olette", "SUD", "100", "0", "5", "5 Km");
-insert into habitation values(5,3,"rue de la croix",95,62382,"Toulouse", "SUD", "50", "20", "8", "2 Km");
-insert into habitation values(6,3,"Rue de la chasse",58,85639,"Font Romeu", "NORD", "100", "10", "5", "1 Km");
-insert into habitation values(7,3,"rue de la Potre",69,47557,"Montdemarsan", "SUD", "250", "20", "8", "2 Km");
-insert into habitation values(8,1,"boulevard du Potro",26,84525,"Lyon", "SUD", "50", "20", "4", "1 Km");
-insert into habitation values(9,3,"boulevard Victory",69,47557,"Montdemarsan", "SUD", "250", "20", "8", "2 Km");
-insert into habitation values(10,1,"rue des roses",26,84525,"Thues entre valls", "SUD", "100", "20", "4", "1 Km");
+insert into habitation values(1,2,1,"rue du salto",4,95120 ,"Font Romeu", "SUD", "200", "10", "10", "2 Km");
+insert into habitation values(2,2,2,"rue de Kavin",4,96525,"Montaubans", "NORD", "150", "5", "8", "1 Km");
+insert into habitation values(3,2,3,"avenue de la barre fixe",6,12017,"Matabiau", "SUD", "250", "20", "10", "2 Km");
+insert into habitation values(4,2,1,"rue de la roue",28,98528,"Olette", "SUD", "100", "0", "5", "5 Km");
+insert into habitation values(5,3,4,"rue de la croix",95,62382,"Toulouse", "SUD", "50", "20", "8", "2 Km");
+insert into habitation values(6,3,5,"Rue de la chasse",58,85639,"Font Romeu", "NORD", "100", "10", "5", "1 Km");
+insert into habitation values(7,3,2,"rue de la Potre",69,47557,"Montdemarsan", "SUD", "250", "20", "8", "2 Km");
+insert into habitation values(8,1,3,"boulevard du Potro",26,84525,"Lyon", "SUD", "50", "20", "4", "1 Km");
+insert into habitation values(9,3,2,"boulevard Victory",69,47557,"Montdemarsan", "SUD", "250", "20", "8", "2 Km");
+insert into habitation values(10,1,1,"rue des roses",26,84525,"Thues entre valls", "SUD", "100", "20", "4", "1 Km");
 
 
 

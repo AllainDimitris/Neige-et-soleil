@@ -27,7 +27,7 @@ public class PanelEquipement extends Panel implements ActionListener {
 	private Tableau unTableau;
 	private JPanel unPanelAjout = new JPanel();
 	private JTextField txtIdEquipement = new JTextField();
-	private JTextField txtIdt = new JTextField();
+	private JTextField txtIdte = new JTextField();
 	private JTextField txtNome = new JTextField();
 	private JTextField txtTaille = new JTextField();
 	private JButton btAnnuler = new JButton("Annuler");
@@ -41,7 +41,7 @@ public class PanelEquipement extends Panel implements ActionListener {
 	
 	public PanelEquipement() {
 		this.setBackground(Color.white);
-		String entetes[] = {"Code", "IDT", "Nom", "Taille"};
+		String entetes[] = {"Code", "idte", "Nom", "Taille"};
 		unTableau = new Tableau(this.getLesEquipements(ModeleEquipement.selectAllEquipements()), entetes);
 		uneTable = new JTable(unTableau);
 		JScrollPane uneScroll = new JScrollPane(uneTable);
@@ -64,8 +64,8 @@ public class PanelEquipement extends Panel implements ActionListener {
 		this.txtIdEquipement.setEditable(false);
 		this.unPanelAjout.add(new JLabel("Code Equipement : "));
 		this.unPanelAjout.add(txtIdEquipement);
-		this.unPanelAjout.add(new JLabel("IDT : "));
-		this.unPanelAjout.add(txtIdt);
+		this.unPanelAjout.add(new JLabel("idte : "));
+		this.unPanelAjout.add(txtIdte);
 		this.unPanelAjout.add(new JLabel("Nom :"));
 		this.unPanelAjout.add(txtNome);
 		this.unPanelAjout.add(new JLabel("Taille: "));
@@ -114,20 +114,20 @@ public class PanelEquipement extends Panel implements ActionListener {
 			public void mouseClicked(MouseEvent e) {
 			int ligne = uneTable.getSelectedRow();
 			txtIdEquipement.setText((int)uneTable.getValueAt(ligne, 0) + "");
-			txtIdt.setText((int)uneTable.getValueAt(ligne, 1) + "");
+			txtIdte.setText((int)uneTable.getValueAt(ligne, 1) + "");
 			txtNome.setText((String)uneTable.getValueAt(ligne, 2));
 			txtTaille.setText((String)uneTable.getValueAt(ligne, 3));
 			}
 		});
-			
+	
 	}
 	public Object [][] getLesEquipements(ArrayList<Equipement> lesEquipements) {
 		
-		Object [][] matrice = new Object[lesEquipements.size()][11];
+		Object [][] matrice = new Object[lesEquipements.size()][4];
 		int i = 0;
 		for (Equipement unEquipement : lesEquipements) {
 			matrice[i][0] = unEquipement.getCodee();
-			matrice[i][1] = unEquipement.getIdt();
+			matrice[i][1] = unEquipement.getIdte();
 			matrice[i][2] = unEquipement.getNome();
 			matrice[i][3] = unEquipement.getTaille();
 			i++;
@@ -145,29 +145,29 @@ public class PanelEquipement extends Panel implements ActionListener {
 			unTableau.setDonnees(matrice);
 		}else if (e.getSource() == this.btAnnuler){
 			txtIdEquipement.setText("");
-			txtIdt.setText("");
+			txtIdte.setText("");
 			txtNome.setText("");
 			txtTaille.setText("");		
 			
 		}else if(e.getSource() == this.btAjouter) {
 			Equipement unEquipement = new Equipement(Integer.parseInt(txtIdEquipement.getText()),
-					Integer.parseInt(txtIdt.getText()), txtNome.getText(),
+					Integer.parseInt(txtIdte.getText()), txtNome.getText(),
 					txtTaille.getText());
 			ModeleEquipement.insertEquipement(unEquipement);
-			Object ligne [] = { unEquipement.getCodee(), unEquipement.getIdt(),
+			Object ligne [] = { unEquipement.getCodee(), unEquipement.getIdte(),
 								unEquipement.getNome(), unEquipement.getTaille()};
 			unTableau.insertTable(ligne);
 			JOptionPane.showMessageDialog(this, "Insertion réussie !", "Insertion d'un Equipement", JOptionPane.INFORMATION_MESSAGE);
 			txtIdEquipement.setText("");
-			txtIdt.setText("");
+			txtIdte.setText("");
 			txtNome.setText("");
 			txtTaille.setText("");
 		}else if(e.getSource() == this.btModifier) {
 			int idh = Integer.parseInt(txtIdEquipement.getText());
-			Equipement unEquipement = new Equipement(Integer.parseInt(txtIdEquipement.getText()), Integer.parseInt(txtIdt.getText()),
+			Equipement unEquipement = new Equipement(Integer.parseInt(txtIdEquipement.getText()), Integer.parseInt(txtIdte.getText()),
 					txtNome.getText(), txtTaille.getText());
 			ModeleEquipement.updateEquipement(unEquipement);
-			Object ligne [] = { unEquipement.getCodee(), unEquipement.getIdt(),
+			Object ligne [] = { unEquipement.getCodee(), unEquipement.getIdte(),
 					unEquipement.getNome(), unEquipement.getTaille()};
 			int indiceLigne = uneTable.getSelectedRow();		
 			unTableau.updateTable(ligne, indiceLigne);

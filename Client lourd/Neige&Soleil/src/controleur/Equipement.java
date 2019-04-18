@@ -2,22 +2,22 @@ package controleur;
 
 public class Equipement {
 	private int codee;
-	private int idt;
+	private int idte;
 	private String nome;
 	private String taille;
 	
-	public Equipement(int codee, int idt, String nome, String taille) {
+	public Equipement(int codee, int idte, String nome, String taille) {
 		
 		this.codee = codee;
-		this.idt = idt;
+		this.idte = idte;
 		this.nome = nome;
 		this.taille = taille;
 	}
 	
-	public Equipement(int idt, String nome, String taille) {
+	public Equipement(int idte, String nome, String taille) {
 		
 		this.codee = 0;
-		this.idt = 0;
+		this.idte = idte;
 		this.nome = nome;
 		this.taille = taille;
 	}
@@ -25,7 +25,7 @@ public class Equipement {
 	public Equipement() {
 		
 		this.codee = 0;
-		this.idt = 0;
+		this.idte = 0;
 		this.nome = "";
 		this.taille = "";
 	}
@@ -38,12 +38,12 @@ public class Equipement {
 		this.codee = codee;
 	}
 
-	public int getIdt() {
-		return idt;
+	public int getIdte() {
+		return idte;
 	}
 
-	public void setIdt(int idt) {
-		this.idt = idt;
+	public void setIdte(int idte) {
+		this.idte = idte;
 	}
 
 	public String getNome() {

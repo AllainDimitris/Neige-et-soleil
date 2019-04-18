@@ -24,7 +24,7 @@ public class ModeleEquipement {
 			while(desResultats.next()) {
 				Equipement unEquipement = new Equipement(
 						desResultats.getInt("codee"),
-						desResultats.getInt("idt"),
+						desResultats.getInt("idte"),
 						desResultats.getString("nome"),
 						desResultats.getString("taille")
 						);
@@ -41,13 +41,14 @@ public class ModeleEquipement {
 	
 	public static void insertEquipement (Equipement unEquipement) {
 		String requete = "insert into Equipement values (null,"
-						+ unEquipement.getIdt()+",'"
+						+ unEquipement.getIdte()+",'"
 						+ unEquipement.getNome()+"','"
 						+ unEquipement.getTaille()+"');";
 	ModeleEquipement.uneBdd.seConnecter();
 	try {
 		Statement unStat = ModeleEquipement.uneBdd.getMaConnexion().createStatement();
 		unStat.execute(requete);
+		System.out.println("Erreur execution : " + requete);
 		unStat.close();
 	}catch(SQLException exp) {
 		System.out.println("Erreur execution : " + requete);
@@ -70,10 +71,10 @@ public class ModeleEquipement {
 	
 	public static void updateEquipement (Equipement unEquipement) {
 		String requete = "update Equipement set codee = "
-				+ unEquipement.getCodee() +", idt = "
-			    + unEquipement.getIdt() +", nome = '"
+				+ unEquipement.getCodee() +", idte = "
+			    + unEquipement.getIdte() +", nome = '"
 			    + unEquipement.getNome() +"', taille ='"
-			    + unEquipement.getTaille()+"',  where codee ="
+			    + unEquipement.getTaille()+"'  where codee ="
 			    + unEquipement.getCodee()+";";
 		ModeleEquipement.uneBdd.seConnecter();
 		try {
@@ -91,7 +92,7 @@ public class ModeleEquipement {
 	{
 		ArrayList<Equipement> lesEquipements = new ArrayList<Equipement>();
 		String requete = "select * from Equipement where codee like '%"+mot+"%'"
-				+ " or idt like '%" + mot +"%'"
+				+ " or idte like '%" + mot +"%'"
 				+ " or nome like '%" + mot +"%'"
 				+ " or taille like '%" + mot +"%'"
 				+ ";";
@@ -102,7 +103,7 @@ public class ModeleEquipement {
 			while (unRes.next()) {
 				 Equipement unEquipement = new Equipement(
 						unRes.getInt("codee"),
-						unRes.getInt("idt"),
+						unRes.getInt("idte"),
 						unRes.getString("nome"),
 						unRes.getString("taille")
 						);
