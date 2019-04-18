@@ -35,7 +35,7 @@ if (!isset($_SESSION['ID']))
 								{
 										die('Erreur :'.$e->getMessage());
 								}
-	$reponse=$bdd->query('SELECT CODEE, IDT, NOME, TAILLE FROM equipement where CODEE ='.$_GET['CODEE'].';');
+	$reponse=$bdd->query('SELECT CODEE, IDTE, NOME, TAILLE FROM equipement where CODEE ='.$_GET['CODEE'].';');
 	$donnees = $reponse->fetchAll();
 	foreach ($donnees as $elements) {
 									?>

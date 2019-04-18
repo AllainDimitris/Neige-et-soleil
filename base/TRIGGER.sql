@@ -37,15 +37,15 @@ for each row
 begin
 if old.datefinr is null
 then signal sqlstate '45000' set message_text = "Impossible";
-else  
-insert into histores values (old.idr, old.idcl, old.ids,old.datedebutr, old.datefinr, old.etatr, old.saisonr, old.montantr);
+else
+insert into histores values (old.idr, old.idcl, old.ids, old.idH, old.datedebutr, old.datefinr, old.etatr, old.montantr);
 end //
 delimiter ;
 
 
-insert into contrat values (1,5,5,"8 ski",500,"2018-05-06","2018-07-15");
-insert into contrat values (2,8,6,"planche",500,"2018-05-06","2018-08-04");
-insert into contrat values (3,2,7,"chaussure",500,"2018-05-06","2018-08-02");
+insert into contrat values (null,5,5,"8 ski",500,"2018-05-06","2018-07-15");
+insert into contrat values (null,8,6,"planche",500,"2018-05-06","2018-08-04");
+insert into contrat values (null,2,7,"chaussure",500,"2018-05-06","2018-08-02");
 
 alter table contrat add datefinc date;
 
@@ -81,9 +81,9 @@ create trigger archivep1
 	before delete on contratp
 	for each row 
 	begin 
-	insert into archivep select * from contratp where referencecp=old.referencecp;
+	insert into archivep select * from contratp 
+		where referencecp=old.referencecp;
 		end // 
-
 		delimiter ;
 
 drop trigger if exists archivep2;
@@ -92,7 +92,8 @@ create trigger archivep2
 after update on contratp 
 for each row 
 begin 
-insert into archivep select * from contratp where referencecp=old.referencecp;
+insert into archivep select * from contratp 
+	where referencecp=old.referencecp;
 end //
 delimiter ;
 
@@ -117,14 +118,16 @@ delimiter ;
 
 
 Create view STAT (nbresa,saisr) 
-as select sum(nbreservation),r.ids from client c, saison s, reservation r 
+as select sum(nbreservation),r.ids 
+from client c, saison s, reservation r 
 where c.idcl = r.idcl
 and r.ids = s.ids;
 
 
 
 create view stat2 (nomp,prenomp,referencecp,annee)
-as select nomp,prenomp,count(referencecp), year(datesignc) from contratp
+as select nomp,prenomp,count(referencecp), year(datesignc) 
+from contratp
 where contraP.IDP = proprietaire.IDP 
 group by contratp.IDP,year(datesignc);  
 
@@ -140,7 +143,8 @@ create trigger archivep3
 	if RENOUVELLEMENTC = 'true'
 	contratp = 'renouvellement'
 	else 
-	insert into archive3 select * from contratp where referencep = old.referencep;
+	insert into archive3 select * from contratp 
+		where referencep = old.referencep;
 		end // 
 		delimiter ;
 
@@ -154,7 +158,8 @@ for each row
 begin 
 declare nums int(2);
 select ids into nums from saison
- where month(new.datedebutr) between datedebuts and datefins;
+ where month(new.datedebutr) between datedebuts 
+ and datefins;
  set new.ids = nums;
 end //
 delimiter ;
