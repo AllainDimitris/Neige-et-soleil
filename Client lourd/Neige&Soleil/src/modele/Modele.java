@@ -39,7 +39,7 @@ public class Modele {
 	
 	public static void insertEquipement (Equipement unEquipement) {
 		String requete = "insert into equipement values (null,"
-						+ unEquipement.getIdt()+",'"
+						+ unEquipement.getIdte()+",'"
 						+ unEquipement.getNome()+"','"
 						+ unEquipement.getTaille()+"');";
 	Modele.uneBdd.seConnecter();
@@ -68,7 +68,7 @@ public class Modele {
 	
 	public static void updateEquipement (Equipement unEquipement) {
 		String requete = "update equipement set idt = "
-				+ unEquipement.getIdt() +", nome = '"
+				+ unEquipement.getIdte() +", nome = '"
 			    + unEquipement.getNome() +"', taille ='"
 			    + unEquipement.getTaille()+"' where codee ="
 			    + unEquipement.getCodee()+";";
