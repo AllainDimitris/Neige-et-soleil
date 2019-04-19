@@ -22,8 +22,11 @@ private static BDD uneBdd = new BDD ("localhost", "basesite", "root", "");
 			while(unResultat.next()) {
 				 Proprietaire unProprietaire = new Proprietaire(
 						unResultat.getInt("idP"),
+						unResultat.getInt("habitation"),
 						unResultat.getString("nomP"),
-						unResultat.getString("prenomP")
+						unResultat.getString("prenomP"),
+						unResultat.getString("dateDebut"),
+						unResultat.getString("dateFin")
 						);
 				lesProprietaires.add(unProprietaire);
 			}
@@ -83,7 +86,7 @@ private static BDD uneBdd = new BDD ("localhost", "basesite", "root", "");
 	
 	public static ArrayList<Proprietaire> SelectWhereProprietaire (String mot){
 		ArrayList<Proprietaire> lesProprietaires = new ArrayList<Proprietaire>();
-		String requete = "select * from proprietaire where nomP like '%"+mot+"%' " + "or prenomP like '%"+ mot + "%';";
+		String requete = "select * from procontrat where nomP like '%"+mot+"%' " + "or prenomP like '%"+ mot + "%';";
 		ModeleProprietaire.uneBdd.seConnecter();
 		try {
 			Statement unStat = ModeleProprietaire.uneBdd.getMaConnexion().createStatement();
@@ -91,8 +94,11 @@ private static BDD uneBdd = new BDD ("localhost", "basesite", "root", "");
 			while (unRes.next()) {
 				Proprietaire unProprietaire = new Proprietaire(
 						unRes.getInt("idP"),
+						unRes.getInt("habitation"),
 						unRes.getString("nomP"),
-						unRes.getString("prenomP"));
+						unRes.getString("prenomP"),
+						unRes.getString("dateDebut"),
+						unRes.getString("dateFin"));
 				lesProprietaires.add(unProprietaire);
 			}
 		unStat.close();
