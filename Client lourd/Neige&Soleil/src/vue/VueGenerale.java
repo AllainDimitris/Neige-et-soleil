@@ -30,6 +30,9 @@ public class VueGenerale  extends JFrame implements ActionListener {
 	private static PanelProprietaire unPanelProprietaire = new PanelProprietaire();
 	private JButton btProprietaire = new JButton("Proprietaire");
 	
+	private static PanelStatistique unPanelStatistique= new PanelStatistique();
+	private JButton btStatistique = new JButton("Statistique");
+	
 	public VueGenerale(User unUser) {
 		this.setTitle("Adminstration de Neige et Soleil");
 		this.setBounds(100, 100, 1000, 600);
@@ -59,6 +62,11 @@ public class VueGenerale  extends JFrame implements ActionListener {
 		this.btProprietaire.setBounds(600, 10, 140, 40);
 		this.add(this.btProprietaire);
 		this.btProprietaire.addActionListener(this);
+		
+		this.add(this.unPanelStatistique);
+		this.btStatistique.setBounds(900, 10, 160, 40);
+		this.add(this.btStatistique);
+		this.btStatistique.addActionListener(this);
 	
 
 		//Construction du panel profil
@@ -90,21 +98,31 @@ public class VueGenerale  extends JFrame implements ActionListener {
 			unPanelHabitation.setVisible(false);
 			unPanelEquipement.setVisible(false);
 			unPanelProprietaire.setVisible(false);
+			unPanelStatistique.setVisible(false);
 		}else if(e.getSource() == this.btHabitation) {
 			unPanelHabitation.setVisible(true);
 			unPanelClient.setVisible(false);
 			unPanelEquipement.setVisible(false);
 			unPanelProprietaire.setVisible(false);
+			unPanelStatistique.setVisible(false);
 		}else if(e.getSource() == this.btEquipement) {
 			unPanelEquipement.setVisible(true);
 			unPanelClient.setVisible(false);
 			unPanelHabitation.setVisible(false);
 			unPanelProprietaire.setVisible(false);
+			unPanelStatistique.setVisible(false);
 		}else if(e.getSource() == this.btProprietaire) {
 			unPanelEquipement.setVisible(false);
 			unPanelClient.setVisible(false);
 			unPanelHabitation.setVisible(false);
 			unPanelProprietaire.setVisible(true);
+			unPanelStatistique.setVisible(false);
+		}else if(e.getSource() == this.btStatistique) {
+			unPanelEquipement.setVisible(false);
+			unPanelClient.setVisible(false);
+			unPanelHabitation.setVisible(false);
+			unPanelProprietaire.setVisible(false);
+			unPanelStatistique.setVisible(true);
 		}
 		
 	}
