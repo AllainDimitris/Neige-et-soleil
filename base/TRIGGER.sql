@@ -111,15 +111,34 @@ end//
 delimiter ;		
 
 
-
-
-Create view STAT (Nombredereservation, Saison) 
-as select sum(nbreservation),r.ids 
+Create view STAT (Saison, Nombredereservation) 
+as select count(nbreservation),r.ids 
 from client c, saison s, reservation r 
 where c.idcl = r.idcl
-and r.ids = s.ids;
+and r.ids = s.ids
+group by r.ids;
 
+create view Statparclient (Nom, Prenom, Nombredereservation)
+as select nomcl, prenomcl, count(*) 
+from client c, reservation r
+where c.idcl = r.idcl
+group by nomcl;
 
+create view stathabmois (Mois, Annee, Nombredereservation)
+as select month(datedebutr), year(datedebutr), count(*) from reservation
+group by month(datedebutr), year(datedebutr);
+
+create view statequimois (Mois, Annee, Nombredereservation)
+as select month(datedebute), year(datedebute), count(*) from reservatione
+group by month(datedebute), year(datedebute);
+
+create view Procontrat (IDP, Habitation, Nom, Prenom, Datedebut, Datefin)
+as select p.idp, idh, nomp, prenomp, datedebcp, datefincp
+from proprietaire p, contratp c
+where p.idp = c.idp
+group by idh;
+
+/*
 
 create view stat2 (nomp,prenomp,referencecp,annee)
 as select nomp,prenomp,count(referencecp), year(datesignc) 
@@ -127,13 +146,6 @@ from contratp
 where contraP.IDP = proprietaire.IDP 
 group by contratp.IDP,year(datesignc);  
 
-create view Procontrat (Nom, Prenom, Datedebut, Datefin)
-as select nomp, prenomp, datedebcp, datefincp 
-from proprietaire p, contratp c
-where p.idp = c.idp
-group by datedebcp,datefincp, nomp, prenomp;
-
-/*
 
 create table archivep3 as select * from contratp where 2=0; 
 drop trigger if exists archivep3; 

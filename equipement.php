@@ -39,7 +39,7 @@
 				<div class="col-md-4 col-sm-6 col-xs-12">
 					<div class="product-item">
 					<tr>
-						<td><?php echo "<img src=images/equipement/".$elements['CODEE'].".jpg width=250>";?></td>
+						<td><a href="reservationequip.php?CODEE=<?php echo $elements['CODEE']; ?>"> <?php echo "<img src=images/equipement/".$elements['CODEE'].".jpg width=300>";?></a></td>
 						<td><a id="mais" href="reservationequip.php?CODEE=<?php echo $elements['CODEE']; ?>">
 							<?php echo ($elements['NOME']);?>
 							<?php echo " , Taille : ", ($elements['TAILLE']);?>
