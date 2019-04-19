@@ -12,7 +12,7 @@ private static BDD uneBdd = new BDD ("localhost", "basesite", "root", "");
 	
 	public static ArrayList<Statistique> SelectAllStatistiques(){
 		ArrayList<Statistique> lesStatistiques = new ArrayList<Statistique>();
-		String requete = "Select * from statequimois ;";
+		String requete = "Select * from stat ;";
 		//On se connecte à la base de données
 		ModeleStatistique.uneBdd.seConnecter();
 		try {

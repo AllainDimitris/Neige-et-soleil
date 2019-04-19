@@ -49,22 +49,22 @@ public class VueGenerale  extends JFrame implements ActionListener {
 		
 		this.add(this.unPanelHabitation);
 		
-		this.btHabitation.setBounds(250, 10, 100, 40);
+		this.btHabitation.setBounds(250, 10, 110, 40);
 		this.add(this.btHabitation);
 		this.btHabitation.addActionListener(this);
 		
 		this.add(this.unPanelEquipement);
-		this.btEquipement.setBounds(375, 10, 120, 40);
+		this.btEquipement.setBounds(375, 10, 110, 40);
 		this.add(this.btEquipement);
 		this.btEquipement.addActionListener(this);
 		
 		this.add(this.unPanelProprietaire);
-		this.btProprietaire.setBounds(600, 10, 140, 40);
+		this.btProprietaire.setBounds(595, 10, 110, 40);
 		this.add(this.btProprietaire);
 		this.btProprietaire.addActionListener(this);
 		
 		this.add(this.unPanelStatistique);
-		this.btStatistique.setBounds(900, 10, 160, 40);
+		this.btStatistique.setBounds(725, 10, 110, 40);
 		this.add(this.btStatistique);
 		this.btStatistique.addActionListener(this);
 	
