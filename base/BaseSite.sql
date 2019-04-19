@@ -68,7 +68,7 @@ CREATE TABLE IF NOT EXISTS SAISON
 
 CREATE TABLE IF NOT EXISTS PROPRIETAIRE
  (
-   IDP INTEGER(4) NOT NULL  ,
+   IDP INTEGER(4) NOT NULL auto_increment,
    NOMP VARCHAR(20) NULL  ,
    PRENOMP VARCHAR(20) NULL 
    , PRIMARY KEY (IDP) 
@@ -86,9 +86,7 @@ CREATE TABLE IF NOT EXISTS CONTRATP
    IDP INTEGER(4) NOT NULL  ,
    OBJETCP VARCHAR(20) NULL  ,
    DATEDEBCP date NULL  ,
-   DATEFINCP date NULL  ,
-   DATESIGNCP date NULL ,
-   RENOUVELLEMENTC boolean,  
+   DATEFINCP date NULL  , 
    PRIMARY KEY (REFERENCECP) 
  ) 
  comment = "";
@@ -133,7 +131,8 @@ CREATE TABLE IF NOT EXISTS CONTRAT
    IDR INTEGER(4) NOT NULL  ,
    OBJETC VARCHAR(25) NULL  ,
    PRIXC INTEGER(5) NULL  ,
-   DATESIGNC date NULL  
+   DATEDEBUTC date NULL ,
+   DATEFINC date null
    , PRIMARY KEY (REFERENCEC) 
  ) 
  comment = "";
@@ -314,52 +313,52 @@ ALTER TABLE RESERVATIONE
       REFERENCES EQUIPEMENT (IDE) ;
 
 
-insert into equipement values(0001,2,"Ski noire et orange",42);
-insert into equipement values(0002,2,"Ski noire et rouge",40);
-insert into equipement values(0003,2,"Ski Orange", 38);
-insert into equipement values(0004,2,"Ski noire et Vert", 36);
-insert into equipement values(0005,4,"Chaussure ski bleu", 42);
-insert into equipement values(0006,4,"Chaussure ski grise", 40);
-insert into equipement values(0007,4,"Chaussure ski noire", 38);
-insert into equipement values(0008,4,"Chaussure ski noire et rouge",36);
-insert into equipement values(0009,1,"Gants noir",35);
-insert into equipement values(0010,1,"Gants noir et vert",40);
-insert into equipement values(0011,1,"Gants noir",41);  
-insert into equipement values(0012,3,"Casque Bleu", 32);
-insert into equipement values(0013,3,"Casque vert", 38);
-insert into equipement values(0014,3,"Casque vert",39);
+insert into equipement values (0001,2,"Ski noire et orange",42);
+insert into equipement values (0002,2,"Ski noire et rouge",40);
+insert into equipement values (0003,2,"Ski Orange", 38);
+insert into equipement values (0004,2,"Ski noire et Vert", 36);
+insert into equipement values (0005,4,"Chaussure ski bleu", 42);
+insert into equipement values (0006,4,"Chaussure ski grise", 40);
+insert into equipement values (0007,4,"Chaussure ski noire", 38);
+insert into equipement values (0008,4,"Chaussure ski noire et rouge",36);
+insert into equipement values (0009,1,"Gants noir",35);
+insert into equipement values (0010,1,"Gants noir et vert",40);
+insert into equipement values (0011,1,"Gants noir",41);  
+insert into equipement values (0012,3,"Casque Bleu", 32);
+insert into equipement values (0013,3,"Casque vert", 38);
+insert into equipement values (0014,3,"Casque vert",39);
 
 
 
-insert into habitation values(1,2,1,"rue du salto",4,95120 ,"Font Romeu", "SUD", "200", "10", "10", "2 Km");
-insert into habitation values(2,2,2,"rue de Kavin",4,96525,"Montaubans", "NORD", "150", "5", "8", "1 Km");
-insert into habitation values(3,2,3,"avenue de la barre fixe",6,12017,"Matabiau", "SUD", "250", "20", "10", "2 Km");
-insert into habitation values(4,2,1,"rue de la roue",28,98528,"Olette", "SUD", "100", "0", "5", "5 Km");
-insert into habitation values(5,3,4,"rue de la croix",95,62382,"Toulouse", "SUD", "50", "20", "8", "2 Km");
-insert into habitation values(6,3,5,"Rue de la chasse",58,85639,"Font Romeu", "NORD", "100", "10", "5", "1 Km");
-insert into habitation values(7,3,2,"rue de la Potre",69,47557,"Montdemarsan", "SUD", "250", "20", "8", "2 Km");
-insert into habitation values(8,1,3,"boulevard du Potro",26,84525,"Lyon", "SUD", "50", "20", "4", "1 Km");
-insert into habitation values(9,3,2,"boulevard Victory",69,47557,"Montdemarsan", "SUD", "250", "20", "8", "2 Km");
-insert into habitation values(10,1,1,"rue des roses",26,84525,"Thues entre valls", "SUD", "100", "20", "4", "1 Km");
+insert into habitation values (1,2,1,"rue du salto",4,95120 ,"Font Romeu", "SUD", "200", "10", "10", "2 Km");
+insert into habitation values (2,2,2,"rue de Kavin",4,96525,"Montaubans", "NORD", "150", "5", "8", "1 Km");
+insert into habitation values (3,2,3,"avenue de la barre fixe",6,12017,"Matabiau", "SUD", "250", "20", "10", "2 Km");
+insert into habitation values (4,2,1,"rue de la roue",28,98528,"Olette", "SUD", "100", "0", "5", "5 Km");
+insert into habitation values (5,3,4,"rue de la croix",95,62382,"Toulouse", "SUD", "50", "20", "8", "2 Km");
+insert into habitation values (6,3,5,"Rue de la chasse",58,85639,"Font Romeu", "NORD", "100", "10", "5", "1 Km");
+insert into habitation values (7,3,2,"rue de la Potre",69,47557,"Montdemarsan", "SUD", "250", "20", "8", "2 Km");
+insert into habitation values (8,1,3,"boulevard du Potro",26,84525,"Lyon", "SUD", "50", "20", "4", "1 Km");
+insert into habitation values (9,3,2,"boulevard Victory",69,47557,"Montdemarsan", "SUD", "250", "20", "8", "2 Km");
+insert into habitation values (10,1,1,"rue des roses",26,84525,"Thues entre valls", "SUD", "100", "20", "4", "1 Km");
 
 
 
-insert into TYPEHABITATION values(1, "AP", "Appartement");
-insert into TYPEHABITATION values(2, "CH", "Chalet");
-insert into TYPEHABITATION values(3, "MA", "Maison");
+insert into TYPEHABITATION values (1, "AP", "Appartement");
+insert into TYPEHABITATION values (2, "CH", "Chalet");
+insert into TYPEHABITATION values (3, "MA", "Maison");
 
-insert into TYPEEQUIPEMENT values(1, "GA", "Gants");
-insert into TYPEEQUIPEMENT values(2, "SK", "Ski");
-insert into TYPEEQUIPEMENT values(3, "CA", "Casque");
-insert into TYPEEQUIPEMENT values(4, "CH", "Chaussure");
-insert into TYPEEQUIPEMENT values(5, "LU", "Luge");
-insert into TYPEEQUIPEMENT values(6, "SB", "SnowBoard");
+insert into TYPEEQUIPEMENT values (1, "GA", "Gants");
+insert into TYPEEQUIPEMENT values (2, "SK", "Ski");
+insert into TYPEEQUIPEMENT values (3, "CA", "Casque");
+insert into TYPEEQUIPEMENT values (4, "CH", "Chaussure");
+insert into TYPEEQUIPEMENT values (5, "LU", "Luge");
+insert into TYPEEQUIPEMENT values (6, "SB", "SnowBoard");
 
 
-insert into saison values(0001, "03", "05","15%");
-insert into saison values(0002, "06", "08","30%");
-insert into saison values (0003, "09", "11","20%");
-insert into saison values (0004, "12", "02","10%");
+insert into saison values (0001, "03", "05","15%");
+insert into saison values (0002, "06", "08","30%");
+insert into saison values (0003, "09", "12","20%");
+insert into saison values (0004, "01", "02","10%");
 
 
 
@@ -373,3 +372,24 @@ insert into client values (null, "Femme", "Monique", "Maniko", "Monique@gmail.co
 insert into client values (null, "Homme", "Nicolas", "Tori", "Torinic@gmail.com", "0699875125", "1996-06-19", "1254xskd", null);
 insert into client values (null, "Homme", "Pierre", "Traore", "Traore.Pierre@gmail.com", "0185699652", "1990-12-10", "tra523dsd", null);
 insert into client values (null, "Homme", "Hamidou", "Masnouhou", "Hamidou.masnou@gmail.com", "0698523468", "1985-02-06", "mas555ddf", null);
+
+insert into proprietaire values (null, "Sakho", "Djemal");
+insert into proprietaire values (null, "Sardarian", "Hamidou");
+insert into proprietaire values (null, "Fournier", "Ayoub");
+insert into proprietaire values (null, "Jiren", "Broly");
+insert into proprietaire values (null, "Housni", "Pierre");
+insert into proprietaire values (null, "Deunier", "Victor");
+insert into proprietaire values (null, "Salif", "Frank");
+insert into proprietaire values (null, "Qimpert", "Dominique");
+insert into proprietaire values (null, "Lampard", "Thibault");
+insert into proprietaire values (null, "Boubacari", "Koumba");  
+
+insert into contratp values (null,1,2,'Maison', '2018-08-28','2018-08-30');
+insert into contratp values (null,2,2,'Maison','2018-10-14','2018-12-30');
+insert into contratp values (null,3,1,'Maison', '2019-10-15', '2019-11-12');
+insert into contratp values (null,4,8,'Maison','2019-08-19', '2019-10-25');
+insert into contratp values (null,5,4,'Maison', '2019-05-25', '2019-09-08');
+
+insert into contrat values (null,5,5,"Ski",500,"2018-05-06","2018-07-15");
+insert into contrat values (null,8,6,"planche",500,"2018-05-06","2018-08-04");
+insert into contrat values (null,2,7,"chaussure",500,"2018-05-06","2018-08-02");

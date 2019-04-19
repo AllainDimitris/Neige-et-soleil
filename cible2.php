@@ -34,4 +34,3 @@ catch (Exeption $erreur)
 }
 
 header('Location: immobilier.php');
-?>

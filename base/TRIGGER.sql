@@ -1,7 +1,7 @@
 update client set nbreservation=(select count(idr) from reservation where client.idcl=reservation.idcl group by client.idcl);
 
 
-
+/* Nombre de reservation par client*/
 drop trigger if exists nbreservation;
 delimiter //
 create trigger nbreservation
@@ -46,12 +46,6 @@ end //
 delimiter ;
 
 
-insert into contrat values (null,5,5,"8 ski",500,"2018-05-06","2018-07-15");
-insert into contrat values (null,8,6,"planche",500,"2018-05-06","2018-08-04");
-insert into contrat values (null,2,7,"chaussure",500,"2018-05-06","2018-08-02");
-
-alter table contrat add datefinc date;
-
 create table archive as select * from contrat where 2=0; 
 drop trigger if exists archive; 
 delimiter // 
@@ -74,8 +68,7 @@ insert into archive select * from contrat where referencec=old.referencec;
 end //
 delimiter ; 		
 
-insert into contrat values(5555,5555,6666,'location',1500,'2018-08-28','2018-08-30','2018-09-30')
-insert into contrat values(5559,5855,6776,'location',3000,'2018-08-28','2018-08-30','2018-09-30')
+
 
 create table archivep as select * from contratp where 2=0; 
 drop trigger if exists archivep1; 
@@ -120,7 +113,7 @@ delimiter ;
 
 
 
-Create view STAT (nbresa,saisr) 
+Create view STAT (Nombredereservation, Saison) 
 as select sum(nbreservation),r.ids 
 from client c, saison s, reservation r 
 where c.idcl = r.idcl
@@ -133,6 +126,12 @@ as select nomp,prenomp,count(referencecp), year(datesignc)
 from contratp
 where contraP.IDP = proprietaire.IDP 
 group by contratp.IDP,year(datesignc);  
+
+create view Procontrat (Nom, Prenom, Datedebut, Datefin)
+as select nomp, prenomp, datedebcp, datefincp 
+from proprietaire p, contratp c
+where p.idp = c.idp
+group by datedebcp,datefincp, nomp, prenomp;
 
 /*
 
@@ -168,3 +167,4 @@ select ids into nums from saison
  set new.ids = nums;
 end //
 delimiter ;
+
