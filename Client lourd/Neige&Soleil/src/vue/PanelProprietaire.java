@@ -43,7 +43,7 @@ public class PanelProprietaire extends Panel implements ActionListener {
 	
 	public PanelProprietaire() {
 		this.setBackground(Color.white);
-		String entetes[] = {"Code", "IDT", "Nom", "Taille"};
+		String entetes[] = {"Code", "IDT", "Nom", "Taille", "Date debut", "Date fin"};
 		unTableau = new Tableau(this.getLesProprietaires(ModeleProprietaire.SelectAllProprietaire()), entetes);
 		uneTable = new JTable(unTableau);
 		JScrollPane uneScroll = new JScrollPane(uneTable);
@@ -61,7 +61,7 @@ public class PanelProprietaire extends Panel implements ActionListener {
 		this.btOk.addActionListener(this);
 		
 		//Construction du panel Ajouter
-		this.unPanelAjout.setLayout(new GridLayout(4,5));
+		this.unPanelAjout.setLayout(new GridLayout(3,5));
 		
 		this.txtIdP.setEditable(false);
 		this.unPanelAjout.add(new JLabel("ID Propriétaire : "));
@@ -131,7 +131,7 @@ public class PanelProprietaire extends Panel implements ActionListener {
 	}
 	public Object [][] getLesProprietaires(ArrayList<Proprietaire> lesProprietaires) {
 		
-		Object [][] matrice = new Object[lesProprietaires.size()][11];
+		Object [][] matrice = new Object[lesProprietaires.size()][6];
 		int i = 0;
 		for (Proprietaire unProprietaire : lesProprietaires) {
 			matrice[i][0] = unProprietaire.getIdP();
