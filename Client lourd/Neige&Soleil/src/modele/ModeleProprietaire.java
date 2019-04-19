@@ -12,7 +12,7 @@ private static BDD uneBdd = new BDD ("localhost", "basesite", "root", "");
 	
 	public static ArrayList<Proprietaire> SelectAllProprietaire(){
 		ArrayList<Proprietaire> lesProprietaires = new ArrayList<Proprietaire>();
-		String requete = "Select * from client ;";
+		String requete = "Select * from procontrat ;";
 		//On se connecte à la base de données
 		ModeleProprietaire.uneBdd.seConnecter();
 		try {
@@ -23,8 +23,8 @@ private static BDD uneBdd = new BDD ("localhost", "basesite", "root", "");
 				 Proprietaire unProprietaire = new Proprietaire(
 						unResultat.getInt("idP"),
 						unResultat.getInt("habitation"),
-						unResultat.getString("nomP"),
-						unResultat.getString("prenomP"),
+						unResultat.getString("nom"),
+						unResultat.getString("prenom"),
 						unResultat.getString("dateDebut"),
 						unResultat.getString("dateFin")
 						);

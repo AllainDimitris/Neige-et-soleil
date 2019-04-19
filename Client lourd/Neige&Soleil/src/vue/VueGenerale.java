@@ -62,14 +62,14 @@ public class VueGenerale  extends JFrame implements ActionListener {
 	
 
 		//Construction du panel profil
-		this.panelProfil.setBounds(20, 20, 200, 300);
-		this.panelProfil.setBackground(Color.cyan);
-		this.panelProfil.setLayout(new GridLayout(6,1));
-		this.panelProfil.add(new JLabel("Votre profil : "));
-		this.panelProfil.add(new JLabel("Votre nom : "+ unUser.getNom()));
-		this.panelProfil.add(new JLabel("Votre prénom : "+ unUser.getPrenom()));
-		this.panelProfil.add(new JLabel("Votre email : "+ unUser.getEmail()));
-		this.panelProfil.add(new JLabel("Votre êtes : "+ unUser.getDroits()));
+//		this.panelProfil.setBounds(20, 20, 200, 300);
+//		this.panelProfil.setBackground(Color.cyan);
+//		this.panelProfil.setLayout(new GridLayout(6,1));
+//		this.panelProfil.add(new JLabel("Votre profil : "));
+//		this.panelProfil.add(new JLabel("Votre nom : "+ unUser.getNom()));
+//		this.panelProfil.add(new JLabel("Votre prénom : "+ unUser.getPrenom()));
+//		this.panelProfil.add(new JLabel("Votre email : "+ unUser.getEmail()));
+//		this.panelProfil.add(new JLabel("Votre êtes : "+ unUser.getDroits()));
 		
 		this.add(this.panelProfil);
 		
