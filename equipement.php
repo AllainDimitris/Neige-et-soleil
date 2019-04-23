@@ -13,12 +13,8 @@
 
 			<div id="wrapper">
 				<?php include("header.php"); ?>
-				<div id="searchbar">
 
                 <form action="" class="formulaire"> <br>
-                <input class="champ" type="text" placeholder="Recherche"/> <br>
-                <input class="bouton" type="button" value="Chercher" />
-				</div>
 				<?php
 				try
 				{
@@ -31,7 +27,10 @@
 				{
 						die('Erreur :'.$e->getMessage());
 				}
-				$reponse=$bdd->query('SELECT CODEE,NOME,TAILLE FROM equipement');
+				$reponse=$bdd->query('select distinct CODEE,NOME,TAILLE FROM equipement e, reservatione re
+where e.codee = re.ide
+and curdate() not between datedebute and datefinre
+or e.codee not in (select ide from reservatione);');
 				$donnees = $reponse->fetchAll();
 				foreach ($donnees as $elements) {
 					?>
