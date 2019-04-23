@@ -40,7 +40,7 @@
 								<div class="col-md-4 col-sm-6 col-xs-12">
 									<div class="product-item">
 									<tr>
-										<td><?php echo "<img src=images/habitation/".$elements['IDH'].".jpg width=300>";?></td>
+										<td><a href="reservationimmo.php?IDH=<?php echo $elements['IDH']; ?>"> <?php echo "<img src=images/habitation/".$elements['IDH'].".jpg width=300>";?></a></td>
 										<td id="az"><a id='mais' href="reservationimmo.php?IDH=<?php echo $elements['IDH']; ?>">
 										<?php echo($elements['NUMEROH']);?>
 										<?php echo($elements['ADRH']);?>

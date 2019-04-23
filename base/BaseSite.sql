@@ -11,6 +11,7 @@ CREATE TABLE IF NOT EXISTS HABITATION
  (
    IDH INTEGER(4) NOT NULL  auto_increment,
    IDT INTEGER(4) NOT NULL  ,
+   IDP INTEGER(4) NOT NULL, 
    ADRH VARCHAR(35) NULL  ,
    NUMEROH INTEGER(2) NULL  ,
    CPH INTEGER(5) NULL  ,
@@ -28,6 +29,8 @@ CREATE TABLE IF NOT EXISTS HABITATION
 #       INDEX DE LA TABLE HABITATION
 # -----------------------------------------------------------------------------
 
+CREATE  INDEX I_FK_HABITATION_PROPRIETAIRE
+     ON HABITATION (IDP ASC);
 
 CREATE  INDEX I_FK_HABITATION_TYPEHABITATION
      ON HABITATION (IDT ASC);
@@ -65,13 +68,9 @@ CREATE TABLE IF NOT EXISTS SAISON
 
 CREATE TABLE IF NOT EXISTS PROPRIETAIRE
  (
-   IDP INTEGER(4) NOT NULL  ,
+   IDP INTEGER(4) NOT NULL auto_increment,
    NOMP VARCHAR(20) NULL  ,
-   PRENOMP VARCHAR(20) NULL  ,
-   ADRP VARCHAR(50) NULL  ,
-   CPP INTEGER(5) NULL  ,
-   VILLEP VARCHAR(20) NULL  ,
-   DATENAIP date NULL  
+   PRENOMP VARCHAR(20) NULL 
    , PRIMARY KEY (IDP) 
  ) 
  comment = "";
@@ -87,9 +86,7 @@ CREATE TABLE IF NOT EXISTS CONTRATP
    IDP INTEGER(4) NOT NULL  ,
    OBJETCP VARCHAR(20) NULL  ,
    DATEDEBCP date NULL  ,
-   DATEFINCP date NULL  ,
-   DATESIGNCP date NULL ,
-   RENOUVELLEMENTC boolean,  
+   DATEFINCP date NULL  , 
    PRIMARY KEY (REFERENCECP) 
  ) 
  comment = "";
@@ -111,7 +108,6 @@ CREATE  INDEX I_FK_CONTRATP_PROPRIETAIRE
 CREATE TABLE IF NOT EXISTS CLIENT
  (
    IDCL int auto_increment NOT NULL  ,
-
    SexeCL varchar(10) not null , 
    NOMCL VARCHAR(30) not NULL  ,
    PRENOMCL VARCHAR(30) not NULL  ,
@@ -135,7 +131,8 @@ CREATE TABLE IF NOT EXISTS CONTRAT
    IDR INTEGER(4) NOT NULL  ,
    OBJETC VARCHAR(25) NULL  ,
    PRIXC INTEGER(5) NULL  ,
-   DATESIGNC date NULL  
+   DATEDEBUTC date NULL ,
+   DATEFINC date null
    , PRIMARY KEY (REFERENCEC) 
  ) 
  comment = "";
@@ -188,8 +185,7 @@ CREATE TABLE IF NOT EXISTS RESERVATIONE
  (
    IDRE INTEGER(4) auto_increment NOT NULL  ,
    IDCL INTEGER(4) NOT NULL  ,
-   IDS INTEGER(4) NOT NULL  ,
-   IDH INTEGER(4) NOT NULL  ,
+   IDE INTEGER(4) NOT NULL  ,
    DATEDEBUTE date NULL  ,
    DATEFINRE date NULL  ,
    ETATRE VARCHAR(15) NULL  ,
@@ -201,11 +197,8 @@ CREATE TABLE IF NOT EXISTS RESERVATIONE
 CREATE  INDEX I_FK_RESERVATIONE_CLIENT
      ON RESERVATIONE (IDCL ASC);
 
-CREATE  INDEX I_FK_RESERVATIONE_SAISON
-     ON RESERVATIONE (IDS ASC);
-
-CREATE  INDEX I_FK_RESERVATIONE_HABITATION
-     ON RESERVATIONE (IDH ASC);
+CREATE  INDEX I_FK_RESERVATIONE_EQUIPIMENT
+     ON RESERVATIONE (IDE ASC);
 
 # -----------------------------------------------------------------------------
 #       TABLE : EQUIPEMENT
@@ -214,10 +207,23 @@ CREATE  INDEX I_FK_RESERVATIONE_HABITATION
 CREATE TABLE IF NOT EXISTS EQUIPEMENT
  (
    CODEE INTEGER(4) auto_increment NOT NULL  ,
-   IDT INTEGER(4) NOT NULL  ,
-   NOME VARCHAR(25) NULL  ,
+   IDTE INTEGER(4) NOT NULL  ,
+   NOME VARCHAR(30) NULL  ,
    TAILLE varchar(2) NULL,
    PRIMARY KEY (CODEE) 
+ ) 
+ comment = "";
+
+# -----------------------------------------------------------------------------
+#       TABLE : TYPEHABITATION
+# -----------------------------------------------------------------------------
+
+CREATE TABLE IF NOT EXISTS TYPEEQUIPEMENT
+ (
+   IDTE INTEGER(4) NOT NULL  ,
+   LIBELLE VARCHAR(2) NULL  ,
+   TYPE varchar(20),
+PRIMARY KEY (IDTE) 
  ) 
  comment = "";
 
@@ -245,8 +251,8 @@ insert into user values(null,"b@gmail.com","123","ayoub","dimitris","user");
 # -----------------------------------------------------------------------------
 
 
-CREATE  INDEX I_FK_EQUIPEMENT_TYPEHABITATION
-     ON EQUIPEMENT (IDT ASC);
+CREATE  INDEX I_FK_EQUIPEMENT_TYPEEQUIPEMENT
+     ON EQUIPEMENT (IDTE ASC);
 
 
 # -----------------------------------------------------------------------------
@@ -258,6 +264,9 @@ ALTER TABLE HABITATION
   ADD FOREIGN KEY FK_HABITATION_TYPEHABITATION (IDT)
       REFERENCES TYPEHABITATION (IDT) ;
 
+ALTER TABLE HABITATION 
+  ADD FOREIGN KEY FK_HABITATION_PROPRIETAIRE (IDP)
+      REFERENCES PROPRIETAIRE (IDP) ;
 
 ALTER TABLE CONTRATP 
   ADD FOREIGN KEY FK_CONTRATP_HABITATION (IDH)
@@ -292,59 +301,95 @@ ALTER TABLE RESERVATION
       REFERENCES HABITATION (IDH) ;
 
 ALTER TABLE EQUIPEMENT 
-  ADD FOREIGN KEY FK_EQUIPEMENT_TYPEHABITATION (IDT)
-      REFERENCES TYPEHABITATION (IDT) ;
+  ADD FOREIGN KEY FK_EQUIPEMENT_TYPEEQUIPEMENT (IDTE)
+      REFERENCES TYPEEQUIPEMENT (IDTE) ;
 
 ALTER TABLE RESERVATIONE
   ADD FOREIGN KEY FK_RESERVATIONE_SAISONERVATION_CLIENT (IDCL)
       REFERENCES CLIENT (IDCL) ;
 
 ALTER TABLE RESERVATIONE
-  ADD FOREIGN KEY FK_RESERVATIONE_SAISON (IDS)
-      REFERENCES SAISON (IDS) ;
-
-ALTER TABLE RESERVATIONE
-  ADD FOREIGN KEY FK_RESERVATIONE_HABITATION (IDH)
-      REFERENCES HABITATION (IDH) ;
+  ADD FOREIGN KEY FK_RESERVATIONE_EQUIPEMENT (IDE)
+      REFERENCES EQUIPEMENT (IDE) ;
 
 
-insert into equipement values(0001,0001,"Ski noire et orange",42);
-insert into equipement values(0002,0001,"Ski noire et rouge",40);
-insert into equipement values(0003,0001,"Ski Orange", 38);
-insert into equipement values(0004,0001,"Ski noire et Vert", 36);
-insert into equipement values(0005,0002,"Chaussure ski bleu", 42);
-insert into equipement values(0006,0002,"Chaussure ski grise", 40);
-insert into equipement values(0007,0002,"Chaussure noire", 38);
-insert into equipement values(0008,0002,"Chaussure noire et rouge",36);
-insert into equipement values(0009,0003,"Gants noir",35);
-insert into equipement values(0010,0003,"Gants noir et vert",40);
-insert into equipement values(0011,0003,"Gants noir",41);  
-insert into equipement values(0012,0004,"Casque Bleu", 32);
-insert into equipement values(0013,0004,"Casque vert", 38);
-insert into equipement values(0014,0004,"Casque vert",39);
+insert into equipement values (0001,2,"Ski noire et orange",42);
+insert into equipement values (0002,2,"Ski noire et rouge",40);
+insert into equipement values (0003,2,"Ski Orange", 38);
+insert into equipement values (0004,2,"Ski noire et Vert", 36);
+insert into equipement values (0005,4,"Chaussure ski bleu", 42);
+insert into equipement values (0006,4,"Chaussure ski grise", 40);
+insert into equipement values (0007,4,"Chaussure ski noire", 38);
+insert into equipement values (0008,4,"Chaussure ski noire et rouge",36);
+insert into equipement values (0009,1,"Gants noir",35);
+insert into equipement values (0010,1,"Gants noir et vert",40);
+insert into equipement values (0011,1,"Gants noir",41);  
+insert into equipement values (0012,3,"Casque Bleu", 32);
+insert into equipement values (0013,3,"Casque vert", 38);
+insert into equipement values (0014,3,"Casque vert",39);
 
 
 
-insert into habitation values(1,2,"rue du salto",4,95120 ,"Toulouse", "SUD", "200", "10", "10", "2 Km");
-insert into habitation values(2,2,"rue de Kavin",4,96525,"Montaubans", "NORD", "150", "5", "8", "1 Km");
-insert into habitation values(3,2,"avenue de la barre fixe",6,12017,"Matabiau", "SUD", "250", "20", "10", "2 Km");
-insert into habitation values(4,2,"rue de la roue",28,98528,"Saint prix", "SUD", "100", "0", "5", "5 Km");
-insert into habitation values(5,3,"rue de la croix",95,62382,"Toulouse", "SUD", "50", "20", "8", "2 Km");
-insert into habitation values(6,3,"Rue de la chasse",58,85639,"Matabiau", "NORD", "100", "10", "5", "1 Km");
-insert into habitation values(7,3,"rue de la Potre",69,47557,"Montdemarsan", "SUD", "250", "20", "8", "2 Km");
-insert into habitation values(8,1,"boulevard du Potro",26,84525,"Lyon", "SUD", "50", "20", "4", "1 Km");
-
-insert into TYPEHABITATION values(1, "AP", "Appartement");
-insert into TYPEHABITATION values(2, "CH", "Chalet");
-insert into TYPEHABITATION values(3, "MA", "Maison");
+insert into habitation values (1,2,1,"rue du salto",4,95120 ,"Font Romeu", "SUD", "200", "10", "10", "2 Km");
+insert into habitation values (2,2,2,"rue de Kavin",4,96525,"Montaubans", "NORD", "150", "5", "8", "1 Km");
+insert into habitation values (3,2,3,"avenue de la barre fixe",6,12017,"Matabiau", "SUD", "250", "20", "10", "2 Km");
+insert into habitation values (4,2,1,"rue de la roue",28,98528,"Olette", "SUD", "100", "0", "5", "5 Km");
+insert into habitation values (5,3,4,"rue de la croix",95,62382,"Toulouse", "SUD", "50", "20", "8", "2 Km");
+insert into habitation values (6,3,5,"Rue de la chasse",58,85639,"Font Romeu", "NORD", "100", "10", "5", "1 Km");
+insert into habitation values (7,3,2,"rue de la Potre",69,47557,"Montdemarsan", "SUD", "250", "20", "8", "2 Km");
+insert into habitation values (8,1,3,"boulevard du Potro",26,84525,"Lyon", "SUD", "50", "20", "4", "1 Km");
+insert into habitation values (9,3,2,"boulevard Victory",69,47557,"Montdemarsan", "SUD", "250", "20", "8", "2 Km");
+insert into habitation values (10,1,1,"rue des roses",26,84525,"Thues entre valls", "SUD", "100", "20", "4", "1 Km");
 
 
 
-insert into saison values(0001, "03", "05","15%");
-insert into saison values(0002, "06", "08","30%");
-insert into saison values (0003, "09", "11","20%");
-insert into saison values (0004, "12", "02","10%");
+insert into TYPEHABITATION values (1, "AP", "Appartement");
+insert into TYPEHABITATION values (2, "CH", "Chalet");
+insert into TYPEHABITATION values (3, "MA", "Maison");
+
+insert into TYPEEQUIPEMENT values (1, "GA", "Gants");
+insert into TYPEEQUIPEMENT values (2, "SK", "Ski");
+insert into TYPEEQUIPEMENT values (3, "CA", "Casque");
+insert into TYPEEQUIPEMENT values (4, "CH", "Chaussure");
+insert into TYPEEQUIPEMENT values (5, "LU", "Luge");
+insert into TYPEEQUIPEMENT values (6, "SB", "SnowBoard");
+
+
+insert into saison values (0001, "03", "05","15%");
+insert into saison values (0002, "06", "08","30%");
+insert into saison values (0003, "09", "12","20%");
+insert into saison values (0004, "01", "02","10%");
 
 
 
 insert into client values (null, "Homme", "Jack", "Potro", "Jack@gmail.com", "0156589652", "1996-02-10", "aze", null);
+insert into client values (null, "Femme", "Beatrice", "Dendre", "Dendre.Beatrice@gmail.com", "0658947512", "1975-03-18", "debea1975", null);
+insert into client values (null, "Homme", "Thomas", "Menier", "Totomenier@gmail.com", "0628457300", "1981-10-04", "TOTOzob", null);
+insert into client values (null, "Femme", "Sophia", "Petrovic", "SophiaPetro@gmail.com", "0628994103", "1989-11-05", "Socopoto18", null);
+insert into client values (null, "Femme", "Zoubida", "Belkacem", "Belkazoub@gmail.com", "0658740012", "1963-12-25", "Molopoar523", null);
+insert into client values (null, "Homme", "Patrick", "Motir", "Motir@gmail.com", "0658989652", "1994-06-20", "Patokil5", null);
+insert into client values (null, "Femme", "Monique", "Maniko", "Monique@gmail.com", "0196589652", "1990-02-15", "OddfMS", null);
+insert into client values (null, "Homme", "Nicolas", "Tori", "Torinic@gmail.com", "0699875125", "1996-06-19", "1254xskd", null);
+insert into client values (null, "Homme", "Pierre", "Traore", "Traore.Pierre@gmail.com", "0185699652", "1990-12-10", "tra523dsd", null);
+insert into client values (null, "Homme", "Hamidou", "Masnouhou", "Hamidou.masnou@gmail.com", "0698523468", "1985-02-06", "mas555ddf", null);
+
+insert into proprietaire values (null, "Sakho", "Djemal");
+insert into proprietaire values (null, "Sardarian", "Hamidou");
+insert into proprietaire values (null, "Fournier", "Ayoub");
+insert into proprietaire values (null, "Jiren", "Broly");
+insert into proprietaire values (null, "Housni", "Pierre");
+insert into proprietaire values (null, "Deunier", "Victor");
+insert into proprietaire values (null, "Salif", "Frank");
+insert into proprietaire values (null, "Qimpert", "Dominique");
+insert into proprietaire values (null, "Lampard", "Thibault");
+insert into proprietaire values (null, "Boubacari", "Koumba");  
+
+insert into contratp values (null,1,2,'Maison', '2018-08-28','2018-08-30');
+insert into contratp values (null,2,2,'Maison','2018-10-14','2018-12-30');
+insert into contratp values (null,3,1,'Maison', '2019-10-15', '2019-11-12');
+insert into contratp values (null,4,8,'Maison','2019-08-19', '2019-10-25');
+insert into contratp values (null,5,4,'Maison', '2019-05-25', '2019-09-08');
+
+insert into contrat values (null,5,5,"Ski",500,"2018-05-06","2018-07-15");
+insert into contrat values (null,8,6,"planche",500,"2018-05-06","2018-08-04");
+insert into contrat values (null,2,7,"chaussure",500,"2018-05-06","2018-08-02");

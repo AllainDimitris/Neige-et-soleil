@@ -1,11 +1,10 @@
 update client set nbreservation=(select count(idr) from reservation where client.idcl=reservation.idcl group by client.idcl);
 
 
-
+/* Nombre de reservation par client*/
 drop trigger if exists nbreservation;
 delimiter //
 create trigger nbreservation
-
 after 
 	insert on reservation for each row
 begin
@@ -18,7 +17,6 @@ delimiter ;
 drop trigger if exists dropreservation;
 delimiter //
 create trigger dropreservation
-
 after 
 	delete on reservation for each row
 begin
@@ -38,18 +36,15 @@ After delete on reservation
 for each row
 begin
 if old.datefinr is null
-then signal sqlstate '45000' set message_text = "Impossible";
-else  
-insert into histores values (old.idr, old.idcl, old.ids,old.datedebutr, old.datefinr, old.etatr, old.saisonr, old.montantr);
+then 
+signal sqlstate '45000' 
+set message_text = "Impossible";
+else
+insert into histores select * from reservation where idr = old.idr;
+end if;
 end //
 delimiter ;
 
-
-insert into contrat values (1,5,5,"8 ski",500,"2018-05-06","2018-07-15");
-insert into contrat values (2,8,6,"planche",500,"2018-05-06","2018-08-04");
-insert into contrat values (3,2,7,"chaussure",500,"2018-05-06","2018-08-02");
-
-alter table contrat add datefinc date;
 
 create table archive as select * from contrat where 2=0; 
 drop trigger if exists archive; 
@@ -64,7 +59,7 @@ create trigger archive
 		delimiter ;
 
 drop trigger if exists archive2;
-delimiter // 
+delimiter //
 create trigger archive2
 after update on contrat 
 for each row 
@@ -73,8 +68,7 @@ insert into archive select * from contrat where referencec=old.referencec;
 end //
 delimiter ; 		
 
-insert into contrat values(5555,5555,6666,'location',1500,'2018-08-28','2018-08-30','2018-09-30')
-insert into contrat values(5559,5855,6776,'location',3000,'2018-08-28','2018-08-30','2018-09-30')
+
 
 create table archivep as select * from contratp where 2=0; 
 drop trigger if exists archivep1; 
@@ -83,9 +77,9 @@ create trigger archivep1
 	before delete on contratp
 	for each row 
 	begin 
-	insert into archivep select * from contratp where referencecp=old.referencecp;
+	insert into archivep select * from contratp 
+		where referencecp=old.referencecp;
 		end // 
-
 		delimiter ;
 
 drop trigger if exists archivep2;
@@ -94,7 +88,8 @@ create trigger archivep2
 after update on contratp 
 for each row 
 begin 
-insert into archivep select * from contratp where referencecp=old.referencecp;
+insert into archivep select * from contratp 
+	where referencecp=old.referencecp;
 end //
 delimiter ;
 
@@ -116,19 +111,40 @@ end//
 delimiter ;		
 
 
+Create view STAT (Saison, Nombredereservation) 
+as select count(nbreservation),r.ids 
+from client c, saison s, reservation r 
+where c.idcl = r.idcl
+and r.ids = s.ids
+group by r.ids;
 
+create view Statparclient (Nom, Prenom, Nombredereservation)
+as select nomcl, prenomcl, count(*) 
+from client c, reservation r
+where c.idcl = r.idcl
+group by nomcl;
 
-Create view STAT (nbresa,saisr) 
-as select count(nbreservation),saisonr from reservation
-where nbreservation = saisonr group by saisonr;
+create view stathabmois (Mois, Annee, Nombredereservation)
+as select month(datedebutr), year(datedebutr), count(*) from reservation
+group by month(datedebutr), year(datedebutr);
 
+create view statequimois (Mois, Annee, Nombredereservation)
+as select month(datedebute), year(datedebute), count(*) from reservatione
+group by month(datedebute), year(datedebute);
 
+create view Procontrat (IDP, Habitation, Nom, Prenom, Datedebut, Datefin)
+as select p.idp, idh, nomp, prenomp, datedebcp, datefincp
+from proprietaire p, contratp c
+where p.idp = c.idp
+group by idh;
+
+/*
 
 create view stat2 (nomp,prenomp,referencecp,annee)
-as select nomp,prenomp,count(referencecp), year(datesignc) from contratp
+as select nomp,prenomp,count(referencecp), year(datesignc) 
+from contratp
 where contraP.IDP = proprietaire.IDP 
 group by contratp.IDP,year(datesignc);  
-
 
 
 create table archivep3 as select * from contratp where 2=0; 
@@ -138,13 +154,16 @@ create trigger archivep3
 	before delete on contratp
 	for each row 
 	begin 
-	if RENOUVELLEMENTC = 'true'
-	contratp = 'renouvellement'
+	if RENOUVELLEMENTC = 1
+	then
+	set contratp = 'renouvellement';
 	else 
-	insert into archive3 select * from contratp where referencep = old.referencep;
-		end // 
-		delimiter ;
-
+	insert into archive3 select * from contratp 
+	where referencep = old.referencep;
+	end if;
+end // 
+delimiter ;
+*/
 
 
 drop trigger if exists verifsaison;
@@ -155,7 +174,9 @@ for each row
 begin 
 declare nums int(2);
 select ids into nums from saison
- where month(new.datedebutr) between datedebuts and datefins;
+ where month(new.datedebutr) between datedebuts 
+ and datefins;
  set new.ids = nums;
 end //
 delimiter ;
+

@@ -18,7 +18,7 @@ try {
     $bdd->beginTransaction();
 
     $CreationRes;
-    $CreationRes = $bdd->prepare("INSERT INTO Reservatione(idre, idcl, ids, idh, datedebute, datefinre, etatre, montantre) VALUES (null, :id, null, :codee, :dated, :datef, null, null);");
+    $CreationRes = $bdd->prepare("INSERT INTO Reservatione(idre, idcl, ide, datedebute, datefinre, etatre, montantre) VALUES (null, :id, :codee, :dated, :datef, null, null);");
                             
                             $CreationRes->bindvalue(':id', htmlspecialchars($_SESSION['ID']), PDO::PARAM_INT);
                             $CreationRes->bindvalue(':dated', htmlspecialchars($_POST['rdated']), PDO::PARAM_STR);
@@ -33,5 +33,5 @@ catch (Exeption $erreur)
     die('Erreur :'.$erreur->getMessage());
 }
 
-header('Location: materiel.php');
+header('Location: equipement.php');
 ?>
