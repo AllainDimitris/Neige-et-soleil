@@ -27,10 +27,7 @@
 				{
 						die('Erreur :'.$e->getMessage());
 				}
-				$reponse=$bdd->query('select distinct CODEE,NOME,TAILLE FROM equipement e, reservatione re
-where e.codee = re.ide
-and curdate() not between datedebute and datefinre
-or e.codee not in (select ide from reservatione);');
+				$reponse=$bdd->query('SELECT CODEE,NOME,TAILLE FROM equipement');
 				$donnees = $reponse->fetchAll();
 				foreach ($donnees as $elements) {
 					?>
