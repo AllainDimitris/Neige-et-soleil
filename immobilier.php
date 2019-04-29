@@ -20,7 +20,7 @@
 								<?php
 								try
 								{
-										$bdd = new PDO('mysql:host=localhost;dbname=Basesite','root','');
+										$bdd = new PDO('mysql:host=localhost;dbname=basesite','root','');
 
 										$bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
@@ -29,10 +29,7 @@
 								{
 										die('Erreur :'.$e->getMessage());
 								}
-								$reponse=$bdd->query('select distinct h.IDH,NUMEROH,ADRH,CPH,VILLEH,EXPOH, SURFACEHABH, SURFACEBALH, CAPACCH, DISTANCEPISTEH from habitation h, reservation r
-where h.idh = r.idh
-and curdate() not between datedebutr and datefinr
-or h.idh not in (select idh from reservation);');
+								$reponse=$bdd->query('SELECT IDH,NUMEROH,ADRH,CPH,VILLEH,EXPOH, SURFACEHABH, SURFACEBALH, CAPACCH, DISTANCEPISTEH FROM habitation');
 								$donnees = $reponse->fetchAll();
 								foreach ($donnees as $elements) {
 									?>
