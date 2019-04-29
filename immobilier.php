@@ -14,12 +14,9 @@
 
 			<div id="wrapper">
 				<?php include("header.php"); ?>
-				<div id="searchbar">
+				
 
                 <form action="" class="formulaire"> <br>
-                <input class="champ" type="text" placeholder="Recherche"/> <br>
-                <input class="bouton" type="button" value="Chercher" />
-                </div>
 								<?php
 								try
 								{
@@ -32,7 +29,10 @@
 								{
 										die('Erreur :'.$e->getMessage());
 								}
-								$reponse=$bdd->query('SELECT IDH,NUMEROH,ADRH,CPH,VILLEH,EXPOH, SURFACEHABH, SURFACEBALH, CAPACCH, DISTANCEPISTEH FROM habitation');
+								$reponse=$bdd->query('select distinct h.IDH,NUMEROH,ADRH,CPH,VILLEH,EXPOH, SURFACEHABH, SURFACEBALH, CAPACCH, DISTANCEPISTEH from habitation h, reservation r
+where h.idh = r.idh
+and curdate() not between datedebutr and datefinr
+or h.idh not in (select idh from reservation);');
 								$donnees = $reponse->fetchAll();
 								foreach ($donnees as $elements) {
 									?>
