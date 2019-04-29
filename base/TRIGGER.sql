@@ -138,6 +138,20 @@ from proprietaire p, contratp c
 where p.idp = c.idp
 group by idh;
 
+create view Inventaireequip as select ifnull(idte, 'Resultat') as materiel, count(case when idte='1' then codee else null end) as Gants,
+count(case when idte = '2' then codee else null end) as Ski, 
+count(case when idte = '3' then codee else null end) as Casque,
+count(case when idte = '4' then codee else null end) as Chaussure,
+count(case when idte = '5' then codee else null end) as Luge,
+count(case when idte = '6' then codee else null end) as SnowBoard,
+count(*) as total from equipement group by idte with rollup;
+
+
+create view Inventairehab as select ifnull(idt, 'Resultat') as Habitation, count(case when idt='1' then idh else null end) as Appartement,
+count(case when idt = '2' then idh else null end) as Chalet, 
+count(case when idt = '3' then idh else null end) as Maison,
+count(*) as total from habitation group by idt with rollup;
+
 /*
 
 create view stat2 (nomp,prenomp,referencecp,annee)
@@ -180,3 +194,47 @@ select ids into nums from saison
 end //
 delimiter ;
 
+
+
+
+drop trigger if exists Calculmontant;
+delimiter //
+create trigger Calculmontant
+after 
+	insert on reservation for each row
+begin
+declare jours int(5);
+	select DATEDIFF('datedebutr', 'datefinr') into jours from reservation;
+	set new.montantr = jours*prixh;
+end //
+delimiter ;
+
+
+
+drop trigger if exists verifreserv;
+delimiter //
+create trigger verifreserv
+before 
+	insert on reservation for each row
+begin
+declare jours int(5);
+	select DATEDIFF('datedebutr', 'datefinr') into jours from reservation
+
+end //
+delimiter ;
+
+
+drop trigger if exists stockhab;
+delimiter //
+create trigger stockhab
+before 
+	insert on reservation for each row
+begin
+	declare datefin date;
+	select max(datefinr) into datefin from reservation where idh = new.idh;
+	if new.datedebutr < datefin 
+	then 
+	signal sqlstate'45000' set message_text='Habitation non disponible';
+	end if;
+end //
+delimiter ;
