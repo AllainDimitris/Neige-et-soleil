@@ -35,7 +35,7 @@
 				<div class="col-md-4 col-sm-6 col-xs-12">
 					<div class="product-item">
 					<tr>
-						<td><a href="reservationequip.php?CODEE=<?php echo $elements['CODEE']; ?>"> <img src=<?php echo $elements['image'];?> width=300>
+						<td><a href="reservationequip.php?CODEE=<?php echo $elements['CODEE']; ?>"> <img src=<?php echo $elements['image'];?> width=250>
 						</a></td>
 						<td><a id="mais" href="reservationequip.php?CODEE=<?php echo $elements['CODEE']; ?>">
 							<?php echo ($elements['NOME']);?>
