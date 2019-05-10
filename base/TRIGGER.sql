@@ -53,7 +53,7 @@ create trigger archive
 	after delete on contrat
 	for each row 
 	begin 
-	insert into archive values(old.idh, old.idr, old.objetc, old.prixc, old.datesignc,old.datefinc);
+	insert into archive values(old.idh, old.idr, old.objetc, old.prixc, old.datedebutc,old.datefinc);
 		end // 
 
 		delimiter ;
@@ -196,7 +196,7 @@ delimiter ;
 
 
 
-
+/* A FAIRE */
 drop trigger if exists Calculmontant;
 delimiter //
 create trigger Calculmontant
@@ -210,7 +210,7 @@ end //
 delimiter ;
 
 
-
+/* A FAIRE */
 drop trigger if exists verifreserv;
 delimiter //
 create trigger verifreserv

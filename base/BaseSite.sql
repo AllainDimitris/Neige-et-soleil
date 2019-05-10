@@ -20,7 +20,9 @@ CREATE TABLE IF NOT EXISTS HABITATION
    SURFACEHABH INTEGER(3) NULL  ,
    SURFACEBALH INTEGER(3) NULL  ,
    CAPACCH INTEGER(2) NULL  ,
-   DISTANCEPISTEH varchar(6) NULL  
+   DISTANCEPISTEH varchar(6) NULL,
+   MONTANT varchar(25) null,
+   IMAGE varchar(155) null
    ,  PRIMARY KEY (IDH) 
  ) 
  comment = "";
@@ -210,6 +212,8 @@ CREATE TABLE IF NOT EXISTS EQUIPEMENT
    IDTE INTEGER(4) NOT NULL  ,
    NOME VARCHAR(30) NULL  ,
    TAILLE varchar(2) NULL,
+   MONTANT varchar(25) null,
+   IMAGE varchar(155) null,
    PRIMARY KEY (CODEE) 
  ) 
  comment = "";
@@ -313,33 +317,33 @@ ALTER TABLE RESERVATIONE
       REFERENCES EQUIPEMENT (IDE) ;
 
 
-insert into equipement values (0001,2,"Ski noire et orange",42);
-insert into equipement values (0002,2,"Ski noire et rouge",40);
-insert into equipement values (0003,2,"Ski Orange", 38);
-insert into equipement values (0004,2,"Ski noire et Vert", 36);
-insert into equipement values (0005,4,"Chaussure ski bleu", 42);
-insert into equipement values (0006,4,"Chaussure ski grise", 40);
-insert into equipement values (0007,4,"Chaussure ski noire", 38);
-insert into equipement values (0008,4,"Chaussure ski noire et rouge",36);
-insert into equipement values (0009,1,"Gants noir",35);
-insert into equipement values (0010,1,"Gants noir et vert",40);
-insert into equipement values (0011,1,"Gants noir",41);  
-insert into equipement values (0012,3,"Casque Bleu", 32);
-insert into equipement values (0013,3,"Casque vert", 38);
-insert into equipement values (0014,3,"Casque vert",39);
+insert into equipement values (0001,2,"Ski bleu et jaune",42, "80", "images/equipement/1.jpg");
+insert into equipement values (0002,2,"Ski noire et rouge",40, "82", "images/equipement/2.jpg");
+insert into equipement values (0003,2,"Ski Orange", 38, "80", "images/equipement/3.jpg");
+insert into equipement values (0004,2,"Ski noire et Vert", 36, "85", "images/equipement/4.jpg");
+insert into equipement values (0005,4,"Chaussure ski bleu", 42, "20", "images/equipement/5.jpg");
+insert into equipement values (0006,4,"Chaussure ski grise", 40, "23", "images/equipement/6.jpg");
+insert into equipement values (0007,4,"Chaussure ski noire", 38, "22", "images/equipement/7.jpg");
+insert into equipement values (0008,4,"Chaussure ski noire et rouge",36, "20", "images/equipement/8.jpg");
+insert into equipement values (0009,1,"Gants noir",35, "13", "images/equipement/9.jpg");
+insert into equipement values (0010,1,"Gants noir et vert",40, "12", "images/equipement/10.jpg");
+insert into equipement values (0011,1,"Gants noir",41, "20", "images/equipement/11.jpg");  
+insert into equipement values (0012,3,"Casque Bleu", 32, "20", "images/equipement/12.jpg");
+insert into equipement values (0013,3,"Casque vert", 38, "22", "images/equipement/13.jpg");
+insert into equipement values (0014,3,"Casque vert",39, "15", "images/equipement/14.jpg");
 
 
 
-insert into habitation values (1,2,1,"rue du salto",4,95120 ,"Font Romeu", "SUD", "200", "10", "10", "2 Km");
-insert into habitation values (2,2,2,"rue de Kavin",4,96525,"Montaubans", "NORD", "150", "5", "8", "1 Km");
-insert into habitation values (3,2,3,"avenue de la barre fixe",6,12017,"Matabiau", "SUD", "250", "20", "10", "2 Km");
-insert into habitation values (4,2,1,"rue de la roue",28,98528,"Olette", "SUD", "100", "0", "5", "5 Km");
-insert into habitation values (5,3,4,"rue de la croix",95,62382,"Toulouse", "SUD", "50", "20", "8", "2 Km");
-insert into habitation values (6,3,5,"Rue de la chasse",58,85639,"Font Romeu", "NORD", "100", "10", "5", "1 Km");
-insert into habitation values (7,3,2,"rue de la Potre",69,47557,"Montdemarsan", "SUD", "250", "20", "8", "2 Km");
-insert into habitation values (8,1,3,"boulevard du Potro",26,84525,"Lyon", "SUD", "50", "20", "4", "1 Km");
-insert into habitation values (9,3,2,"boulevard Victory",69,47557,"Montdemarsan", "SUD", "250", "20", "8", "2 Km");
-insert into habitation values (10,1,1,"rue des roses",26,84525,"Thues entre valls", "SUD", "100", "20", "4", "1 Km");
+insert into habitation values (1,2,1,"rue du salto",4,95120 ,"Font Romeu", "SUD", "200", "10", "10", "2 Km", "150", "images/habitation/1.jpg");
+insert into habitation values (2,2,2,"rue de Kavin",4,96525,"Montaubans", "NORD", "150", "5", "8", "1 Km", "135", "images/habitation/2.jpg");
+insert into habitation values (3,2,3,"avenue de la barre fixe",6,12017,"Matabiau", "SUD", "250", "20", "10", "2 Km", "125", "images/habitation/3.jpg");
+insert into habitation values (4,2,1,"rue de la roue",28,98528,"Olette", "SUD", "100", "0", "5", "5 Km", "130", "images/habitation/4.jpg");
+insert into habitation values (5,3,4,"rue de la croix",95,62382,"Toulouse", "SUD", "50", "20", "8", "2 Km", "150", "images/habitation/5.jpg");
+insert into habitation values (6,3,5,"Rue de la chasse",58,85639,"Font Romeu", "NORD", "100", "10", "5", "1 Km", "140", "images/habitation/6.jpg");
+insert into habitation values (7,3,2,"rue de la Potre",69,47557,"Montdemarsan", "SUD", "250", "20", "8", "2 Km", "120", "images/habitation/7.jpg");
+insert into habitation values (8,1,3,"boulevard du Potro",26,84525,"Lyon", "SUD", "50", "20", "4", "1 Km", "100", "images/habitation/8.jpg");
+insert into habitation values (9,3,2,"boulevard Victory",69,47557,"Montdemarsan", "SUD", "250", "20", "8", "2 Km", "150", "images/habitation/9.jpg");
+insert into habitation values (10,1,1,"rue des roses",26,84525,"Thues entre valls", "SUD", "100", "20", "4", "1 Km", "110", "images/habitation/10.jpg");
 
 
 

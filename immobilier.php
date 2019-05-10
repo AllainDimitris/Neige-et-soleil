@@ -20,7 +20,7 @@
 								<?php
 								try
 								{
-										$bdd = new PDO('mysql:host=localhost;dbname=basesite','root','');
+										$bdd = new PDO('mysql:host=localhost;dbname=Basesite','root','');
 
 										$bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
@@ -29,7 +29,7 @@
 								{
 										die('Erreur :'.$e->getMessage());
 								}
-								$reponse=$bdd->query('SELECT IDH,NUMEROH,ADRH,CPH,VILLEH,EXPOH, SURFACEHABH, SURFACEBALH, CAPACCH, DISTANCEPISTEH FROM habitation');
+								$reponse=$bdd->query('SELECT IDH,NUMEROH,ADRH,CPH,VILLEH,EXPOH, SURFACEHABH, SURFACEBALH, CAPACCH, DISTANCEPISTEH, MONTANT, image FROM habitation');
 								$donnees = $reponse->fetchAll();
 								foreach ($donnees as $elements) {
 									?>
@@ -37,7 +37,8 @@
 								<div class="col-md-4 col-sm-6 col-xs-12">
 									<div class="product-item">
 									<tr>
-										<td><a href="reservationimmo.php?IDH=<?php echo $elements['IDH']; ?>"> <?php echo "<img src=images/habitation/".$elements['IDH'].".jpg width=300>";?></a></td>
+										<td><a href="reservationimmo.php?IDH=<?php echo $elements['IDH']; ?>"> <img src=<?php echo $elements['image'];?> width=300>
+										</a></td>
 										<td id="az"><a id='mais' href="reservationimmo.php?IDH=<?php echo $elements['IDH']; ?>">
 										<?php echo($elements['NUMEROH']);?>
 										<?php echo($elements['ADRH']);?>
@@ -47,7 +48,9 @@
 										<?php echo "Surface habitable : ", ($elements['SURFACEHABH']);?>
 										<?php echo "Surface balcon : ", ($elements['SURFACEBALH']);?>
 										<?php echo "Capacité : ", ($elements['CAPACCH']);?>
-										<?php echo "Distance des pistes : ", ($elements['DISTANCEPISTEH']);?></a>
+										<?php echo "Distance des pistes : ", ($elements['DISTANCEPISTEH']);?>
+										<?php echo ($elements['MONTANT']), "€/jour";?>
+										</a>
 										</td>
 									</tr>
 									</div>
