@@ -26,7 +26,7 @@ public class PanelStatistique extends Panel {
 		unTableau = new Tableau(this.getLesStatistiques(ModeleStatistique.SelectAllStatistiques()), entetes);
 		uneTable = new JTable(unTableau);
 		JScrollPane uneScroll = new JScrollPane(uneTable);
-		uneScroll.setBounds(10, 10, 580, 150);
+		uneScroll.setBounds(10, 10, 750, 150);
 		this.add(uneScroll);
 		
 			

@@ -50,7 +50,7 @@ public class PanelClient extends Panel implements ActionListener {
 		unTableau = new Tableau(this.getLesClients(ModeleClient.SelectAllClients()), entetes);
 		uneTable = new JTable(unTableau);
 		JScrollPane uneScroll = new JScrollPane(uneTable);
-		uneScroll.setBounds(10, 10, 580, 150);
+		uneScroll.setBounds(20, 10, 750, 150);
 		this.add(uneScroll);
 	
 
@@ -59,7 +59,7 @@ public class PanelClient extends Panel implements ActionListener {
 		this.unPanelRecherche.add(new JLabel("Filtre par colonnes : "));
 		this.unPanelRecherche.add(txtMot);
 		this.unPanelRecherche.add(btOk);
-		this.unPanelRecherche.setBounds(150, 170, 350, 30);
+		this.unPanelRecherche.setBounds(150, 170, 500, 30);
 		this.add(unPanelRecherche);
 		this.btOk.addActionListener(this);
 		
@@ -83,12 +83,12 @@ public class PanelClient extends Panel implements ActionListener {
 		this.unPanelAjout.add(txtDate);
 		this.unPanelAjout.add(new JLabel("Mot de passe : "));
 		this.unPanelAjout.add(txtMdp);
-		this.unPanelAjout.setBounds(10, 220, 580, 60);
+		this.unPanelAjout.setBounds(20, 220, 750, 60);
 		this.add(this.unPanelAjout);
 		
 		//Construction du panel Boutons
 		this.unPanelBoutons.setLayout(new GridLayout(1,4));
-		this.unPanelBoutons.setBounds(20, 300, 560, 25);
+		this.unPanelBoutons.setBounds(20, 300, 750, 25);
 		this.unPanelBoutons.add(this.btAnnuler);
 		this.unPanelBoutons.add(this.btAjouter);
 		this.unPanelBoutons.add(this.btModifier);

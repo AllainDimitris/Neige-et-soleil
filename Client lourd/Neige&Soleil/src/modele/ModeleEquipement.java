@@ -26,7 +26,9 @@ public class ModeleEquipement {
 						desResultats.getInt("codee"),
 						desResultats.getInt("idte"),
 						desResultats.getString("nome"),
-						desResultats.getString("taille")
+						desResultats.getString("taille"),
+						desResultats.getString("montant"),
+						desResultats.getString("image")
 						);
 				lesEquipements.add(unEquipement);
 			}
@@ -43,7 +45,9 @@ public class ModeleEquipement {
 		String requete = "insert into Equipement values (null,"
 						+ unEquipement.getIdte()+",'"
 						+ unEquipement.getNome()+"','"
-						+ unEquipement.getTaille()+"');";
+						+ unEquipement.getTaille()+"','"
+						+ unEquipement.getMontant()+"','"
+						+ unEquipement.getImage()+"');";
 	ModeleEquipement.uneBdd.seConnecter();
 	try {
 		Statement unStat = ModeleEquipement.uneBdd.getMaConnexion().createStatement();
@@ -74,7 +78,9 @@ public class ModeleEquipement {
 				+ unEquipement.getCodee() +", idte = "
 			    + unEquipement.getIdte() +", nome = '"
 			    + unEquipement.getNome() +"', taille ='"
-			    + unEquipement.getTaille()+"'  where codee ="
+			    + unEquipement.getTaille()+"', montant ='"
+			    + unEquipement.getMontant()+"', image ='"
+			    + unEquipement.getImage()+"' where codee ="
 			    + unEquipement.getCodee()+";";
 		ModeleEquipement.uneBdd.seConnecter();
 		try {
@@ -105,7 +111,9 @@ public class ModeleEquipement {
 						unRes.getInt("codee"),
 						unRes.getInt("idte"),
 						unRes.getString("nome"),
-						unRes.getString("taille")
+						unRes.getString("taille"),
+						unRes.getString("montant"),
+						unRes.getString("image")
 						);
 				 lesEquipements.add(unEquipement);
 			}
