@@ -7,6 +7,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
+import controleur.Equipement;
 import controleur.Statistique;
 import controleur.Tableau;
 import modele.Modele;
@@ -19,6 +20,8 @@ public class PanelStatistique extends Panel {
 	private JPanel unPanelAjout = new JPanel();
 	private JTextField txtSaison = new JTextField();
 	private JTextField txtNombre = new JTextField();
+	private ArrayList<Equipement> listequipement = new ArrayList<Equipement>();
+
 	
 	public PanelStatistique() {
 		this.setBackground(Color.white);
@@ -27,6 +30,7 @@ public class PanelStatistique extends Panel {
 		uneTable = new JTable(unTableau);
 		JScrollPane uneScroll = new JScrollPane(uneTable);
 		uneScroll.setBounds(10, 10, 580, 150);
+		
 		this.add(uneScroll);
 		
 			
