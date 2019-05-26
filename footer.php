@@ -9,9 +9,9 @@
       Zone de location </a></li>
     <li><a href="contactus.php">
       Nous contacter 	</a></li>
-    <li><a href="Condition.php">
+    <li><a href="Cahier des charges\CGV prestations de services en ligne entre professionnels.pdf">
     Condition générale de vente </a></li>
-    <li><a href="InformationLegales.php">
+    <li><a href="Cahier des charges\InfosLégales.pdf">
     Information légales </a></li>
   </ul>
 </div>
