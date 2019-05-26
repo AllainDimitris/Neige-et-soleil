@@ -112,7 +112,7 @@ delimiter ;
 
 
 Create view STAT (Saison, Nombredereservation) 
-as select count(nbreservation),r.ids 
+as select r.ids, count(nbreservation)
 from client c, saison s, reservation r 
 where c.idcl = r.idcl
 and r.ids = s.ids
