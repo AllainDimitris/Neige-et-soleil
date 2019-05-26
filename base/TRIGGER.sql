@@ -169,7 +169,7 @@ delimiter ;
 
 
 
-/* A FAIRE */
+/*
 drop trigger if exists Calculmontant;
 delimiter //
 create trigger Calculmontant
@@ -181,9 +181,9 @@ declare jours int(5);
 	set new.montantr = jours*new.montantr;
 end //
 delimiter ;
+*/
 
-
-/* A FAIRE */
+/*
 drop trigger if exists verifreserv;
 delimiter //
 create trigger verifreserv
@@ -195,6 +195,7 @@ declare jours int(5);
 
 end //
 delimiter ;
+*/
 
 
 drop trigger if exists stockhab;
