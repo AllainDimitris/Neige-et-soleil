@@ -14,7 +14,9 @@ private static BDD uneBdd = new BDD ("localhost", "basesite", "root", "");
 		ArrayList<Proprietaire> lesProprietaires = new ArrayList<Proprietaire>();
 		String requete = "Select * from procontrat ;";
 		//On se connecte à la base de données
+		
 		ModeleProprietaire.uneBdd.seConnecter();
+		System.out.println("connecté");
 		try {
 			//On définit un statement
 			Statement unStat = ModeleProprietaire.uneBdd.getMaConnexion().createStatement();
@@ -86,7 +88,7 @@ private static BDD uneBdd = new BDD ("localhost", "basesite", "root", "");
 	
 	public static ArrayList<Proprietaire> SelectWhereProprietaire (String mot){
 		ArrayList<Proprietaire> lesProprietaires = new ArrayList<Proprietaire>();
-		String requete = "select * from procontrat where nomP like '%"+mot+"%' " + "or prenomP like '%"+ mot + "%';";
+		String requete = "select * from procontrat where nom like '%"+mot+"%' " + "or prenom like '%"+mot+"%';";
 		ModeleProprietaire.uneBdd.seConnecter();
 		try {
 			Statement unStat = ModeleProprietaire.uneBdd.getMaConnexion().createStatement();
@@ -95,8 +97,8 @@ private static BDD uneBdd = new BDD ("localhost", "basesite", "root", "");
 				Proprietaire unProprietaire = new Proprietaire(
 						unRes.getInt("idP"),
 						unRes.getInt("habitation"),
-						unRes.getString("nomP"),
-						unRes.getString("prenomP"),
+						unRes.getString("nom"),
+						unRes.getString("prenom"),
 						unRes.getString("dateDebut"),
 						unRes.getString("dateFin"));
 				lesProprietaires.add(unProprietaire);
