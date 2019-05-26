@@ -37,8 +37,14 @@ if (!isset($_SESSION['ID']))
 								{
 										die('Erreur :'.$e->getMessage());
 								}
-	$reponse=$bdd->query('SELECT IDH,NUMEROH,ADRH,CPH,VILLEH,EXPOH, SURFACEHABH, SURFACEBALH, CAPACCH, DISTANCEPISTEH FROM habitation where IDH ='.$_GET['IDH'].';');
+	$reponse=$bdd->query('SELECT IDH,NUMEROH,ADRH,CPH,VILLEH,EXPOH, SURFACEHABH, SURFACEBALH, CAPACCH, DISTANCEPISTEH, montant FROM habitation where IDH ='.$_GET['IDH'].';');
 	$donnees = $reponse->fetchAll();
+
+	$req = $bdd->prepare('SELECT montant FROM habitation where IDH ='.$_GET['IDH'].';');
+									$req->execute(array('montant' => $_GET['IDH']));
+									$resultat = $req->fetch();
+
+	$_SESSION['montant'] = $resultat['montant'];
 	foreach ($donnees as $elements) {
 									?>
 							<table id="table" border>
@@ -53,7 +59,8 @@ if (!isset($_SESSION['ID']))
 										<?php echo "Surface habitable : ", ($elements['SURFACEHABH']);?><br>
 										<?php echo "Surface balcon : ", ($elements['SURFACEBALH']);?><br>
 										<?php echo "Capacité : ", ($elements['CAPACCH']);?><br>
-										<?php echo "Distance des pistes : ", ($elements['DISTANCEPISTEH']);?></td>
+										<?php echo "Distance des pistes : ", ($elements['DISTANCEPISTEH']);?><br>
+										<?php echo "Prix : ", ($elements['montant']), "€/Jours";?></td>
 									<td>
 								<div id="question">
 									<form method="post" action="cible2.php">

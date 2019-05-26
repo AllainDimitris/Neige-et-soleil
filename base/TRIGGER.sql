@@ -177,8 +177,8 @@ before
 	insert on reservation for each row
 begin
 declare jours int(5);
-	select DATEDIFF(datedebutr, datefinr) into jours from reservation;
-	set new.montantr = jours*prixh;
+	select DATEDIFF(datefinr, datedebutr) into jours from reservation;
+	set new.montantr = jours*new.montantr;
 end //
 delimiter ;
 
