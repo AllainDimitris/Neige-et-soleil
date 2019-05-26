@@ -119,17 +119,7 @@ public class ModeleHabitation {
 	public static ArrayList<Habitation> selectWhereHabitations(String mot)
 	{
 		ArrayList<Habitation> lesHabitations = new ArrayList<Habitation>();
-		String requete = "select * from Habitation where idt like '%"+mot+"%'"
-				+ " or adrh like '%" + mot +"%'"
-				+ " or numeroh like '%" + mot +"%'"
-				+ " or cph like '%" + mot +"%'"
-				+ " or villeh like '%" + mot +"%'"
-				+ " or expoh like '%" + mot +"%'"
-				+ " or surfacehabh like '%" + mot +"%'"
-				+ " or surfacebalh like '%" + mot +"%'"
-				+ " or capacch like '%" + mot +"%'"
-				+ " or distancepisteh like '%" + mot +"%'"
-					+ ";";
+		String requete = "select * from Habitation where idh like '%"+mot+"%';";
 		ModeleHabitation.uneBdd.seConnecter();
 		try {
 			Statement unStat = ModeleHabitation.uneBdd.getMaConnexion().createStatement();

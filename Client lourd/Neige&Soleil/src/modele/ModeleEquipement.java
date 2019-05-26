@@ -97,11 +97,7 @@ public class ModeleEquipement {
 	public static ArrayList<Equipement> selectWhereEquipement(String mot)
 	{
 		ArrayList<Equipement> lesEquipements = new ArrayList<Equipement>();
-		String requete = "select * from Equipement where codee like '%"+mot+"%'"
-				+ " or idte like '%" + mot +"%'"
-				+ " or nome like '%" + mot +"%'"
-				+ " or taille like '%" + mot +"%'"
-				+ ";";
+		String requete = "select * from Equipement where codee like '%"+mot+"%';";
 		ModeleEquipement.uneBdd.seConnecter();
 		try {
 			Statement unStat = ModeleEquipement.uneBdd.getMaConnexion().createStatement();
