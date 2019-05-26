@@ -152,6 +152,33 @@ count(case when idt = '2' then idh else null end) as Chalet,
 count(case when idt = '3' then idh else null end) as Maison,
 count(*) as total from habitation group by idt with rollup;
 
+/*
+
+create view stat2 (nomp,prenomp,referencecp,annee)
+as select nomp,prenomp,count(referencecp), year(datesignc) 
+from contratp
+where contraP.IDP = proprietaire.IDP 
+group by contratp.IDP,year(datesignc);  
+
+
+create table archivep3 as select * from contratp where 2=0; 
+drop trigger if exists archivep3; 
+delimiter // 
+create trigger archivep3
+	before delete on contratp
+	for each row 
+	begin 
+	if RENOUVELLEMENTC = 1
+	then
+	set contratp = 'renouvellement';
+	else 
+	insert into archive3 select * from contratp 
+	where referencep = old.referencep;
+	end if;
+end // 
+delimiter ;
+*/
+
 
 drop trigger if exists verifsaison;
 delimiter //
@@ -173,11 +200,11 @@ delimiter ;
 drop trigger if exists Calculmontant;
 delimiter //
 create trigger Calculmontant
-before 
+after 
 	insert on reservation for each row
 begin
 declare jours int(5);
-	select DATEDIFF(datedebutr, datefinr) into jours from reservation;
+	select DATEDIFF('datedebutr', 'datefinr') into jours from reservation;
 	set new.montantr = jours*prixh;
 end //
 delimiter ;
@@ -191,7 +218,7 @@ before
 	insert on reservation for each row
 begin
 declare jours int(5);
-	select DATEDIFF(datedebutr, datefinr) into jours from reservation
+	select DATEDIFF('datedebutr', 'datefinr') into jours from reservation
 
 end //
 delimiter ;

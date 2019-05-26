@@ -5,27 +5,21 @@ public class Equipement {
 	private int idte;
 	private String nome;
 	private String taille;
-	private String montant;
-	private String image;
 	
-	public Equipement(int codee, int idte, String nome, String taille, String montant, String image) {
+	public Equipement(int codee, int idte, String nome, String taille) {
 		
 		this.codee = codee;
 		this.idte = idte;
 		this.nome = nome;
 		this.taille = taille;
-		this.montant = montant;
-		this.image = image;
 	}
 	
-	public Equipement(int idte, String nome, String taille, String montant, String image) {
+	public Equipement(int idte, String nome, String taille) {
 		
 		this.codee = 0;
 		this.idte = idte;
 		this.nome = nome;
 		this.taille = taille;
-		this.montant = montant;
-		this.image = image;
 	}
 	
 	public Equipement() {
@@ -34,8 +28,6 @@ public class Equipement {
 		this.idte = 0;
 		this.nome = "";
 		this.taille = "";
-		this.montant = "";
-		this.image = "";
 	}
 
 	public int getCodee() {
@@ -69,22 +61,5 @@ public class Equipement {
 	public void setTaille(String taille) {
 		this.taille = taille;
 	}
-
-	public String getMontant() {
-		return montant;
-	}
-
-	public void setMontant(String montant) {
-		this.montant = montant;
-	}
-
-	public String getImage() {
-		return image;
-	}
-
-	public void setImage(String image) {
-		this.image = image;
-	}
-
 
 }

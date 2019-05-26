@@ -25,7 +25,6 @@ public class ModeleHabitation {
 				Habitation uneHabitation = new Habitation(
 						desResultats.getInt("idh"),
 						desResultats.getInt("idt"),
-						desResultats.getInt("idp"),
 						desResultats.getString("adrh"),
 						desResultats.getInt("numeroh"),
 						desResultats.getInt("cph"),
@@ -34,9 +33,7 @@ public class ModeleHabitation {
 						desResultats.getInt("surfacehabh"),
 						desResultats.getInt("surfacebalh"),
 						desResultats.getInt("capacch"),
-						desResultats.getString("distancepisteh"),
-						desResultats.getString("montant"),
-						desResultats.getString("image")
+						desResultats.getString("distancepisteh")
 						);
 				lesHabitations.add(uneHabitation);
 			}
@@ -51,7 +48,6 @@ public class ModeleHabitation {
 	
 	public static void insertHabitation (Habitation uneHabitation) {
 		String requete = "insert into Habitation values (null,"
-						+ uneHabitation.getIdt()+","
 						+ uneHabitation.getIdt()+",'"
 						+ uneHabitation.getAdrh()+"',"
 						+ uneHabitation.getNumeroh()+","
@@ -61,9 +57,7 @@ public class ModeleHabitation {
 						+ uneHabitation.getSurfacehabh()+","
 						+ uneHabitation.getSurfacebalh()+","
 						+ uneHabitation.getCapacch()+",'"
-						+ uneHabitation.getDistancepisteh()+"','"
-						+ uneHabitation.getMontant()+"','"
-						+ uneHabitation.getImage()+"');";
+						+ uneHabitation.getDistancepisteh()+"');";
 	ModeleHabitation.uneBdd.seConnecter();
 	try {
 		Statement unStat = ModeleHabitation.uneBdd.getMaConnexion().createStatement();
@@ -90,8 +84,7 @@ public class ModeleHabitation {
 	
 	public static void updateHabitation (Habitation uneHabitation) {
 		String requete = "update Habitation set Idt = "
-				+ uneHabitation.getIdt() +", Idp = "
-				+ uneHabitation.getIdp() +", Adrh = '"
+				+ uneHabitation.getIdt() +", Adrh = '"
 			    + uneHabitation.getAdrh() +"', Numeroh = "
 			    + uneHabitation.getNumeroh() +", Cph="
 			    + uneHabitation.getCph()+", villeh = '"
@@ -100,9 +93,7 @@ public class ModeleHabitation {
 			    + uneHabitation.getSurfacehabh() +", surfacebalh = "
 			    + uneHabitation.getSurfacebalh() +", capacch = "
 			    + uneHabitation.getCapacch() +", distancepisteh = '"
-			    + uneHabitation.getDistancepisteh() +"', montant ='"
-			    + uneHabitation.getMontant()+"', image ='"
-				+ uneHabitation.getImage()+"' where idh ="
+			    + uneHabitation.getDistancepisteh() +"' where idh ="
 			    + uneHabitation.getIdh()+";";
 		ModeleHabitation.uneBdd.seConnecter();
 		try {
@@ -138,7 +129,6 @@ public class ModeleHabitation {
 				 Habitation uneHabitation = new Habitation(
 						unRes.getInt("idh"),
 						unRes.getInt("idt"),
-						unRes.getInt("idp"),
 						unRes.getString("adrh"),
 						unRes.getInt("numeroh"),
 						unRes.getInt("cph"),
@@ -147,9 +137,7 @@ public class ModeleHabitation {
 						unRes.getInt("surfacehabh"),
 						unRes.getInt("surfacebalh"),
 						unRes.getInt("capacch"),
-						unRes.getString("distancepisteh"),
-						unRes.getString("montant"),
-						unRes.getString("image")
+						unRes.getString("distancepisteh")
 						);
 				 lesHabitations.add(uneHabitation);
 			}
