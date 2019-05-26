@@ -162,8 +162,7 @@ public class PanelProprietaire extends Panel implements ActionListener {
 			txtDateFin.setText("");
 			
 		}else if(e.getSource() == this.btAjouter) {
-			Proprietaire unProprietaire = new Proprietaire(Integer.parseInt(txtIdP.getText()),
-					Integer.parseInt(txtHabitation.getText()), txtNomP.getText(),
+			Proprietaire unProprietaire = new Proprietaire(Integer.parseInt(txtHabitation.getText()), txtNomP.getText(),
 					txtPrenomP.getText(), txtDateDebut.getText(), txtDateFin.getText());
 			ModeleProprietaire.insertProprietaire(unProprietaire);
 			Object ligne [] = {unProprietaire.getIdP(), unProprietaire.getHabitation(),

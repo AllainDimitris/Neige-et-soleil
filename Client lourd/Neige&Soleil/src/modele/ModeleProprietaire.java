@@ -73,7 +73,7 @@ private static BDD uneBdd = new BDD ("localhost", "basesite", "root", "");
 		String requete = "update proprietaire set idP ="
 				+ unProprietaire.getIdP() +", nomp = '"
 			    + unProprietaire.getNomP() +"', prenomP = '"
-			    + unProprietaire.getPrenomP() +"' null where idP ="
+			    + unProprietaire.getPrenomP() +"' where idP ="
 			    + unProprietaire.getIdP()+";";
 		ModeleProprietaire.uneBdd.seConnecter();
 		try {
