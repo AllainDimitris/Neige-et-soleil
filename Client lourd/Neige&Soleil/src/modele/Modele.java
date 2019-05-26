@@ -10,11 +10,13 @@ import controleur.Equipement;
 public class Modele {
 	private static BDD uneBdd = new BDD("localhost","basesite","root","");
 	
-	public static ArrayList<Equipement> selectAllEquipement(){
+	public static ArrayList<Equipement> selectAllEquipements(){
 		ArrayList<Equipement> lesEquipements = new ArrayList<Equipement>();
-		String requete = "Select * from equipement ;";
+		String requete = "Select * from equipement;";
 		//On se connecte à la base de données
+		
 		Modele.uneBdd.seConnecter();
+		System.out.println("connecté");
 		try {
 			//On définit un statement
 			Statement unStat = Modele.uneBdd.getMaConnexion().createStatement();
@@ -22,9 +24,11 @@ public class Modele {
 			while(desResultats.next()) {
 				Equipement unEquipement = new Equipement(
 						desResultats.getInt("codee"),
-						desResultats.getInt("idt"),
+						desResultats.getInt("idte"),
 						desResultats.getString("nome"),
-						desResultats.getString("taille")
+						desResultats.getString("taille"),
+						desResultats.getString("montant"),
+						desResultats.getString("image")
 						);
 				lesEquipements.add(unEquipement);
 			}
@@ -38,14 +42,17 @@ public class Modele {
 	}
 	
 	public static void insertEquipement (Equipement unEquipement) {
-		String requete = "insert into equipement values (null,"
+		String requete = "insert into Equipement values (null,"
 						+ unEquipement.getIdte()+",'"
 						+ unEquipement.getNome()+"','"
-						+ unEquipement.getTaille()+"');";
+						+ unEquipement.getTaille()+"','"
+						+ unEquipement.getMontant()+"','"
+						+ unEquipement.getImage()+"');";
 	Modele.uneBdd.seConnecter();
 	try {
 		Statement unStat = Modele.uneBdd.getMaConnexion().createStatement();
 		unStat.execute(requete);
+		System.out.println("Erreur execution : " + requete);
 		unStat.close();
 	}catch(SQLException exp) {
 		System.out.println("Erreur execution : " + requete);
@@ -53,8 +60,8 @@ public class Modele {
 	Modele.uneBdd.seDeconnecter();
 	}
 	
-	public static void deleteEquipement (int codee) {
-		String requete = "delete from equipement where idequipement =" + codee +";";
+	public static void deleteEquipement (int Codee) {
+		String requete = "delete from Equipement where codee =" + Codee+";";
 		Modele.uneBdd.seConnecter();
 		try {
 		Statement unStat = Modele.uneBdd.getMaConnexion().createStatement();
@@ -67,42 +74,53 @@ public class Modele {
 	}
 	
 	public static void updateEquipement (Equipement unEquipement) {
-		String requete = "update equipement set idt = "
-				+ unEquipement.getIdte() +", nome = '"
+		String requete = "update Equipement set codee = "
+				+ unEquipement.getCodee() +", idte = "
+			    + unEquipement.getIdte() +", nome = '"
 			    + unEquipement.getNome() +"', taille ='"
-			    + unEquipement.getTaille()+"' where codee ="
+			    + unEquipement.getTaille()+"', montant ='"
+			    + unEquipement.getMontant()+"', image ='"
+			    + unEquipement.getImage()+"' where codee ="
 			    + unEquipement.getCodee()+";";
 		Modele.uneBdd.seConnecter();
 		try {
 		Statement unStat = Modele.uneBdd.getMaConnexion().createStatement();
 		unStat.execute(requete);
 		unStat.close();
+		System.out.println(requete);
 		}catch(SQLException exp) {
 		System.out.println("Erreur execution : " + requete);
 		}
 		Modele.uneBdd.seDeconnecter();
 	}
 
-	public static Equipement SelectWhereEquipement(String mot) {
+	public static ArrayList<Equipement> selectWhereEquipement(String mot)
+	{
 		ArrayList<Equipement> lesEquipements = new ArrayList<Equipement>();
-		Equipement unE = null;
-		String requete =  "select * from equipement where idt like '%" +mot+ "%' " + "or  nome like '%"+ mot + "%' "
-				 + "or taille like '%"+ mot + "%';";
+		String requete = "select * from Equipement where codee like '%"+mot+"%';";
 		Modele.uneBdd.seConnecter();
 		try {
-			Statement unSat = Modele.uneBdd.getMaConnexion().createStatement();
-			ResultSet unRes = unSat.executeQuery(requete);
-			if (unRes.next()) {
-				unE = new Equipement(unRes.getInt("codee"),
-								  unRes.getInt("Idt"),
-								  unRes.getString("nome"),
-								  unRes.getString("taille"));
+			Statement unStat = Modele.uneBdd.getMaConnexion().createStatement();
+			ResultSet unRes = unStat.executeQuery(requete); 
+			while (unRes.next()) {
+				 Equipement unEquipement = new Equipement(
+						unRes.getInt("codee"),
+						unRes.getInt("idte"),
+						unRes.getString("nome"),
+						unRes.getString("taille"),
+						unRes.getString("montant"),
+						unRes.getString("image")
+						);
+				 lesEquipements.add(unEquipement);
 			}
+			unStat.close();
+			unRes.close();
 		}catch(SQLException exp) {
-			System.out.println("Erreur requête : "+requete);
+			System.out.println("Erreur exception : " + requete);
 		}
+		
 		Modele.uneBdd.seDeconnecter();
-		return unE;
+		return lesEquipements;
 	}
 	
 }
