@@ -15,6 +15,7 @@ echo '<header id="header">
 								<li><a href="index.php">Accueil</a></li>
 								<li><a href="immobilier.php">Location immobilière</a></li>
 								<li><a href="equipement.php">Location de materiel</a></li>
+								<li><a href="profil.php">Vos reservations</a></li>
 								<li><a href="deconnexion.php">Deconnexion</a></li>
 							</ul>
 						</nav>
